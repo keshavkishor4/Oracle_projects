@@ -1,0 +1,4 @@
+# FILE: /etc/cron.d/ocifsbackupv2 -- 10/20
+# Executing ocifsbackup for FA SaaS domU (Snapshot daily)
+00 ${CRON_HR} * * * root /opt/faops/spe/ocifabackup/bin/ocifsbackup.sh --action backup --storage-type fss --backup-options snapshot --catalog-type local > /dev/null 2>&1
+00 23 * * * root (/opt/faops/spe/ocifabackup/bin/ocifsbackup.sh --action post-metadata) > /dev/null 2>&1

@@ -1,0 +1,17 @@
+{
+    "DB": {
+        "host":"esya16-i0yea7.poddbfrontend1.prd01syd01lcm01.oraclevcn.com",
+        "enable":"Y",
+        "db_name":"fyw6re",
+        "rpm_ver":"fa-spe-oci-backup-db-2.0.0.0.200515.1-4.x86_64.rpm",
+        "zone":"ppd/dev/prd",
+        "run_schedule":"daily/once"
+    },
+    "MT": {
+        "host":"esya16-i0yea7.poddbfrontend1.prd01syd01lcm01.oraclevcn.com",
+        "enable":"Y",
+        "db_name":"fyw6re",
+        "rpm_ver":"fa-spe-oci-backup-mt-2.0.0.0.200515.1-6.x86_64.rpm",
+        "zone":"ppd/dev/prd",
+        "run_schedule":"daily/once"     }
+}

@@ -1,0 +1,9 @@
+RUN
+{
+  ALLOCATE CHANNEL C1_SBT DEVICE TYPE SBT_TAPE  PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+
+  CONFIGURE CONTROLFILE AUTOBACKUP ON;
+  backup archivelog from time "trunc(sysdate-7)" not backed up 1 times format '&3/%d_%h_%e_%I.arc' filesperset 1 reuse;
+
+  release channel C1_SBT;
+}

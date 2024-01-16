@@ -1,0 +1,20 @@
+RUN
+{
+  ALLOCATE CHANNEL c1_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c2_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c3_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c4_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c5_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c6_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c7_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c8_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c9_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c10_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c11_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c12_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c13_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c14_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c15_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c16_disk DEVICE TYPE disk format '&1/&2/backupset_%s_%d_%u';
+  backup force as compressed backupset database tag 'full_archive_to_oss' keep until time 'sysdate+&3' restore point 'full_archive_&3&4';
+}

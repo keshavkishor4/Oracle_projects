@@ -1,0 +1,25 @@
+{
+  "exa": {
+    "latest": "fa-spe-oci-backup-db-2.0.0.0.220215.1-9.x86_64.rpm",
+    "oct2021": "fa-spe-oci-backup-db-2.0.0.0.211015.1-6.x86_64.rpm",
+    "aug2021": "fa-spe-oci-backup-db-2.0.0.0.210815.1-4.x86_64.rpm",
+    "may2021": "fa-spe-oci-backup-db-2.0.0.0.210515.1-6.x86_64.rpm",
+    "oct2020": "fa-spe-oci-backup-db-2.0.0.0.201002.1-17.x86_64.rpm",
+    "may2020": "fa-spe-oci-backup-db-2.0.0.0.200515.1-4.x86_64.rpm",
+    "feb2020": "fa-peo-oci-backup-2.0.0.0.200208.4-1.noarch.rpm",
+    "auto_upgrade": "Y",
+    "hosts": ["ALL"]
+  },
+  "mt": {
+    "latest": "fa-spe-oci-backup-mt-2.0.0.0.221115.1-2.x86_64.rpm",
+    "nov2022": "fa-spe-oci-backup-mt-2.0.0.0.221115.1-1.x86_64.rpm",
+    "feb2022": "fa-spe-oci-backup-mt-2.0.0.0.220215.1-9.x86_64.rpm",
+    "aug2021": "fa-spe-oci-backup-mt-2.0.0.0.210815.1-4.x86_64.rpm",
+    "may2021": "fa-spe-oci-backup-mt-2.0.0.0.210515.1-5.x86_64.rpm",
+    "oct2020": "fa-spe-oci-backup-mt-2.0.0.0.201002.1-17.x86_64.rpm",
+    "may2020": "fa-spe-oci-backup-mt-2.0.0.0.200515.1-6.x86_64.rpm",
+    "feb2020": "fa-peo-oci-backup-2.0.0.0.200208.4-1.noarch.rpm",
+    "auto_upgrade": "Y",
+    "hosts": ["ALL"]
+  }
+}

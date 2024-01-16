@@ -1,0 +1,8 @@
+*.passwd.json*
+*validate_config.py
+validate_config.sh
+*.enc
+.DS_Store
+__pycache__
+__init__.py
+*.crypt

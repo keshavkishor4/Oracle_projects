@@ -1,0 +1,67 @@
+{
+    "tenancy_ocid": "",
+    "user_ocid": "",
+    "region": "",
+    "private_key_path": "",
+    "oss_namespace": "",
+    "oss_bucket": "",
+    "oss_part_size": "",
+    "backup_compartment_ocid":{
+        "oc1": {
+            "ppd" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "dev" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "prd" : "ocid1.compartment.oc1..aaaaaaaapi74wpzdt4mtdueqnmqy5sj64it3zbb7yamxrzgfs3yiy5qc35la"
+        },
+        "oc2": {
+            "ppd" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "dev" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "prd" : "ocid1.compartment.oc1..aaaaaaaapi74wpzdt4mtdueqnmqy5sj64it3zbb7yamxrzgfs3yiy5qc35la"
+        },
+        "oc3": {
+            "ppd" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "dev" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "prd" : "ocid1.compartment.oc1..aaaaaaaapi74wpzdt4mtdueqnmqy5sj64it3zbb7yamxrzgfs3yiy5qc35la"
+        },
+        "oc4": {
+            "ppd" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "dev" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "prd" : "ocid1.compartment.oc4..aaaaaaaa7x4bqhw2guhamxuznsimmt5bwkbifj3qpm3u5xtlwobuklnymsra"
+        },
+        "oc5": {
+            "ppd" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "dev" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "prd" : "ocid1.compartment.oc4..aaaaaaaa7x4bqhw2guhamxuznsimmt5bwkbifj3qpm3u5xtlwobuklnymsra"
+        },
+        "oc6": {
+            "ppd" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "dev" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "prd" : "ocid1.compartment.oc4..aaaaaaaa7x4bqhw2guhamxuznsimmt5bwkbifj3qpm3u5xtlwobuklnymsra"
+        },
+        "oc7": {
+            "ppd" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "dev" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "prd" : "ocid1.compartment.oc4..aaaaaaaa7x4bqhw2guhamxuznsimmt5bwkbifj3qpm3u5xtlwobuklnymsra"
+        },
+        "oc8": {
+            "ppd" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "dev" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "prd" : "ocid1.compartment.oc4..aaaaaaaa7x4bqhw2guhamxuznsimmt5bwkbifj3qpm3u5xtlwobuklnymsra"
+        },
+        "oc9": {
+            "ppd" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "dev" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "prd" : "ocid1.compartment.oc4..aaaaaaaa7x4bqhw2guhamxuznsimmt5bwkbifj3qpm3u5xtlwobuklnymsra"
+        },
+        "oc10": {
+            "ppd" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "dev" : "ocid1.compartment.oc1..aaaaaaaat357nhxwsvduyqog54mf3xumjnrrmgbvitgnegr3zl6ty4aygwlq",
+            "prd" : "ocid1.compartment.oc4..aaaaaaaa7x4bqhw2guhamxuznsimmt5bwkbifj3qpm3u5xtlwobuklnymsra"
+        }
+        
+    },
+    "backup_compartment_bn":{
+        "ppd" : "MT_BACKUP",
+        "dev" : "MT_BACKUP",
+        "prd": "MT_BACKUP"
+    }
+}

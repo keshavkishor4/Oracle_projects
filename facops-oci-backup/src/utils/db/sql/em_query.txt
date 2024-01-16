@@ -1,0 +1,33 @@
+CDB_STATUS :## select cdb from v$database
+NEWLY_PROVISIONED :## select count(*) from V$RMAN_BACKUP_JOB_DETAILS where input_type='DB FULL' and status = 'COMPLETED' and start_time > sysdate -6
+INSTANCE_STATUS :## select STATUS from v$instance
+RMAN_STATUS :## select count(*) from gv$session where program like 'rman%'
+RMAN_RUNNING_STATUS :## select count(*) from gV$SESSION_LONGOPS where OPNAME LIKE 'RMAN%' AND OPNAME NOT LIKE '%aggregate%' AND TOTALWORK != 0 AND SOFAR <> TOTALWORK
+RMAN_RUNNING_NODE :## select inst.instance_name from gV$SESSION_LONGOPS longops,gv$instance inst where longops.OPNAME LIKE 'RMAN%' AND longops.OPNAME NOT LIKE '%aggregate%' AND longops.TOTALWORK != 0 AND longops.SOFAR <> longops.TOTALWORK AND longops.inst_id=inst.inst_id and rownum = 1
+RMAN_RUNNING_BKP :## select OPNAME from gV$SESSION_LONGOPS where OPNAME LIKE 'RMAN%' AND OPNAME NOT LIKE '%aggregate%' AND TOTALWORK != 0 AND SOFAR <> TOTALWORK and rownum = 1
+RMAN_CHECK_ZDM_STATUS :## select count(*) from gV$SESSION_LONGOPS where OPNAME LIKE 'RMAN%' AND OPNAME NOT LIKE '%aggregate%' AND TOTALWORK != 0 AND SOFAR <> TOTALWORK
+DB_SIZE :## select round(sum(bytes/1024/1024/1024/1024)) from v$datafile
+DB_SIZE_GB :## SELECT ROUND(SUM(bytes)/1024/1024/1024,2) FROM CDB_DATA_FILES
+DB_NAME :## select trim(lower(sys_context('userenv','db_name'))) from dual
+DB_INFO :## select trim(DBID), trim(LAST_OPEN_INCARNATION#), trim(DATABASE_ROLE) from v$database
+DATABASE_ROLE :## select database_role from v$database
+INSTANCE_NAME :## select instance_name from v$instance
+INSTANCE_VERSION :## select trim(version) from v$instance
+ORACLE_SID :## select instance_name from v$instance
+CONN_STATUS :## select 1 from dual
+PDB_RW_COUNT :## select count(*) from V$PDBS where OPEN_MODE='READ WRITE'
+DIFF_NON-PDB_AND_RW-PDB :## select (select count(*) from V$PDBS where NAME !='PDB$SEED' ) - (select count(*) from V$PDBS where OPEN_MODE='READ WRITE') from dual
+PROV_TIME :## select round(NVL( (sysdate-plugged_time)*24,0)) from (select max(OP_TIMESTAMP) plugged_time from  (SELECT hist.DB_NAME, hist.CON_ID, hist.PDB_NAME, hist.OPERATION, hist.OP_TIMESTAMP, hist.CLONED_FROM_PDB_NAME FROM CDB_PDB_HISTORY hist,dba_pdbs pdb WHERE hist.CON_ID > 2 and hist.PDB_NAME=pdb.PDB_NAME and OPERATION='PLUG' ORDER BY hist.CON_ID))
+PROV_TIME_PLUG_OR_RENAME :## select round(NVL( (sysdate-plugged_time)*24,0)) from (select max(OP_TIMESTAMP) plugged_time from  (SELECT hist.DB_NAME, hist.CON_ID, hist.PDB_NAME, hist.OPERATION, hist.OP_TIMESTAMP, hist.CLONED_FROM_PDB_NAME FROM CDB_PDB_HISTORY hist,dba_pdbs pdb WHERE hist.CON_ID > 2 and hist.PDB_NAME=pdb.PDB_NAME and (OPERATION='PLUG' or OPERATION='RENAME') ORDER BY hist.CON_ID))
+DB_CREATED :## select to_char(CREATED, 'YYYY-MM-DD HH24:MI:SS') from v$database
+FUSION_PDB :## select distinct PDB.name from v$pdbs PDB, CDB_PDB_HISTORY HIST where PDB.name like '%_F' and PDB.NAME=HIST.PDB_NAME and HIST.OPERATION='PLUG'
+ASM_DISK_GROUP :## select name from V$ASM_DISKGROUP
+INSTANCE_START_TIME :## select to_char(STARTUP_TIME, 'YYYY-MM-DD HH24:MI:SS') from v$instance
+DB_UNIQUE_NAME :## select DB_UNIQUE_NAME from v$database
+PDB_LIST :## select distinct PDB.name from v$pdbs PDB, CDB_PDB_HISTORY HIST where PDB.NAME=HIST.PDB_NAME and (OPERATION='PLUG' or OPERATION='RENAME')
+ODS_PDB_COUNT :## select count(*) from v$parameter where name='enable_goldengate_replication' and value='TRUE'
+DB_SHAPE :## select 'em' from dual
+RMAN_SESSION_GT24HRS :## select count(ses.last_call_et) from v$session ses where ses.program like '%RMAN%' and ses.last_call_et > 86400
+DR_ENABLED_CHK :## select count(*) from v$archive_dest where status = 'VALID' and target = 'STANDBY'
+DB_Archive_sts :## select count(*) from V$RMAN_BACKUP_JOB_DETAILS where INPUT_TYPE like '%ARCHIVELOG%' and status = 'RUNNING'
+DB_Full_Sts :## select count(*) from V$RMAN_BACKUP_JOB_DETAILS where INPUT_TYPE like '%DB FULL%' and status = 'RUNNING'

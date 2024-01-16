@@ -1,0 +1,22 @@
+RUN
+{
+  ALLOCATE CHANNEL C1_SBT DEVICE TYPE SBT_TAPE  FORMAT '&2/%d_L1_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=/var/opt/oracle/dbaas_acfs/&1/opc/libopc.so, ENV=(OPC_PFILE=/var/opt/oracle/dbaas_acfs/&1/opc/opc&1..ora)';
+  ALLOCATE CHANNEL C2_SBT DEVICE TYPE SBT_TAPE  FORMAT '&2/%d_L1_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=/var/opt/oracle/dbaas_acfs/&1/opc/libopc.so, ENV=(OPC_PFILE=/var/opt/oracle/dbaas_acfs/&1/opc/opc&1..ora)';
+  ALLOCATE CHANNEL C3_SBT DEVICE TYPE SBT_TAPE  FORMAT '&2/%d_L1_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=/var/opt/oracle/dbaas_acfs/&1/opc/libopc.so, ENV=(OPC_PFILE=/var/opt/oracle/dbaas_acfs/&1/opc/opc&1..ora)';
+  ALLOCATE CHANNEL C4_SBT DEVICE TYPE SBT_TAPE  FORMAT '&2/%d_L1_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=/var/opt/oracle/dbaas_acfs/&1/opc/libopc.so, ENV=(OPC_PFILE=/var/opt/oracle/dbaas_acfs/&1/opc/opc&1..ora)';
+  ALLOCATE CHANNEL C5_SBT DEVICE TYPE SBT_TAPE  FORMAT '&2/%d_L1_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=/var/opt/oracle/dbaas_acfs/&1/opc/libopc.so, ENV=(OPC_PFILE=/var/opt/oracle/dbaas_acfs/&1/opc/opc&1..ora)';
+  ALLOCATE CHANNEL C6_SBT DEVICE TYPE SBT_TAPE  FORMAT '&2/%d_L1_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=/var/opt/oracle/dbaas_acfs/&1/opc/libopc.so, ENV=(OPC_PFILE=/var/opt/oracle/dbaas_acfs/&1/opc/opc&1..ora)';
+  ALLOCATE CHANNEL C7_SBT DEVICE TYPE SBT_TAPE  FORMAT '&2/%d_L1_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=/var/opt/oracle/dbaas_acfs/&1/opc/libopc.so, ENV=(OPC_PFILE=/var/opt/oracle/dbaas_acfs/&1/opc/opc&1..ora)';
+  ALLOCATE CHANNEL C8_SBT DEVICE TYPE SBT_TAPE  FORMAT '&2/%d_L1_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=/var/opt/oracle/dbaas_acfs/&1/opc/libopc.so, ENV=(OPC_PFILE=/var/opt/oracle/dbaas_acfs/&1/opc/opc&1..ora)';
+
+  backup database root pluggable database &1;
+
+  release channel C1_SBT;
+  release channel C2_SBT;
+  release channel C3_SBT;
+  release channel C4_SBT;
+  release channel C5_SBT;
+  release channel C6_SBT;
+  release channel C7_SBT;
+  release channel C8_SBT;
+}

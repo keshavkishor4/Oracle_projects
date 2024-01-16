@@ -1,0 +1,253 @@
+#!/bin/bash
+#
+# Daemon to monitor FA on OCI backups and monitor conflicts
+#
+BACKUP_BASE_DIR="/opt/faops/spe/ocifabackup"
+BASE_DIR=$BACKUP_BASE_DIR
+JQ_TOOL="${BACKUP_BASE_DIR}/utils/jq"
+HOST=$(hostname -s)
+INST_META_FILE=$BASE_DIR/config/${HOST}_inst_meta.json
+TENANCY_META_FILE=$BASE_DIR/config/oci_sdk_meta.json
+
+if [[ -f $INST_META_FILE ]];then
+    HOST_TYPE=$("${JQ_TOOL}" -r '.metadata.dbSystemShape' $INST_META_FILE)
+    REGION=$(${JQ_TOOL} -r '.canonicalRegionName' $INST_META_FILE)
+    REALM=$(${JQ_TOOL} -r '.regionInfo.realmKey' $INST_META_FILE)
+else
+    METADATA=$(curl -H "Authorization: Bearer Oracle" -L http://169.254.169.254/opc/v2/instance 2>/dev/null | tee $INST_META_FILE)
+    HOST_TYPE=$("${JQ_TOOL}" -r '.metadata.dbSystemShape' $INST_META_FILE)
+    REGION=$(${JQ_TOOL} -r '.canonicalRegionName' $INST_META_FILE)
+    REALM=$(${JQ_TOOL} -r '.regionInfo.realmKey' $INST_META_FILE)
+fi
+
+if [[ -f $BACKUP_BASE_DIR/lib/python/common/setpyenv.sh ]];then
+    source $BACKUP_BASE_DIR/lib/python/common/setpyenv.sh 
+else
+    echo "rpm not installed correctly, refer to https://confluence.rightnowtech.com/display/SAAS/FA+on+OCI+Backup+Restore+Package+Release+Notes"
+    exit 1
+fi
+
+
+function download_python() {
+    os_ver=$(uname -r)
+        
+    if [[ $os_ver =~ "el7" ]];then
+        PYTHON_FILE="python3_latest_el7.zip"
+    elif [[ $os_ver =~ "el6" ]];then
+        PYTHON_FILE="python3_latest_el6.zip"
+    fi
+    
+    TMP_FILE=$(download_file $PYTHON_FILE)
+    if [[ "$TMP_FILE" =~ "fail"* ]];then
+        echo "WARN: $TMP_FILE has failed, backups will not perform as desired"
+    else
+        unzip -q -o $TMP_FILE -d ${BACKUP_BASE_DIR}/utils/python3
+        if [[ $? -eq 0 ]]; then
+            echo "SUCCESS: python3 successfully deployed"
+        else
+            echo "WARN: python3 failed to download , faced $?"
+        fi
+
+        if [[ -f /tmp/$PYTHON_FILE ]];then
+            rm -f /tmp/$PYTHON_FILE
+        fi
+        
+    fi
+}
+
+function check_file_integrity() {
+    ARTIFACTS_FILE_NAME=$1
+    TMP_FILE=$2
+    MD5_TMP_FILE=$(md5sum ${TMP_FILE} | awk '{print $1}')
+    MD5_ARTIFACTS_FILE=$(md5sum ${ARTIFACTS_FILE_NAME} | awk '{print $1}')
+    if [[ "$MD5_ARTIFACTS_FILE" != "$MD5_TMP_FILE" ]];then
+        echo 1
+    else
+        echo 0
+    fi
+
+}
+function download_file() {
+    FILE=$1
+    FILE_NAME=$(basename $FILE)
+    URL="https://artifactory-master.cdaas.oraclecloud.com/artifactory/list/generic-fa/${FILE_NAME}"
+    if [[ "$REALM" == "oc4" ]];then
+        URL="https://artifactory-ltn-prod.cdaas.ocs.oraclegovcloud.uk/artifactory/list/generic-fa/${FILE_NAME}"
+    else
+        URL="https://artifactory-master.cdaas.oraclecloud.com/artifactory/list/generic-fa/${FILE_NAME}"
+    fi
+    # curl -o /tmp/fa-spe-oci-backup-db-2.0.0.0.210815.1-3.x86_64.rpm -w "%{http_code}" -s -L --fail -O curl -O https://artifactory-phx-prod.cdaas.oraclecloud.com/artifactory/list/rpm-fa-backup-dev/repo/fa-oci-backup/fa-spe-oci-backup-db-2.0.0.0.210815.1-3.x86_64.rpm 2>/dev/null
+    OUTCODE=$(curl --connect-timeout 30 --retry 30 -o /tmp/$FILE_NAME -w "%{http_code}" -s -L --fail -O $URL 2>/dev/null)
+    if [[ "$OUTCODE" =~ "200" ]]; then
+        chmod 755 /tmp/$FILE_NAME
+        echo  "/tmp/$FILE_NAME"
+    else
+        # echo "WARN: download of $FILE has failed, backups will not perform as desired"
+        if [[ -f /tmp/$FILE_NAME ]];then
+            rm -f /tmp/$FILE_NAME
+        fi
+        echo "FAIL: failed to download /tmp/$FILE_NAME"
+    fi 
+
+}
+
+function zip_test_deploy() {
+    ZIP_FILE=$1
+    CHECK=$(unzip -q -t $ZIP_FILE 2>/dev/null)
+    if [[ "$CHECK" =~ "No errors" ]];then
+        unzip -q -o $ZIP_FILE -d $BASE_DIR
+        if [[ $? -eq 0 ]];then 
+            echo "SUCCESS: deployed artifact $ZIP_FILE"
+        else
+            echo "FAIL: deployed artifact $ZIP_FILE"
+        fi
+    else
+        echo "WARN: $ZIP_FILE is corrupt, not deploying"
+    fi
+
+
+}
+
+function check_artifacts() {
+    ARTIFACTS_FILE=$1
+    if [[ -f $ARTIFACTS_FILE ]];then
+        for FILE in $(cat $ARTIFACTS_FILE);do
+            FILE_NAME=$BASE_DIR/$FILE
+            if [[ ! -f $FILE_NAME ]];then
+                ARTIFACT_FILE_NAME=$(basename $FILE_NAME)
+                ARTIFACT_DIR_NAME=$(dirname $FILE_NAME)
+                if [[ ! -d "$ARTIFACT_DIR_NAME" ]];then
+                    mkdir -p $ARTIFACT_DIR_NAME
+                fi
+                TMP_FILE=$(download_file $ARTIFACT_FILE_NAME)
+                if [[ "$TMP_FILE" =~ "fail"* ]];then
+                    echo "WARN: $TMP_FILE"
+                else
+                    FILE_DIR=$(dirname $FILE_NAME)
+                    if [[ -d $FILE_DIR ]];then
+                        mkdir -p $FILE_DIR
+                    fi
+                    mv $TMP_FILE $FILE_NAME
+                    chown -Rh oracle:oinstall $FILE_NAME
+                    echo "SUCCESS: downloaded $ARTIFACT_FILE_NAME at $ARTIFACT_DIR_NAME"
+                    # 
+                    if [[ "$ARTIFACT_FILE_NAME" == "faocibkp_deploy.zip" ]];then
+                        zip_test_deploy $FILE_NAME
+                    fi
+                fi
+                
+            else
+                ARTIFACT_FILE_NAME=$(basename $FILE_NAME)
+                ARTIFACT_DIR_NAME=$(dirname $FILE_NAME)
+                if [[ ! -d "$ARTIFACT_DIR_NAME" ]];then
+                    mkdir -p $ARTIFACT_DIR_NAME
+                fi
+                TMP_FILE=$(download_file $ARTIFACT_FILE_NAME)
+                if [[ "$TMP_FILE" =~ "fail"* ]];then
+                    echo "WARN: $TMP_FILE"
+                else
+                    OUTPUT=$(check_file_integrity $FILE_NAME $TMP_FILE )
+                    if [[ $OUTPUT -ne 0 ]];then
+                        mv $TMP_FILE $FILE_NAME
+                        chown -Rh oracle:oinstall $FILE_NAME
+                        echo "SUCCESS: downloaded $ARTIFACT_FILE_NAME at $ARTIFACT_DIR_NAME"
+                    fi            
+                fi
+            fi
+        done
+    else
+        echo "WARN: artifact $ARTIFACTS_FILE not present, backups will not perform as desired"
+    fi
+}
+
+
+function check_latest_artifacts_file() {
+    INPUT_FILE=$1
+    ARTIFACT_FILE_NAME=${BASE_DIR}/config/${INPUT_FILE}
+    TMP_FILE=/tmp/${INPUT_FILE}
+    MIN=$(date +'%M')
+    # 
+    if [[ ! -f /tmp/.faocibkp.tmp ]];then
+        TMP_FILE=$(download_file $ARTIFACT_FILE_NAME)
+        if [[ "$TMP_FILE" =~ "fail"* ]];then
+            echo "WARN: $TMP_FILE"
+        else
+            OUTPUT=$(check_file_integrity $ARTIFACT_FILE_NAME $TMP_FILE)
+            if [[ $OUTPUT -ne 0 ]];then
+                mv $TMP_FILE $ARTIFACT_FILE_NAME
+                chown -Rh oracle:oinstall $ARTIFACT_FILE_NAME
+                echo "SUCCESS: downloaded $ARTIFACT_FILE_NAME at $ARTIFACT_DIR_NAME"
+            else
+                if [[ -f $TMP_FILE ]];then
+                    rm -f $TMP_FILE
+                fi
+            fi 
+        fi
+        # check artifacts
+        check_artifacts $ARTIFACT_FILE_NAME
+        # 
+        touch /tmp/.faocibkp.tmp
+    elif [[ "$MIN" == "59" ]];then
+        if [[ -f /tmp/.faocibkp.tmp ]];then
+            rm -f /tmp/.faocibkp.tmp
+        fi
+    fi
+
+}
+
+function check_rman_backup() {
+   PID=$(ps -ax  | egrep -w "rman_wrapper.py|rman_oss.py" | grep -v '/usr/bin/script'  | grep -v grep | awk '{print $1}')
+   if [[ ! -z $PID ]];then
+    echo $PID
+   fi
+}
+
+function check_python() {
+    PY_VER=$(python -c "import oci;import paramiko;import sys;print(sys.version_info.major)" 2>/dev/null)
+    BKP_RUN_CHECK=$(check_rman_backup)
+    if [[ -z "$BKP_RUN_CHECK" ]];then
+        if [[ "$PY_VER" != "3" ]];then
+            download_python
+        fi
+    fi
+}
+
+function check_tenancy_meta_file() {
+    if [[ ! -f "$TENANCY_META_FILE" ]];then
+        SDK_META_FILE_RUN=$(cd $BASE_DIR/lib/python/common;python -c "import globalvariables;import ociSDK;oci_sdk=ociSDK.ociSDK(globalvariables.DB_CONFIG_PATH_DEFAULT);oci_sdk.get_tenancy_info(globalvariables.DB_CONFIG_PATH_DEFAULT)" 2>/dev/null)
+        if [[ ! -z "$SDK_META_FILE_RUN" ]];then
+            if [[ "$SDK_META_FILE_RUN" == *"429"* ]];then
+                :
+            fi
+        fi
+    else
+        OUT=$(cat $TENANCY_META_FILE | ${BASE_DIR}/utils/jq -r '.ns' 2>/dev/null)
+        if [[  -z "$OUT" ]];then
+            rm -f $TENANCY_META_FILE
+            SDK_META_FILE_RUN=$(cd $BASE_DIR/lib/python/common;python -c "import globalvariables;import ociSDK;oci_sdk=ociSDK.ociSDK(globalvariables.DB_CONFIG_PATH_DEFAULT);oci_sdk.get_tenancy_info(globalvariables.DB_CONFIG_PATH_DEFAULT)" 2>/dev/null)
+        fi
+    fi
+}
+
+# daemonize
+while true; do
+    case "$HOST_TYPE" in
+        *"Exa"*) 
+            check_python
+            check_tenancy_meta_file
+            check_latest_artifacts_file .artifacts_db.txt
+            ;;
+        *"VM.Standard"*) 
+            check_python
+            check_tenancy_meta_file
+            check_latest_artifacts_file .artifacts_db.txt
+            ;;
+        *)
+            check_python
+            check_tenancy_meta_file
+            check_latest_artifacts_file .artifacts_mt.txt
+            ;;
+    esac
+  
+  sleep 60;
+done

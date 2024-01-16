@@ -1,0 +1,31 @@
+{
+    "DB": {
+        "rpm_upgrade":{
+            "script_name":"backup_test.sh",
+            "enabled": "y"
+        },
+
+        "db_arch_oss":{
+            "script_name":"rpm_upgrade.sh",
+            "enabled": "y"
+        },
+        "wallet_backup":{
+            "script_name":"rpm_upgrade_v0.sh",
+            "enabled": "y"
+        }
+    },
+    "MT": {
+        "validate_rpm":{
+            "script_name":"validate_rpm",
+            "enabled": "y"
+        },
+        "verify_cron":{
+            "script_name":"verify_cron",
+            "enabled": "y"
+        },
+        "wallet_backup":{
+            "script_name":"rpm_upgrade.sh",
+            "enabled": "y"
+        }
+    }
+}

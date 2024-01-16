@@ -1,0 +1,7 @@
+RUN
+{
+  ALLOCATE CHANNEL c1_sbt_tape DEVICE TYPE sbt_tape;
+  ALLOCATE CHANNEL c2_sbt_tape DEVICE TYPE sbt_tape;
+
+  BACKUP RECOVERY AREA TO DESTINATION '&1';
+}

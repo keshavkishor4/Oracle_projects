@@ -1,0 +1,21 @@
+RUN
+{
+  ALLOCATE CHANNEL C1_SBT DEVICE TYPE SBT_TAPE  FORMAT '&2/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C2_SBT DEVICE TYPE SBT_TAPE  FORMAT '&2/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C3_SBT DEVICE TYPE SBT_TAPE  FORMAT '&2/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C4_SBT DEVICE TYPE SBT_TAPE  FORMAT '&2/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+
+  CONFIGURE CONTROLFILE AUTOBACKUP OFF;
+  backup force as compressed backupset full database section size 1024G tag 'compressed_full_to_oss' keep until time 'sysdate+67';
+
+  release channel C1_SBT;
+  release channel C2_SBT;
+  release channel C3_SBT;
+  release channel C4_SBT;
+
+  ALLOCATE CHANNEL C1_SBT DEVICE TYPE SBT_TAPE PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+
+  backup current controlfile;
+  release channel C1_SBT;
+  CONFIGURE CONTROLFILE AUTOBACKUP ON;
+}

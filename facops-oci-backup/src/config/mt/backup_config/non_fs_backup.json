@@ -1,0 +1,23 @@
+{
+    "bv_backup": [
+      "/u02/APPLTOP/instance/BIShared/BIPublisher/repository/Admin/",
+      "/u02/APPLTOP/instance/BIShared/OracleBIServerComponent/",
+      "/u02/APPLTOP/instance/domains/fa.oracleoutsourcing.com/FADomain/config/fmwconfig/biee-config.lock",
+      "/u02/APPLTOP/instance/domains/fa.oracleoutsourcing.com/FADomain/config/fmwconfig/biee-data.zip",
+      "/u02/APPLTOP/instance/domains/fa.oracleoutsourcing.com/FADomain/config/fmwconfig/biee-domain.xml",
+      "/u02/APPLTOP/instance/BIInstance/config/",
+      "/u02/APPLTOP/instance/BIInstanceHA/config/",
+      "/u02/APPLTOP/instance/BIInstance/bifoundation/OracleBIServerComponent/",
+      "/u02/APPLTOP/instance/BIInstanceHA/bifoundation/OracleBIServerComponent/",
+      "/u02/APPLTOP/instance/BIShared/lcm/indexes",
+      "/u01/APPLTOP/instance/lcm/metadata/pod.properties",
+      "/opt/facs/casrepos/crhistory/published/cr-history.xml",
+      "/u01/APPLTOP/instance/lcm/metadata/template_maintenance_level.properties",
+      "/opt/facs/casrepos/crhistory/published/cr-history.xml"
+    ],
+    "bv_os_backup": [
+      "/etc",
+      "/var/log",
+      "/boot"
+    ]
+  }

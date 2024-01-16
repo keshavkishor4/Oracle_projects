@@ -1,0 +1,32 @@
+RUN
+{
+  ALLOCATE CHANNEL C1_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C2_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C3_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C4_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C5_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C6_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C7_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C8_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C9_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C10_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C11_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+  ALLOCATE CHANNEL C12_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+
+  CONFIGURE CONTROLFILE AUTOBACKUP ON;
+  CONFIGURE CONTROLFILE AUTOBACKUP FORMAT FOR DEVICE TYPE SBT_TAPE TO '&3/ctrl_%F';
+  backup force as compressed backupset full database section size 1024G tag &4 keep until time 'sysdate+&5';
+
+  release channel C1_SBT;
+  release channel C2_SBT;
+  release channel C3_SBT;
+  release channel C4_SBT;
+  release channel C5_SBT;
+  release channel C6_SBT;
+  release channel C7_SBT;
+  release channel C8_SBT;
+  release channel C9_SBT;
+  release channel C10_SBT;
+  release channel C11_SBT;
+  release channel C12_SBT;
+}

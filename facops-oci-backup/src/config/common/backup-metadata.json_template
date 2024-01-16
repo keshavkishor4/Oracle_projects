@@ -1,0 +1,28 @@
+{
+   "backup": {
+       "db_mt_os": [
+           {
+               "BACKUP_TOOL": "",
+               "TAG": "",
+               "BTIMESTAMP": "",
+               "ETIMESTAMP": "",
+               "HOSTNAME": "",
+               "CLIENT_TYPE": "",
+               "CLIENT_NAME": "",
+               "BACKUP_TYPE": "",
+               "TARGET_TYPE": "",
+               "TARGET_LOCATION": "",
+               "PIECE_NAME": null,
+               "RETENTION_DAYS": 7,
+               "STATUS": "",
+               "PODNAME": "",
+               "ADDL_INFO1": "Backup Metadata",
+               "ADDL_INFO2": null,
+               "ADDL_INFO3": null,
+               "ADDL_INFO4": null,
+               "PRE_POST_FLAG": "POST",
+               "LOG_FILE": ""
+           }
+       ]
+   }
+}

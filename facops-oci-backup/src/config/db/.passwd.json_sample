@@ -1,0 +1,9 @@
+{
+    "oss_namespace" : {
+        "rman_user"         : "",
+        "fa_rman_oss_bn "   : "RMAN_BACKUP",
+        "em_rman_user"      : "",
+        "em_rman_oss_bn"    : "OMS_RMAN_BACKUP",
+        "tenancy"           : "tenancy_name"
+    }
+}

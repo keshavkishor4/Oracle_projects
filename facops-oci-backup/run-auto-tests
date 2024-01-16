@@ -1,0 +1,4 @@
+#Run tests --- validation needed
+export PYTHONPATH=$PYTHONPATH:`pwd`/src
+python -m pytest --cov-report html --cov-report annotate --cov=src tests/auto
+

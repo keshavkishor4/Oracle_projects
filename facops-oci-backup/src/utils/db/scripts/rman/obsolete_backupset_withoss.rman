@@ -1,0 +1,28 @@
+RUN
+{
+ALLOCATE CHANNEL C1 DEVICE TYPE disk;
+ALLOCATE CHANNEL C2 DEVICE TYPE disk;
+#
+# Crosscheck
+CROSSCHECK BACKUP OF DATABASE CONTROLFILE SPFILE;
+#
+# Delete noprompt obsolete recovery window of 14 days device type disk;
+# changed from 7 days to 14 days until we have tape backup available
+#DELETE NOPROMPT BACKUP COMPLETED BEFORE "SYSDATE-14" DEVICE TYPE DISK;
+delete force noprompt obsolete device type disk;
+ 
+#crosscheck archivelog all;
+#delete noprompt expired archivelog all;
+}
+
+CONFIGURE RETENTION POLICY TO RECOVERY WINDOW OF 60 DAYS;
+
+RUN
+{
+ALLOCATE CHANNEL C1_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+ALLOCATE CHANNEL C2_SBT DEVICE TYPE SBT_TAPE  FORMAT '&3/%d_L0_bs%s_bp%p_%c_%t_%T' PARMS 'SBT_LIBRARY=&1, ENV=(OPC_PFILE=&2)';
+
+delete force noprompt obsolete device type sbt_tape;
+}
+
+CONFIGURE RETENTION POLICY TO RECOVERY WINDOW OF 14 DAYS;

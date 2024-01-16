@@ -1,0 +1,12 @@
+../../src/bin/mt_main/=/opt/faops/spe/ocifabackup/bin
+../../src/lib/python/common/=/opt/faops/spe/ocifabackup/lib/python/common/
+../../src/lib/python/mt/=/opt/faops/spe/ocifabackup/lib/python/mt/
+../../src/config/mt/=/opt/faops/spe/ocifabackup/config/mt/
+../../src/config/common/backup-metadata.json_template=/opt/faops/spe/ocifabackup/config/backup-metadata.json_template
+../../src/config/common/faops-backup-ver.json=/opt/faops/spe/ocifabackup/config/faops-backup-ver.json
+../../src/config/common/faops-backup-oss-info.json=/opt/faops/spe/ocifabackup/config/faops-backup-oss-info.json
+../../src/config/common/faops-backup-ver_api_update.json=/opt/faops/spe/ocifabackup/config/faops-backup-ver_api_update.json
+../../src/config/common/.creds.json=/opt/faops/spe/ocifabackup/config/.creds.json
+../../src/config/common/oci_retry.json=/opt/faops/spe/ocifabackup/config/oci_retry.json
+../../src/utils/repo/=/opt/faops/spe/ocifabackup/utils/
+artifacts/jq=/opt/faops/spe/ocifabackup/utils/jq

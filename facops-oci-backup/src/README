@@ -1,0 +1,23 @@
+saas-perf-oci
+
+ocifsbackupv2.py - Backup tool for OCI environment
+Version 2 
+
+1 Usage:
+=======================================================================
+# python ocifsbackupv2.py -h
+Usage:
+    ocifsbackup.py - Backup tool for OCI environment.
+ 
+    # User Case 1: Update backup config file of file storage backup
+    ocifsbackup.py --action update-fs-list -f <fs-config-file>
+ 
+    # User Case 2: Do backup action
+    ocifsbackup.py --action backup -t <local|oss> 
+        -t
+            local - All backup data will be backup to file storage.
+            oss - If oss, work with --backup-options.
+ 
+        
+ 
+ 

@@ -1,0 +1,71 @@
+pipeline {
+    agent any
+
+    environment {
+                SONAR_SCANNER_HOME = tool 'jenkins_sonarqube_scanner'
+                PROJECT_NAME = "FSRE-MW-facops_oci_backup"
+                SONAR_REPORT_URL = "https://arques.us.oracle.com/sonar/dashboard?id=${PROJECT_NAME}"
+                BRANCH_NAME = "fy23q4_FUSIONSRE-3430_dbaas"
+            }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+
+        stage('SonarQube Analysis') {
+            steps {
+                
+                withSonarQubeEnv('jenkins_sonarqube') {
+                    sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectName=${PROJECT_NAME} -Dsonar.branch.name=${BRANCH_NAME} -Dsonar.projectKey=${PROJECT_NAME} -Dsonar.projectVersion=1.0 -Dsonar.language=py -Dsonar.sources=. -Dsonar.sourceEncoding=UTF-8 -Dsonar.analysisCache.enabled=false -Dsonar.jet.audit.enabled=false"
+                    
+                }
+            }
+        }
+
+        stage('Approval') {
+            steps {
+                // Ask for user input to get approval
+                input 'Do you want to proceed with deployment?'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh "echo Building branch ${BRANCH_NAME}"
+                sh "echo Building rpm for FAOCI Backup Rel ${FAOCI_BACKUP_REL}-${FAOCI_BACKUP_REV} , check rpm at https://artifactory-master.cdaas.oraclecloud.com/artifactory/generic-fa/:"
+                sh "build/rpmbuild/prod_repo_deploy.sh $FAOCI_BACKUP_REL $FAOCI_BACKUP_REV"
+                sh "echo If the files are built successfully, test some files with one command:"
+                sh "tests/run_tests.sh $FAOCI_BACKUP_REL $FAOCI_BACKUP_REV"
+            }
+        }
+
+    }
+
+    post {
+        success {
+            script {
+                def buildURL = env.BUILD_URL
+                def buildSubject = "Pipeline SUCCESS: ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
+                def buildBody = "View the Pipeline: ${buildURL}\n\nSonarQube Report: ${SONAR_REPORT_URL}"
+                mail to: 'zakahmed_org_ww@oracle.com,amuluri.hareesh@oracle.com',
+                    subject: buildSubject,
+                    body: buildBody
+            }
+        }
+        failure {
+            script {
+                def buildURL = env.BUILD_URL
+                def buildSubject = "Pipeline FAILURE: ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
+                def buildBody = "View the Pipeline: ${buildURL}"
+                mail to: 'zakahmed_org_ww@oracle.com,amuluri.hareesh@oracle.com',
+                    subject: buildSubject,
+                    body: buildBody,
+                    mimeType: 'text/html'
+            }
+        }
+    }
+}

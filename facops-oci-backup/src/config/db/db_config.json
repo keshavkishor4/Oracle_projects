@@ -1,0 +1,76 @@
+{
+  "db_size": {
+    "large_db": 40000,
+    "small_db": 1000
+  },
+  "db_wallet": {
+    "db_wallet_backup_db": {
+      "base_path": "/var/opt/oracle/dbaas_acfs",
+      "post_path": ""
+    },
+    "db_wallet_backup_db_faops": {
+      "base_path": "/var/opt/oracle/dbaas_acfs/oci_backup",
+      "post_path": ""
+    },
+    "ora_wallet_backup_db": {
+      "base_path": "/dbs/dbcs/",
+      "post_path": "/wallet"
+    }
+  },
+  "db_artifacts": {
+    "faops_oci_db_artifacts_backup_db": {
+      "base_path": "/var/opt/oracle/dbaas_acfs/oci_backup",
+      "post_path": ""
+    },
+    "db_artifacts_backup_db": {
+      "base_path": "/acfs01/dbaas_acfs",
+      "post_path": "/bkup"
+    },
+    "bg_artifacts_backup_db": {
+      "base_path": "/opt/oracle/kms/tde/pkcs11/configs",
+      "post_path": ""
+    },
+    "db_ini_backup": {
+      "base_path": "/var/opt/oracle/creg",
+      "post_path": ""
+    },
+    "grid_artifacts_backup": {
+      "base_path": "/acfs01/dbaas_acfs",
+      "post_path": "/bkup"
+    }
+  },
+  "enable_ia_tier": {
+    "enable": "N",
+    "param": ["_OPC_DEFERRED_DELETE=false", "_OPC_INFREQ_ACCESS=true"]
+  },
+  "opc_lib_urls": {
+    "oc1": {
+      "opc_linux64": [
+        "https://objectstorage.us-phoenix-1.oraclecloud.com/p/d_1I63ZZ1HKa3UtoxhrDHUFjfxRILifD6HgseXM_0-igtb6njkXSqHtNoOcTqDMr/n/p1-saasfapreprod1/b/BACKUP_SUPPORT/o/",
+        "https://objectstorage.us-ashburn-1.oraclecloud.com/n/rmangroup/b/oracle-sbt-installer/o/",
+        "https://artifactory-master.cdaas.oraclecloud.com/artifactory/list/generic-fa/",
+        "<oci_artifactory_url"
+      ],
+      "opc_installer": [
+        "https://objectstorage.us-phoenix-1.oraclecloud.com/p/73AwMkgEqHWW1_BGn5i4jxXsjVkkWHVClsxEvpjI7AvbAZNRNeXvBQyKCIPEg8y3/n/p1-saasfapreprod1/b/BACKUP_SUPPORT/o/",
+        "https://objectstorage.us-ashburn-1.oraclecloud.com/n/rmangroup/b/oracle-sbt-installer/o/",
+        "https://artifactory-master.cdaas.oraclecloud.com/artifactory/list/generic-fa/",
+        "<oci_artifactory_url"
+      ]
+    },
+    "oc4": {
+      "opc_linux64": [
+        "https://objectstorage.uk-gov-london-1.oraclegovcloud.uk/p/nyPzb-siV-pSjlkNHmXS3L3k6wS9oxlZlAlLrPnO5OJZ8018xNTzNdVY4Dp-Rg0C/n/axqqulwjr5ll/b/FSRE-MW-BINARIES/o/",
+        "https://artifactory-ltn-prod.cdaas.ocs.oraclegovcloud.uk/artifactory/list/generic-fa/",
+        "https://objectstorage.us-ashburn-1.oraclecloud.com/n/rmangroup/b/oracle-sbt-installer/o/",
+        "<oci_artifactory_url"
+      ],
+      "opc_installer": [
+        "https://objectstorage.uk-gov-london-1.oraclegovcloud.uk/p/gRvtkp0kbnplt94DnYk1jWoCwkVcjsW8fXIuW6jYmlss1W-hKiy3e1i0bE0FOYkj/n/axqqulwjr5ll/b/FSRE-MW-BINARIES/o/",
+        "https://artifactory-ltn-prod.cdaas.ocs.oraclegovcloud.uk/artifactory/list/generic-fa/",
+        "https://objectstorage.us-ashburn-1.oraclecloud.com/n/rmangroup/b/oracle-sbt-installer/o/",
+        "<oci_artifactory_url"
+      ]
+    }
+  }
+}

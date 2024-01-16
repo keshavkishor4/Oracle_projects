@@ -1,0 +1,6 @@
+RUN
+{
+  ALLOCATE CHANNEL c1_sbt_tape DEVICE TYPE sbt_tape format 'backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c2_sbt_tape DEVICE TYPE sbt_tape format 'backupset_%s_%d_%u';
+  backup force as backupset full database tag 'forced_full_to_oss';
+}

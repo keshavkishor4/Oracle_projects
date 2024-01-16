@@ -1,0 +1,146 @@
+{
+    "p1-saasfapreprod1" : {
+        "fa_rman_oss_bn": {
+            "prod"              : "BACKUP_PROD",
+            "prod_dr_enabled"   : "BACKUP_PROD_DR",
+            "stage"             : "BACKUP_STAGE",
+            "non_fa"            : "BACKUP_PROD_DR"
+        },
+        "fa_rman_user"          : "rman_user",
+        "em_rman_user"          : "em_rman_user",
+        "dbaas_rman_user"       : "dev_lcm_rman_usr",
+        "fa_rman_wallet_bn": {
+            "prod"              : "BACKUP_W_PROD",
+            "prod_dr_enabled"   : "BACKUP_W_PROD_DR",
+            "stage"             : "BACKUP_W_STAGE",
+            "non_fa"            : "BACKUP_W_PROD_DR"        
+        },
+        "fa_rman_wallet_user"   : "rman_wallet_user",
+        "fa_mt_oss_bn"          : "MT_BACKUP",
+        "em_rman_oss_bn"        : "OMS_RMAN_BACKUP",
+        "em_rman_wallet_bn"     : "OMS_RMAN_WALLET_BACKUP",
+        "dbaas_rman_oss_bn"     : "RMAN_BACKUP_CP_IAD",
+        "dbaas_rman_wallet_bn"  : "RMAN_WALLET_BACKUP_CP_IAD",
+        "tenancy"               :  "p1-saasfapreprod1"
+    },  
+    "saasfaprod1" : {   
+        "fa_rman_oss_bn": {
+            "prod"              : "BACKUP_PROD",
+            "prod_dr_enabled"   : "BACKUP_PROD_DR",            
+            "stage"             : "BACKUP_STAGE",
+            "non_fa"            : "BACKUP_PROD_DR"
+        },
+        "fa_rman_user"          : "rman_user",
+        "em_rman_user"          : "em_rman_user",
+        "dbaas_rman_user"       : "dev_lcm_rman_usr",
+        "fa_rman_wallet_bn": {
+            "prod"              : "BACKUP_W_PROD",
+            "prod_dr_enabled"   : "BACKUP_W_PROD_DR",            
+            "stage"             : "BACKUP_W_STAGE",
+            "non_fa"            : "BACKUP_W_PROD_DR"        
+        },
+        "fa_rman_wallet_user"   : "rman_wallet_user",
+        "fa_mt_oss_bn"          : "MT_BACKUP",
+        "em_rman_oss_bn"        : "OMS_RMAN_BACKUP",
+        "em_rman_wallet_bn"     : "OMS_RMAN_WALLET_BACKUP",
+        "dbaas_rman_oss_bn"     : "RMAN_BACKUP_CP",
+        "dbaas_rman_wallet_bn"  : "RMAN_WALLET_BACKUP_CP",
+        "tenancy"               :  "saasfaprod1"
+    },   
+    "fratbooxcjzj" : {           
+        "fa_rman_oss_bn": {
+            "prod"              : "BACKUP_PROD",
+            "prod_dr_enabled"   : "BACKUP_PROD_DR",            
+            "stage"             : "BACKUP_STAGE",
+            "non_fa"            : "BACKUP_PROD_DR"
+        },
+        "fa_rman_user"          : "rman_user",
+        "em_rman_user"          : "em_rman_user",
+        "dbaas_rman_user"       : "dev_lcm_rman_usr",
+        "fa_rman_wallet_bn": {
+            "prod"              : "BACKUP_W_PROD",
+            "prod_dr_enabled"   : "BACKUP_W_PROD_DR",            
+            "stage"             : "BACKUP_W_STAGE",
+            "non_fa"            : "BACKUP_W_PROD_DR"        
+        },
+        "fa_rman_wallet_user"   : "rman_wallet_user",
+        "fa_mt_oss_bn"          : "MT_BACKUP",
+        "em_rman_oss_bn"        : "OMS_RMAN_BACKUP",
+        "em_rman_wallet_bn"     : "OMS_RMAN_WALLET_BACKUP",
+        "dbaas_rman_oss_bn"     : "RMAN_BACKUP_CP",
+        "dbaas_rman_wallet_bn"  : "RMAN_WALLET_BACKUP_CP",
+        "tenancy"               :  "saasfaeuraprod1"
+    },  
+    "idqdbeamb4dc" : {  
+        "fa_rman_oss_bn": {
+            "prod"              : "BACKUP_PROD",
+            "prod_dr_enabled"   : "BACKUP_PROD_DR",            
+            "stage"             : "BACKUP_STAGE",
+            "non_fa"            : "BACKUP_PROD_DR"
+        },
+        "fa_rman_user"          : "rman_user",
+        "em_rman_user"          : "em_rman_user",
+        "dbaas_rman_user"       : "dev_lcm_rman_usr",
+        "fa_rman_wallet_bn": {
+            "prod"              : "BACKUP_W_PROD",
+            "prod_dr_enabled"   : "BACKUP_W_PROD_DR",            
+            "stage"             : "BACKUP_W_STAGE",
+            "non_fa"            : "BACKUP_W_PROD_DR"        
+        },
+        "fa_rman_wallet_user"   : "rman_wallet_user",
+        "fa_mt_oss_bn"          : "MT_BACKUP",
+        "em_rman_oss_bn"        : "OMS_RMAN_BACKUP",
+        "em_rman_wallet_bn"     : "OMS_RMAN_WALLET_BACKUP",
+        "dbaas_rman_oss_bn"     : "RMAN_BACKUP_CP",
+        "dbaas_rman_wallet_bn"  : "RMAN_WALLET_BACKUP_CP",
+        "tenancy"               :  "fapreprodeuro11"
+    },  
+    "axqqulwjr5ll" : {  
+        "fa_rman_oss_bn": {
+            "prod"              : "BACKUP_PROD",
+            "prod_dr_enabled"   : "BACKUP_PROD_DR",            
+            "stage"             : "BACKUP_STAGE",
+            "non_fa"            : "BACKUP_PROD_DR"
+        },
+        "fa_rman_user"          : "rman_user",
+        "em_rman_user"          : "em_rman_user",
+        "dbaas_rman_user"       : "dev_lcm_rman_usr",
+        "fa_rman_wallet_bn": {
+            "prod"              : "BACKUP_W_PROD",
+            "prod_dr_enabled"   : "BACKUP_W_PROD_DR",            
+            "stage"             : "BACKUP_W_STAGE",
+            "non_fa"            : "BACKUP_W_PROD_DR"        
+        },
+        "fa_rman_wallet_user"   : "rman_wallet_user",
+        "fa_mt_oss_bn"          : "MT_BACKUP",
+        "em_rman_oss_bn"        : "OMS_RMAN_BACKUP",
+        "em_rman_wallet_bn"     : "OMS_RMAN_WALLET_BACKUP",
+        "dbaas_rman_oss_bn"     : "RMAN_BACKUP_CP",
+        "dbaas_rman_wallet_bn"  : "RMAN_WALLET_BACKUP_CP",
+        "tenancy"               : "saasfaukgovprod1"
+    },  
+    "idnqmlzrnmex" : {  
+        "fa_rman_oss_bn": {
+            "prod"              : "dev_rman_bucket",
+            "prod_dr_enabled"   : "dev_rman_bucket",            
+            "stage"             : "dev_rman_bucket",
+            "non_fa"            : "dev_rman_bucket"
+        },
+        "fa_rman_user"          : "dev_rman_user",
+        "em_rman_user"          : "em_rman_user",
+        "dbaas_rman_user"       : "dev_lcm_rman_usr",
+        "fa_rman_wallet_bn": {
+            "prod"              : "dev_rman_bucket",
+            "prod_dr_enabled"   : "dev_rman_bucket",            
+            "stage"             : "dev_rman_bucket",
+            "non_fa"            : "dev_rman_bucket"        
+        },
+        "fa_rman_wallet_user"   : "rman_wallet_user",
+        "fa_mt_oss_bn"          : "MT_BACKUP",
+        "em_rman_oss_bn"        : "OMS_RMAN_BACKUP",
+        "em_rman_wallet_bn"     : "OMS_RMAN_WALLET_BACKUP",
+        "dbaas_rman_oss_bn"     : "RMAN_BACKUP_CP",
+        "dbaas_rman_wallet_bn"  : "RMAN_WALLET_BACKUP_CP",
+        "tenancy"               :  "pp1-lcmpreprod1"
+    }
+}

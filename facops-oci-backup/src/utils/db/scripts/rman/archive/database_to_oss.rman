@@ -1,0 +1,6 @@
+RUN
+{
+  ALLOCATE CHANNEL c1_sbt_tape DEVICE TYPE sbt_tape format 'backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c2_sbt_tape DEVICE TYPE sbt_tape format 'backupset_%s_%d_%u';
+  backup as backupset incremental level 0 database tag 'backupset_level_0';
+}

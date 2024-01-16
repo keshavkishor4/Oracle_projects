@@ -1,0 +1,9 @@
+{
+    "snapshot_to_fss": 7,
+    "snapshot_to_oss": 7,
+    "full_to_fss": 4,
+    "full_to_oss": 60,
+    "backup_to_local":4,
+    "backup_to_oss":60
+  }
+  

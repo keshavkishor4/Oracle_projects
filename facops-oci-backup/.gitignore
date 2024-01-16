@@ -1,0 +1,23 @@
+# pytest and coverage
+**/*.pyc
+**/*.py,cover
+htmlcov/**
+.coverage
+
+.DS_Store
+src/.DS_Store
+# src/config/common/faops-backup-ver.json
+# src/config/common/faops-backup-ver_api_update.json
+src/utils/.DS_Store
+src/utils/db/.DS_Store
+src/utils/db/scripts/.DS_Store
+.settings/*
+# 
+src/lib/python/common/exec_cmd.py
+src/config/db/db_size.json
+
+[Tt]humbs.db
+
+# Intellij
+*.iml
+*.idea

@@ -1,0 +1,5 @@
+# FILE: /etc/cron.d/ocifsbackupv2 -- 10/20
+# Executing ocifsbackup for FA SaaS DB Backup
+0 08 * * 6 root /opt/faops/spe/ocifabackup/bin/rman_wrapper_oss.sh -b db_to_reco_db_arch_to_oss 2>&1 #NEWBKPSCRIPT20190126
+0 08 * * 0-5 root /opt/faops/spe/ocifabackup/bin/rman_wrapper_oss.sh -b incre_to_reco_arch_to_oss 2>&1 #NEWBKPSCRIPT20190126
+0 0,4,8,12,16,20 * * * root /opt/faops/spe/ocifabackup/bin/rman_wrapper_oss.sh -b archivelog_to_oss 2>&1  #NEWBKPSCRIPT20190126

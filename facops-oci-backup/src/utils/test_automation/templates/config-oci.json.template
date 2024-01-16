@@ -1,0 +1,9 @@
+{
+    "tenancy_ocid": "",
+    "user_ocid": "",
+    "region": "",
+    "private_key_path": "",
+    "oss_namespace": "",
+    "oss_bucket": "",
+    "oss_part_size": ""
+}

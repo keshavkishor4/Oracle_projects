@@ -1,0 +1,76 @@
+[{
+  "enable_tests": [
+    {
+       "DB": {
+        "host":"faopscbdbhost",
+        "enable":"Y",
+        "db_name":"opscbdb_phx2c5",
+        "rpm_ver":"fa-spe-oci-backup-db-2.0.0.0.210515.1-4.x86_64",
+        "zone":"ppd/dev/prd",
+        "run_schedule":"daily/once"
+    },
+    "MT": {
+        "host":"etzqkjjxoju2-fa1",
+        "enable":"Y",
+        "db_name":"",
+        "rpm_ver":"fa-spe-oci-backup-mt-2.0.0.0.210515.1-1.x86_64",
+        "zone":"ppd/dev/prd",
+        "run_schedule":"daily/once"
+    }
+    },
+    {
+      "DB": {
+        "host": "esya16-i0yea7.poddbfrontend1.prd01syd01lcm01.oraclevcn.com",
+        "enable": "Y",
+        "db_name": "fyw6re",
+        "rpm_ver": "fa-spe-oci-backup-db-2.0.0.0.200515.1-4.x86_64.rpm",
+        "zone": "ppd",
+        "run_schedule": "once"
+      },
+      "MT": {
+        "host": "esya16-i0yea7.poddbfrontend1.prd01syd01lcm01.oraclevcn.com",
+        "enable": "Y",
+        "db_name": "fyw6xe",
+        "rpm_ver": "fa-spe-oci-backup-mt-2.0.0.0.200515.1-6.x86_64.rpm",
+        "zone": "ppd",
+        "run_schedule": "once"
+      }
+    },
+    {
+      "DB": {
+        "host": "esya16-i0yea7.poddbfrontend1.prd01syd01lcm01.oraclevcn.com",
+        "enable": "Y",
+        "db_name": "fyw6re",
+        "rpm_ver": "fa-spe-oci-backup-db-2.0.0.0.200515.1-4.x86_64.rpm",
+        "zone": "ppd",
+        "run_schedule": "once"
+      },
+      "MT": {
+        "host": "esya16-i0yea7.poddbfrontend1.prd01syd01lcm01.oraclevcn.com",
+        "enable": "Y",
+        "db_name": "fyw6xe",
+        "rpm_ver": "fa-spe-oci-backup-mt-2.0.0.0.200515.1-6.x86_64.rpm",
+        "zone": "ppd",
+        "run_schedule": "once"
+      }
+    },
+    {
+      "DB": {
+        "host": "epxa24-oznzc1",
+        "enable": "Y",
+        "db_name": "no1ajqo",
+        "rpm_ver": "fa-spe-oci-backup-db-2.0.0.0.210515.1-6.x86_64",
+        "zone": "ppd",
+        "run_schedule": "once"
+      },
+      "MT": {
+        "host": "esya16-i0yea7.poddbfrontend1.prd01syd01lcm01.oraclevcn.com",
+        "enable": "Y",
+        "db_name": "",
+        "rpm_ver": "fa-spe-oci-backup-mt-2.0.0.0.200515.1-6.x86_64.rpm",
+        "zone": "ppd",
+        "run_schedule": "once"
+      }
+    }
+  ]
+}]

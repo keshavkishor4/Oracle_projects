@@ -1,0 +1,14 @@
+{
+  "db_wallet_backup_db":  {
+      "base_path": "/var/opt/oracle/dbaas_acfs",
+      "post_path": ""
+  },
+  "db_wallet_backup_db_faops":  {
+    "base_path": "/var/opt/oracle/dbaas_acfs/oci_backup",
+    "post_path": ""
+  },
+   "ora_wallet_backup_db":  {
+      "base_path": "/dbs/dbcs/",
+      "post_path": "/wallet"
+  }
+}

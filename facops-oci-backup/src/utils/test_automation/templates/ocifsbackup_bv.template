@@ -1,0 +1,4 @@
+# FILE: /etc/cron.d/ocifsbackupv2 -- 10/20
+# Executing ocifsbackup for FA SaaS - for BV pods
+30 09 * * * root (/opt/faops/spe/ocifabackup/bin/ocifsbackup.sh --action backup --target oss) > /dev/null 2>&1
+00 23 * * * root (/opt/faops/spe/ocifabackup/bin/ocifsbackup.sh --action post-metadata) > /dev/null 2>&1

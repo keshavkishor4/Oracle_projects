@@ -1,0 +1,27 @@
+RUN
+{
+  allocate channel ch1 device type disk;
+  allocate channel ch2 device type disk; 
+  allocate channel ch3 device type disk;
+  allocate channel ch4 device type disk;
+  allocate channel ch5 device type disk;
+  allocate channel ch6 device type disk; 
+  allocate channel ch7 device type disk;
+  allocate channel ch8 device type disk;
+  
+  ### ALLOCATE CHANNEL c1_disk DEVICE TYPE disk;
+  ### ALLOCATE CHANNEL c2_disk DEVICE TYPE disk;
+  ### backup as backupset incremental level 0 database tag &1;
+  
+  backup as compressed backupset incremental level 0 database section size 1024G tag &1;
+  
+  release channel ch1;
+  release channel ch2;
+  release channel ch3;
+  release channel ch4;
+  release channel ch5;
+  release channel ch6;
+  release channel ch7;
+  release channel ch8;  
+  
+}

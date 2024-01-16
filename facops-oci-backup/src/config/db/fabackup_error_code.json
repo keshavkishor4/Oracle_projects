@@ -1,0 +1,14 @@
+{
+    "FAB_002": "wallet is not open",
+    "FAB_001": "commonutils.check_conflicts",
+    "FAB_003": "master key not yet set",
+    "FAB_004": "ORA-01089: immediate shutdown",
+    "FAB_005": "ORA-16456: switchover to standby in progress",
+    "FAB_006": "Connection reset by peer",
+    "FAB_007": "RMAN-10038",
+    "FAB_008": "ORA-19506: failed to create sequential file",
+    "FAB_009": "Failed to do verify oss destination",
+    "FAB_010": "FUSION_PDB value is null",
+    "FAB_011": "ORA-28353: failed to open wallet"
+  }
+  

@@ -1,0 +1,22 @@
+{
+  "Incremental_backup_priority_enabled": false,
+  "Validate_backup_priority_enabled": false,
+  "Incremental_Backup": ["Full_Backup", "Validate_Backup"],
+  "Validate_Backup": ["Full_Backup", "Incremental_Backup"],
+  "incremental_priority_backups": [
+    "db_to_reco_db_arch_to_oss",
+    "db_to_reco",
+    "db_to_oss",
+    "validate",
+    "validate_db_reco",
+    "validate_db_oss",
+    "restore_validate"
+  ],
+  "validate_priority_backups": [
+    "db_to_reco_db_arch_to_oss",
+    "db_to_reco",
+    "db_to_oss",
+    "incre_to_oss_arch_to_oss",
+    "incre_to_reco_arch_to_oss"
+  ]
+}

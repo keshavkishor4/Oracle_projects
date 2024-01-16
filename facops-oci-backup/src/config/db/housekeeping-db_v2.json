@@ -1,0 +1,36 @@
+{
+    "tfa_logs" : {
+        "src_loc" : "/u01/app/grid/tfa/repository/",
+        "tgt_loc" : "/u02/app/grid/tfa/repository/",
+        "retention_days" : "1",
+        "rm_retention_days" : "30"
+    },
+    "crs_logs" : {
+        "src_loc" : "/u01/app/grid/diag/crs/",
+        "tgt_loc" : "/u02/app/grid/diag/crs/",
+        "retention_days" : "1",
+        "rm_retention_days" : "30"
+    },
+    "lsnr_logs" : {
+        "src_loc" : "/u01/app/grid/diag/tnslsnr/",
+        "tgt_loc" : "/u02/app/grid/diag/tnslsnr/",
+        "retention_days" : "1",
+        "rm_retention_days" : "30"
+    },
+    "backup_logs" : {
+        "src_loc" : "/u02/backup/log/",
+        "tgt_loc" : "",
+        "retention_days" : "",
+        "rm_retention_days" : "60"
+    },
+    "file_pattern_deletion" : {
+        "all-pod-info": {
+            "loc":"/opt/faops/spe/ocifabackup/utils/db/all-pod-info*.txt*",
+            "rm_retention_days" : "180"
+        },
+        "grid_trace_files": {
+            "loc":"/opt/tmp/faops/test/grid_trc*.trc",
+            "rm_retention_days" : "60"
+        }
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "p1-saasfapreprod1" : {
+        "rman_user"         : "gAAAAABefOgVop1lR4BPWfpy0wURCSYbx4WsWQNDPlUwb_dqX9gNEACQMRNJdmtsKtmHMb-u3gAIpTJujC0U9nHVgpc43W32oTZQZ6BUvSiz1lYEt2yZSGM=",
+        "fa_rman_oss_bn "   : "RMAN_BACKUP",
+        "em_rman_user"      : "gAAAAABeb-9MXRn66dIiugmqvpsNBmi-8NOvEfM4xmsJY3uYSalqkABM9Drolt8BceERcUTVSTqjqRN7NxRNEHq4Ow6QL19mO7FL3Tl-7pp3DTdXwYZa35w=",
+        "em_rman_oss_bn"    : "OMS_RMAN_BACKUP",
+        "dev_lcm_rman_usr"   : "gAAAAABktjn1lAzMVDTPzMdhjAwtItAfxei9MGXhLEGZfnGOcWNSBmKPd0KKT-iC42MTJrOiWxTMuEWhwZ7yg1QdrWgvWh1973TujaUjncqqni4LtITmLfE=",
+        "dbaas_rman_oss_bn" : "RMAN_BACKUP_CP_IAD",
+        "tenancy"           :  "p1-saasfapreprod1"
+    },
+    "saasfaprod1" : {
+        "rman_user"         : "gAAAAABeb-9M3_vJEMjLsUI-c84O-p_DxAb8qtef713FKdYQfbuouW05rcmsZzyH2ZQz1Tq1gVLjhGOMHuhV-tfEJUbsFCJ6ZuWw9BHcHI8dqWDFtMi73SM=",
+        "fa_rman_oss_bn "   : "RMAN_BACKUP",
+        "em_rman_user"      : "gAAAAABeb-9MdRcZhXQrYxVkROtmxJeki2JdeV_boDbRfZcYtYZhK8kDODegQq-XuljOPn-cmkHsvgzm5B_nVBRRCYPy26Lxt9B4oeRvN6OgdjV2kmcmPFY=",
+        "em_rman_oss_bn"    : "OMS_RMAN_BACKUP",
+        "dev_lcm_rman_usr"   : "gAAAAABktjn1lAzMVDTPzMdhjAwtItAfxei9MGXhLEGZfnGOcWNSBmKPd0KKT-iC42MTJrOiWxTMuEWhwZ7yg1QdrWgvWh1973TujaUjncqqni4LtITmLfE=",
+        "dbaas_rman_oss_bn" : "RMAN_BACKUP_CP_IAD",
+        "tenancy"           :  "saasfaprod1"
+    },
+    "fratbooxcjzj" : {
+        "rman_user"         : "gAAAAABeb-9MiVGLYX-5LVd_p4hAOrHYaLJxhu8pPuHuqwz_M8BQgdJxEuPQdDG-CSCpWoPqTS3y0pTm-Cw2cuN9kEWvzLy62qMDlvcOqeb17KS04dA1jkM=",
+        "fa_rman_oss_bn "   : "RMAN_BACKUP",
+        "em_rman_user"      : "gAAAAABeb-9MQgXNkQIsHSc_yEJED5ym7LaLqGNEXSW3FszNbWLWj2pkO36W806PKjcAIT4RsGoZ_7YVQJJEH9RO3Tmrh80aeNz_F8tdTymeOlLIoNA2bMY=",
+        "em_rman_oss_bn"    : "OMS_RMAN_BACKUP",
+        "dev_lcm_rman_usr"   : "gAAAAABktjn1lAzMVDTPzMdhjAwtItAfxei9MGXhLEGZfnGOcWNSBmKPd0KKT-iC42MTJrOiWxTMuEWhwZ7yg1QdrWgvWh1973TujaUjncqqni4LtITmLfE=",
+        "dbaas_rman_oss_bn" : "RMAN_BACKUP_CP_IAD",
+        "tenancy"           :  "saasfaeuraprod1"
+    },
+    "idqdbeamb4dc" : {
+        "rman_user"         : "gAAAAABevSinMgXM5jjAXtvjTrxLBuqg7GbiXcXGHN88v5PRLCsS3SjNXFHFmGAP87cGq-v8k-TGcYrWGycuXPAWIPpS4TrO63O_u-3GMWa8AdRUMRte0Mc=",
+        "fa_rman_oss_bn "   : "RMAN_BACKUP",
+        "em_rman_user"      : "gAAAAABeb-9MQgXNkQIsHSc_yEJED5ym7LaLqGNEXSW3FszNbWLWj2pkO36W806PKjcAIT4RsGoZ_7YVQJJEH9RO3Tmrh80aeNz_F8tdTymeOlLIoNA2bMY=",
+        "em_rman_oss_bn"    : "OMS_RMAN_BACKUP",
+        "dev_lcm_rman_usr"   : "gAAAAABktjn1lAzMVDTPzMdhjAwtItAfxei9MGXhLEGZfnGOcWNSBmKPd0KKT-iC42MTJrOiWxTMuEWhwZ7yg1QdrWgvWh1973TujaUjncqqni4LtITmLfE=",
+        "dbaas_rman_oss_bn" : "RMAN_BACKUP_CP_IAD",
+        "tenancy"           :  "fapreprodeuro11"
+    },
+    "axqqulwjr5ll" : {
+        "rman_user"         : "gAAAAABfhe6QdroaQVDsr0ztMPA4ON-_i_e7IYKA7u4wwGM4u8qdCT-2Y4CQEddkYr-jiJPgWx7_EO2BkArJLlQE0x1EJo289EVusShO7r22HDFRezbW1AE=",
+        "fa_rman_oss_bn "   : "RMAN_BACKUP",
+        "em_rman_user"      : "gAAAAABfhe-YLFV4jaIpGMIqSDviD4DUYcvAtHby8ZpyUSdgaP8ixOe0LOMneisWXhH5AQfInrLsHErV6DO0F8Ehpf5S2el32fgew86IkL_OgdVyGKIICKY=",
+        "em_rman_oss_bn"    : "OMS_RMAN_BACKUP",
+        "dev_lcm_rman_usr"   : "gAAAAABktjn1lAzMVDTPzMdhjAwtItAfxei9MGXhLEGZfnGOcWNSBmKPd0KKT-iC42MTJrOiWxTMuEWhwZ7yg1QdrWgvWh1973TujaUjncqqni4LtITmLfE=",
+        "dbaas_rman_oss_bn" : "RMAN_BACKUP_CP_IAD",
+        "tenancy"           :  "saasfaukgovprod1"
+    }
+}

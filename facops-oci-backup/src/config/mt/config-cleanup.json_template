@@ -1,0 +1,6 @@
+{
+  "snapshot_cleanup_threshold": 5,
+  "object_cleanup_threshold": 30,
+  "snapshot_name_pattern": "ocifsbackup_pps3201534424802148.*.\\d{4}-[0-1][0-9]-[0-3][0-9].\\d{6}_[+-]\\d{4}",
+  "object_name_pattern": ""
+}

@@ -1,0 +1,169 @@
+{
+    "DB": {
+        "verify_cron":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "verify_oci_config":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "verify_passwd_json":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "verify_backup_artifacts":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "verify_backup_exception":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "verify_node_exception":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "verify_housekeeping":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "verify_sre_db_config":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "verify_database_config":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "n"
+        },
+        "db_archivelog_to_oss":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "n"
+        },
+        "db_incre_to_reco_arch_to_oss":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "n"
+        },
+        "db_to_reco_db_arch_to_oss":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "n"
+        },
+        "all_db_archivelog_to_oss":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "n"
+        },
+         "all_db_incre_to_reco_arch_to_oss":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "n"
+        },
+         "all_db_db_to_reco_db_arch_to_oss":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "n"
+        }, "verify_wallet_backup":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "n"
+        },
+        "verify_artifacts_backup":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "n"
+        },
+        "verify_db_query_pool":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "n"
+        },
+        "restore_backup_oss_passwd":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "verify_passwd_download":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "verify_sec_node_connectivity":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "get_dbname_db_count":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "remove_backup_oss_passwd":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "get_dbname_db_nodes":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "gen_ols_node_csv":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "get_gi_home":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "load_databse_variables":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+         "update_all_pod_flag":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "take_full_backup_other_node":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "verify_upgrade_rpm":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        },
+        "validate_sbttest":{
+            "script_name":"validate_db_rpm.sh",
+            "enabled": "y"
+        }
+    },
+    "MT": {
+        "verify_cron":{
+            "script_name":"validate_mt_rpm.sh",
+            "enabled": "y"
+        },
+        "verify_retention_policy":{
+            "script_name":"validate_mt_rpm.sh",
+            "enabled": "y"
+        },
+        "fss_list_backup":{
+            "script_name":"validate_mt_rpm.sh",
+            "enabled": "y"
+        },
+        "fss_cleanup":{
+            "script_name":"validate_mt_rpm.sh",
+            "enabled": "y"
+        },
+        "fss_backup":{
+            "script_name":"validate_mt_rpm.sh",
+            "enabled": "y"
+        },
+        "bv_verfify_config_file":{
+            "script_name":"validate_mt_rpm.sh",
+            "enabled": "n"
+        },
+        "bv_backup":{
+            "script_name":"validate_mt_rpm.sh",
+            "enabled": "n"
+        },
+        "bv_list":{
+            "script_name":"validate_mt_rpm.sh",
+            "enabled": "n"
+        },
+         "bv_post_metada":{
+            "script_name":"validate_mt_rpm.sh",
+            "enabled": "n"
+        },
+         "bv_cleanup":{
+            "script_name":"validate_mt_rpm.sh",
+            "enabled": "n"
+        }
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "oci_retry": 100,
+    "artifact_par_url": [
+        "https://artifactory-phx-prod.cdaas.oraclecloud.com/artifactory/generic-fa/python39_el7.zip",
+        "https://artifactory-phx-prod.cdaas.oraclecloud.com/artifactory/generic-fa/opc_install.zip"
+    ]
+  }

@@ -1,0 +1,37 @@
+{
+    "p1-saasfapreprod1" : {
+        "fa_rman_oss_bn "   : "RMAN_BACKUP",
+        "fa_rman_wallet_bn" : "RMAN_WALLET_BUCKET",
+        "fa_mt_oss_bn"      : "MT_BACKUP",
+        "em_rman_oss_bn"    : "OMS_RMAN_BACKUP",
+        "tenancy"           :  "p1-saasfapreprod1"
+    },
+    "saasfaprod1" : {
+        "fa_rman_oss_bn "   : "RMAN_BACKUP",
+        "fa_rman_wallet_bn" : "RMAN_WALLET_BUCKET",
+        "fa_mt_oss_bn"      : "MT_BACKUP",
+        "em_rman_oss_bn"    : "OMS_RMAN_BACKUP",
+        "tenancy"           :  "saasfaprod1"
+    },
+    "fratbooxcjzj" : {       
+        "fa_rman_oss_bn "   : "RMAN_BACKUP",
+        "fa_rman_wallet_bn" : "RMAN_WALLET_BUCKET",
+        "fa_mt_oss_bn"      : "MT_BACKUP",
+        "em_rman_oss_bn"    : "OMS_RMAN_BACKUP",
+        "tenancy"           :  "saasfaeuraprod1"
+    },
+    "idqdbeamb4dc" : {
+        "fa_rman_oss_bn "   : "RMAN_BACKUP",
+        "fa_rman_wallet_bn" : "RMAN_WALLET_BUCKET",
+        "fa_mt_oss_bn"      : "MT_BACKUP",
+        "em_rman_oss_bn"    : "OMS_RMAN_BACKUP",
+        "tenancy"           :  "fapreprodeuro11"
+    },
+    "axqqulwjr5ll" : {
+        "fa_rman_oss_bn "   : "RMAN_BACKUP",
+        "fa_rman_wallet_bn" : "RMAN_WALLET_BUCKET",
+        "fa_mt_oss_bn"      : "MT_BACKUP",
+        "em_rman_oss_bn"    : "OMS_RMAN_BACKUP",
+        "tenancy"           :  "saasfaukgovprod1"
+    }
+}

@@ -1,0 +1,6 @@
+connect catalog rman_adb3/xxxx@BHRMANA.US.ORACLE.COM
+
+RUN
+{
+REPORT SCHEMA;
+}

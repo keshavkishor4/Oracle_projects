@@ -1,0 +1,180 @@
+{
+  "availabilityDomain" : "Bojm:PHX-AD-3",
+  "faultDomain" : "FAULT-DOMAIN-3",
+  "compartmentId" : "ocid1.compartment.oc1..aaaaaaaawowd3iktyzujs2whyvgjhar3ruovdhotc7wxyithflue5szdyjrq",
+  "displayName" : "511712015|ERP|pps3201534424802148|OHS|vm-1",
+  "id" : "ocid1.instance.oc1.phx.abyhqljtneo37o7xeqqlrk4yb34k3oqd25sbtcxzwdxkusnz7mtkwo6cwlfq",
+  "image" : "ocid1.image.oc1.phx.aaaaaaaaggz2fatwfbqzxgqe6kacv7axa3zukrt3o5ydjiejakfe5j7wk67q",
+  "metadata" : {
+    "serviceVM" : {
+      "3" : {
+        "fqHostName" : "pps3201534424802148-fa1.pod2.pesmall4preprod.oraclevcn.com",
+        "component" : "FA_REL13",
+        "role" : "NODE",
+        "hostname" : "pps3201534424802148-fa1",
+        "type" : "FA"
+      },
+      "2" : {
+        "fqHostName" : "pps3201534424802148-fa2.pod2.pesmall4preprod.oraclevcn.com",
+        "component" : "FA_REL13",
+        "role" : "NODE",
+        "hostname" : "pps3201534424802148-fa2",
+        "type" : "FAHA"
+      },
+      "1" : {
+        "fqHostName" : "pps3201534424802148-auxvm1.pod2.pesmall4preprod.oraclevcn.com",
+        "component" : "FA_REL13",
+        "role" : "NODE",
+        "hostname" : "pps3201534424802148-auxvm1",
+        "type" : "AUXVM"
+      },
+      "0" : {
+        "fqHostName" : "pps3201534424802148-admin.pod2.pesmall4preprod.oraclevcn.com",
+        "component" : "ADMIN",
+        "role" : "NODE",
+        "hostname" : "pps3201534424802148-admin",
+        "type" : "ADMIN_VM"
+      },
+      "6" : {
+        "fqHostName" : "pps3201534424802148-ohs1.pod2.pesmall4preprod.oraclevcn.com",
+        "component" : "OHS",
+        "role" : "ADMIN",
+        "hostname" : "pps3201534424802148-ohs1",
+        "type" : "OHS",
+        "this" : true
+      },
+      "5" : {
+        "fqHostName" : "pps3201534424802148-ohs2.pod2.pesmall4preprod.oraclevcn.com",
+        "component" : "OHS",
+        "role" : "ADMIN",
+        "hostname" : "pps3201534424802148-ohs2",
+        "type" : "OHS"
+      },
+      "4" : {
+        "fqHostName" : "pps3201534424802148-idm.pod2.pesmall4preprod.oraclevcn.com",
+        "component" : "IDM_REL13",
+        "role" : "NODE",
+        "hostname" : "pps3201534424802148-idm",
+        "type" : "IDM"
+      }
+    },
+    "storage_type" : "cloud",
+    "componentType" : "OHS",
+    "toolsRoot" : "/u01/app/oracle/tools/erp",
+    "keymap" : {
+      "3" : {
+        "name" : "_ORACLE_USER_CRED_",
+        "sshkey" : null,
+        "user" : "oracle",
+        "publicKeyText" : "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD2ExZ3TvD9vj/+Xfe+mSi4zzqo9rGkaj+H9y8OlnDx5qyKDPEtLvuOjzcZQIGFd6mlYXQn/xFCvbW4XDNEjv0GgKkrFZQDvcqPmUh/5Cg7A6NX+KkqDplQoysnyjMjRNLV5a+yqZtgnhhAcc4BjcnBYe2iUSVWcpImMV0Y4wB8thuVHwZ5DloVA4sg06g8zL+9jSbfSMot2UUYv9IVFJBr2YJtw3gWsTK6mv1TFGaIcm5TmQQw2D7TNbd5Hd/UHGNYy1tHJ6sldG61MrSrDQ0r0Egdq3umADWCf0nB40slveIbFcYWMwr7LOFwOf4sl5COW5VyQGEEekxYjbBXHZDV oracle"
+      },
+      "2" : {
+        "name" : "_OTOOLS_USER_CRED_",
+        "sshkey" : null,
+        "user" : "otools",
+        "publicKeyText" : "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCW6DsKh0D1o8fBxlJiQ+9foBWtjV6kvDDMwPHxOX+ay7InBUOHyBup0oweVakI9OuVi+ET4mLhl5HbUG2agsnv4x4DZT2guZbqDAnngxTj3WpL4830hkYdRdVGwD1MY9OgzEjbJyu4+9qt0oLg5+69Z3jX0lzSxd6j4+Fi1ZoHGYyH8ppRd/fx0SVwPDETN6vOWWnUaJq6x72KoMFzMrqSjnzj8kZZwT4RbAxbU/EY9CwCaNpMkGeXeYnrEz5uNAYWOZ5I313WPa9TEDbGpb7nXHJRWFeBQDW2X15HDZ3+mi/P9MccK6cZcPHXmqc7nEZoYmzIjFj0aWyRw/JmaehX otools"
+      },
+      "1" : {
+        "name" : "_VM_ORACLE_USER_CRED_",
+        "sshkey" : null,
+        "user" : "oracle",
+        "publicKeyText" : "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCiOzJ5gyrwXhEQ4VFG4wsPiHSmc6gy0hCsXRuWU0LdQEn+dmwP7tMzvzI8KsX8q9+KelyCg7X4rpsFWw3RIFky8ps+/8piWkEC3JzwKS19WOAl9Rh6N6zJssYoVOhua0oTh2ntVKmQN7EXQTWPcD801zyh9Babm32O6QuYCckX+HFc1YxyN2/NXum/MJSayNR3z7miArgUL1h04cm2lBywT4BjfnTonUARRUs+1ZRUiK4PBgke6WvrGK3Brq5dVx8QYYbnifJWW0E+0WKCyDitQIqBCLm81wFJaaSs0A5cVPOv6ZeDVt/0nnbyUUTOubVx7dvGlZra8w9KdHnpMYV oracle"
+      },
+      "0" : {
+        "name" : "_OPC_INIT_",
+        "sshkey" : null,
+        "user" : "opc",
+        "publicKeyText" : "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzabpAz3bYrLZTIchlBklSAusYmfR3ItdCBWSylUrZ2/C3DL8m+kIGyJPZECG74hz58L13q4sAmtUCENdswkAWgvPlAkYAIaWrPum7cbkouJpMrKK7csvb9T1S6iJEkg8zc34wXS1MfxBoDz3v8ohy8RyMJLjHrF+sNdsoeqF6jYJp/vA+hCTzaSSu7eDOnmsPvaECyTK4mX1w0aZAh23bjJGzk9PCOjKAjzvEBSz9DDikvDpPZ3HB5goQHUcGPCRHSyqUxyqA960lpW2v6obYgoAAtFFFC+8sgOcZez1e6GFYIfmu02JSkvJgn8Us9PXCRZzMnlr0J8/lDPGWcJCD opcinitkey"
+      },
+      "5" : {
+        "name" : "_VM_OTOOLS_USER_CRED_",
+        "sshkey" : null,
+        "user" : "otools",
+        "publicKeyText" : "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCiQYXhRZY0MTLOkc4VPmBYaIjfBRU/HqdoqTap/XnhMBSAAPvljmMUVIdZJmVhXN49jIsPLkxbNp+LuppGGvJbnCII3RZf3NXYMhrdcZKjzFx+VxvMHMPJpqisf/bO/nqDMbqTUWGZ4wqiB3qJsjuH2TGKjlTNDLLHpDvBAPzvZuI8o0yxmfMF2d+6kyQ52oLLlYekXu2acUjDIQlrrOxE1LkENYD74mDgJCsoMCmM9z+pTSrQ52qMqOIpE0SUpNGniR5YA2czhzouHVXFu4y4hI/rvVhbc8i/lUx9ESUpbUNcIiTZw24OHeGB8FEBx4gbZcAJNzh8WV1Hqj6nklyX otools"
+      },
+      "4" : {
+        "name" : "_VM_USER_SSH_CRED_",
+        "sshkey" : null,
+        "user" : "opc"
+      }
+    },
+    "idcsProviderClientID" : "25CEF581A9BA4B4ABCA2A33337CF0B63_APPID",
+    "pbNetworkEncryptionKey" : "aes-256:keyfile=/etc/pb.key",
+    "ssh_authorized_keys" : "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzabpAz3bYrLZTIchlBklSAusYmfR3ItdCBWSylUrZ2/C3DL8m+kIGyJPZECG74hz58L13q4sAmtUCENdswkAWgvPlAkYAIaWrPum7cbkouJpMrKK7csvb9T1S6iJEkg8zc34wXS1MfxBoDz3v8ohy8RyMJLjHrF+sNdsoeqF6jYJp/vA+hCTzaSSu7eDOnmsPvaECyTK4mX1w0aZAh23bjJGzk9PCOjKAjzvEBSz9DDikvDpPZ3HB5goQHUcGPCRHSyqUxyqA960lpW2v6obYgoAAtFFFC+8sgOcZez1e6GFYIfmu02JSkvJgn8Us9PXCRZzMnlr0J8/lDPGWcJCD opcinitkey\nssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDfwIAf7/5mLQtd9pkMGZC4CHbz2RZmb8CfPz+otrgkEtODKBj2OjNE0CHOXz3Ry9dqZG62kq66sm3UgN5bET2W5epjJsINVhjblIDFhXEOCibEwEK0yk9W3Q0dajjr1cDV55rSSrnVGfy9W9uHn+0gxbJUtFWPXdZ7yXSVljumFTbpqkAHthyCRg3t0WxLudVmwjEwUm9XAZYYli1HTZokGg3wZ9P/+j1LXpW2ZorN/NJxYGe4dfb3YuG5/r4hfOaIHUrmOjTDbCX0kjBG17YIZuwcdXdSttoO5SBo6GHYPr4Q5xVlU02Joqex/sjhPE4bI7xTfrbVDdFXmjViokEV Key_for_saasfareadiness1",
+    "platformToolsPath" : "/u01/app/oracle/tools/paas/bin/platform",
+    "storage_map" : {
+      "tools" : {
+        "mountpoint" : "/u01/app/oracle/tools",
+        "device" : "/dev/sdb1",
+        "partitionOn" : "/dev/sdb",
+        "partitionRange" : "1048576B 53687090688B",
+        "size" : "50G"
+      }
+    },
+    "is_locked_down" : true,
+    "user_data" : "H4sIAAAAAAAAAG2OsQ6CMBRFd76i0YGpfTQ4oJsOJiYaCPIDpVSogb6mr6Cfr9HNuJ6bnHvWesS54xrdzfZJEmanp26XMMZZqucwstUQo6cdAD3sLWJ7NzpSxKB6I2bifkDj7JNL8UZ6NB+d0DjBIsHTFA1FqJS6VgEXSxaddT1U531zLOsLyELkYsMzLousyLaZzHPwShFvg+3eDzSsGEcGcfI/PP02toqGfzM7nuprcyjLJk1eHexV9eQAAAA=",
+    "platformStorageContainer" : "https://swiftobjectstorage.us-phoenix-1.oraclecloud.com/v1/psmtest/PaaSProvisioning",
+    "isManaged" : false,
+    "storageContainer" : "https://swiftobjectstorage.us-phoenix-1.oraclecloud.com/v1/psmtest/PaaSProvisioning",
+    "userdata" : {
+      "auxMount1NfsExportDir" : "/export/fa_podscratch/pps3201534424802148_podscratch",
+      "auxMount1NfsServer" : "10.6.64.131",
+      "auxMount1PhysicalMount" : "/podscratch",
+      "cas_repo_path" : "/opt/facs/casrepos",
+      "fa_service_name" : "pps3201534424802148",
+      "http_proxy_host" : "",
+      "http_proxy_port" : "",
+      "is_cas_repo" : "true",
+      "nfsExportRootDir" : "/export/fa_pps3201534424802148",
+      "nfsHost" : "10.6.64.131",
+      "nfs_mount_options" : "rw,hard,nointr,rsize=32768,wsize=32768,timeo=600,noacl",
+      "ratsServiceInfo" : "false,N/A",
+      "region" : "us-phoenix-1",
+      "splitStorageMount" : "/u03",
+      "splitStorageName" : "pps3201534424802148_ohs_split",
+      "splitStoragePhysicalMount" : "/u1234_pps3201534424802148_split_instance_ohs",
+      "storageName" : "pps3201534424802148_ohs",
+      "storage_instance_mount" : "/u02",
+      "storage_instance_physical_mount" : "/u1234_pps3201534424802148_instance",
+      "storage_mount" : "/u01",
+      "storage_physical_mount" : "/u1234_pps3201534424802148",
+      "topo_type" : "smc",
+      "validate_only" : "false",
+      "vm_os_username" : "oracle",
+      "zfs_wallet_loc" : "/pps3201534424802148_podscratch/saas/lcm/zfs/lcm_wallet.sso",
+      "pre-bootstrap" : {
+        "failonerror" : true,
+        "scriptURL" : "https://swiftobjectstorage.us-phoenix-1.oraclecloud.com/v1/psmtest/PaaSProvisioning/PLATFORM/18.3.4-0-1808090133/install-and-start-service.sh"
+      },
+      "opc-init" : "https://swiftobjectstorage.us-phoenix-1.oraclecloud.com/v1/psmtest/PaaSProvisioning/PLATFORM/15.4.6-111420150505/opc-init.zip",
+      "oss_timeout" : "60",
+      "oss_retries" : "6"
+    },
+    "servers" : {
+      "0" : {
+        "name" : "pps3201534424802148 OHS Server",
+        "properties" : { },
+        "type" : "OHS_SRV"
+      }
+    },
+    "idcsProviderTenantUrl" : "https://idcs-cloudservices-uscom-central-1.identity.preprod.oraclecloud.com:443",
+    "pbMasterList" : "pb.phx-pp.ssvcs.ocp.oraclecloud.com",
+    "storageType" : "cloud",
+    "host_name" : "pps3201534424802148-ohs1.pod2.pesmall4preprod.oraclevcn.com",
+    "artifacts" : {
+      "PLATFORM_TOOLS" : {
+        "cloudKey" : "PLATFORM/18.3.4-0-1808090133/sm-platform-tools.zip"
+      },
+      "SERVICE_TOOLS" : {
+        "OHS" : {
+          "cloudKey" : "ERP/13.0-1808131614/oracle-lcm-psm-services-11.13.18.05_5.1.zip"
+        }
+      }
+    }
+  },
+  "region" : "phx",
+  "canonicalRegionName" : "us-phoenix-1",
+  "shape" : "VM.Standard2.1",
+  "state" : "Running",
+  "timeCreated" : 1534426428869
+}

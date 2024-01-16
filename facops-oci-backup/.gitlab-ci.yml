@@ -1,0 +1,20 @@
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+stages:
+  - build
+  - test
+
+build-rpm-job:
+  stage: build
+  variables:
+    FAOCI_BACKUP_REL: "2.0.0.0.231130.1"
+    FAOCI_BACKUP_REV: "1"
+  script:
+    - echo "Building rpm for FAOCI Backup Rel ${FAOCI_BACKUP_REL}-${FAOCI_BACKUP_REV} , check rpm at https://artifactory-master.cdaas.oraclecloud.com/artifactory/generic-fa/:"
+    - build/rpmbuild/prod_repo_deploy.sh $FAOCI_BACKUP_REL $FAOCI_BACKUP_REV
+
+test-rpm-job:
+  stage: test
+  script:
+    - echo "If the files are built successfully, test some files with one command:"
+    - tests/run_tests.sh $FAOCI_BACKUP_REL $FAOCI_BACKUP_REV

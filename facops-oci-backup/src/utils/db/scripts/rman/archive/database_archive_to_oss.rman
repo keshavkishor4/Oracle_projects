@@ -1,0 +1,8 @@
+RUN
+{
+  ALLOCATE CHANNEL c1_sbt_tape DEVICE TYPE sbt_tape format 'backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c2_sbt_tape DEVICE TYPE sbt_tape format 'backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c3_sbt_tape DEVICE TYPE sbt_tape format 'backupset_%s_%d_%u';
+  ALLOCATE CHANNEL c4_sbt_tape DEVICE TYPE sbt_tape format 'backupset_%s_%d_%u';
+  backup force as compressed backupset database tag 'full_archive_to_oss' keep until time 'sysdate+&3' restore point 'full_archive_&3&4';
+}

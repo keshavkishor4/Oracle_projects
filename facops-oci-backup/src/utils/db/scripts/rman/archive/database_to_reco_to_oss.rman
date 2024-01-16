@@ -1,0 +1,8 @@
+RUN
+{
+  ALLOCATE CHANNEL c1_sbt_tape DEVICE TYPE sbt_tape;
+  ALLOCATE CHANNEL c2_sbt_tape DEVICE TYPE sbt_tape;
+
+  backup as backupset incremental level 0 database tag 'backupset_level_0'; 
+  BACKUP RECOVERY AREA TO DESTINATION '&1';
+}

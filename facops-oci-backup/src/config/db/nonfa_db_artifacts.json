@@ -1,0 +1,24 @@
+{
+  "db_artifacts": {
+    "faops_oci_db_artifacts_backup_db": {
+      "base_path": "/var/opt/oracle/dbaas_acfs/oci_backup",
+      "post_path": ""
+    },
+    "db_artifacts_backup_db": {
+      "base_path": "/acfs01/dbaas_acfs",
+      "post_path": "/bkup"
+    },
+    "bg_artifacts_backup_db": {
+      "base_path": "/opt/oracle/kms/tde/pkcs11/configs",
+      "post_path": ""
+    },
+    "db_ini_backup": {
+      "base_path": "/var/opt/oracle/creg",
+      "post_path": ""
+    },
+    "grid_artifacts_backup": {
+      "base_path": "/acfs01/dbaas_acfs",
+      "post_path": "/bkup"
+    }
+  }
+}

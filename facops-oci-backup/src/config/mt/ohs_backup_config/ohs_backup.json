@@ -1,0 +1,19 @@
+{
+  "ohs_backup": {
+    "OHS": [
+      "/u01/APPLTOP/instance/homes/ohs.oracleoutsourcing.com/FADomain_webtier_local/config/fmwconfig/components/OHS/instances/ohs1",
+      "/u01/APPLTOP/instance/homes/ohs.oracleoutsourcing.com/FADomain_webtier_local/config/fmwconfig/components/OHS/instances/ohs1/moduleconf",
+      "/u01/APPLTOP/instance/homes/ohs.oracleoutsourcing.com/FADomain_webtier_local/config/fmwconfig/components/OHS/instances/ohs1/moduleconf/include"
+    ],
+    "OHS-HA": [
+      "/u01/APPLTOP/instance/homes/ohs-ha1.oracleoutsourcing.com/FADomain_webtier_local/config/fmwconfig/components/OHS/instances/ohs-ha",
+      "/u01/APPLTOP/instance/homes/ohs-ha1.oracleoutsourcing.com/FADomain_webtier_local/config/fmwconfig/components/OHS/instances/ohs-ha/moduleconf",
+      "/u01/APPLTOP/instance/homes/ohs-ha1.oracleoutsourcing.com/FADomain_webtier_local/config/fmwconfig/components/OHS/instances/ohs-ha/moduleconf/include"
+    ]
+    },
+  "ohs_os_backup": [
+      "/etc",
+      "/var/log",
+      "/boot"
+  ]
+  }

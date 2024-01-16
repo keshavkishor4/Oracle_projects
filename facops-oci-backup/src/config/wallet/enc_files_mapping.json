@@ -1,0 +1,11 @@
+{
+    "ocid1.compartment.oc1..aaaaaaaa6mzn3pqmobe2tzxltqcpozbltzbkeboouneb6jr4kwqb7gqcrt3a":{
+        "config-oci.json":"config-oci-saasfaprod1.json.enc",
+        "oci_api_key.pem":"oci_api_key_saasfaprod1.pem.enc"
+    },
+    "ocid1.compartment.oc4..aaaaaaaayad3uxtc5jdumixossplbzxqwam6wurd26j5pykfeinqz5trei4a":{
+        "config-oci.json":"config-oci-saasfaprod1.json.enc",
+        "oci_api_key.pem":"oci_api_key_saasfaprod1.pem.enc"
+    }
+
+}

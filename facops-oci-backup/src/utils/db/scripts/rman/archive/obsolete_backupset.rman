@@ -1,0 +1,16 @@
+RUN
+{
+ALLOCATE CHANNEL C1 DEVICE TYPE disk;
+ALLOCATE CHANNEL C2 DEVICE TYPE disk;
+#
+# Crosscheck
+CROSSCHECK BACKUP OF DATABASE CONTROLFILE SPFILE;
+#
+# Delete noprompt obsolete recovery window of 14 days device type disk;
+# changed from 7 days to 14 days until we have tape backup available
+#DELETE NOPROMPT BACKUP COMPLETED BEFORE "SYSDATE-14" DEVICE TYPE DISK;
+delete force noprompt obsolete device type disk;
+ 
+#crosscheck archivelog all;
+#delete noprompt expired archivelog all;
+}

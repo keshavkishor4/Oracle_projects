@@ -1,0 +1,10 @@
+[Unit]
+Description=FA OCI Backup Daemon
+Documentation=https://confluence.oci.oraclecorp.com/display/FAOCIBKP/FA+on+OCI+Backup+Restore+Package+Release+Notes
+
+[Service]
+ExecStart=/opt/faops/spe/ocifabackup/bin/faocibkp
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target 

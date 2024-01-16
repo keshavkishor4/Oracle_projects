@@ -1,0 +1,20 @@
+# allow rman remote channels in run block
+# ldb_size in GB
+ldb_size=60000
+
+# allow remote channels flag for oss backup, change it to true to generate the channels across the cluster or given nodes as argument 
+allow_backup_remote_channels=false
+
+# allow remote channels for restorre validate, change it to true to generate the channels across the cluster or given nodes as argument 
+allow_restore_validate_remote_channels=false
+
+# put unique db names in csv format , if blank no databases will be picked
+# Example: databases=phxnk,phxcf,phxpt1
+databases=
+
+# define number of nodes in cluster to run, if blank, runs on all running nodes
+# Example: nodes=4
+nodes=
+
+# define number of channels per node
+channels=4

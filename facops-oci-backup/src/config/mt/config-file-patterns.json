@@ -1,0 +1,8 @@
+{
+  "backup_file": [
+  ],
+  "backup_dir": [
+    "/etc",
+    "/boot"
+  ]
+}
