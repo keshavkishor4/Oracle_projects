@@ -1,0 +1,66 @@
+##########################################################################
+#  For RAC, when run . oraenv, ORACLE_SID IS the "database unique name", #
+#  but beofre run "sqlplus...", the ORACLE_SID must be set to real sid   #
+#  The third paramemter $3 "RAC" specific code is for this purpose.      #
+##########################################################################
+#!/bin/bash -x
+
+if [ -z "$2" ]
+then
+  ORAPWD="IH8Secur1tyAdm1ns#_"
+else
+  ORAPWD="$2"
+fi
+
+if [ "$3" = "RAC" ]
+then
+   TEMP_SID=$(grep ^$1 /etc/oratab | awk -F':' '{ print $1 }')
+   export ORACLE_SID=${TEMP_SID}
+   export ORAENV_ASK=NO
+
+   . oraenv
+   REAL_SID=$(lsnrctl status listener|grep -E "Instance .$1" |head -n 1|awk -F' ' '{ print $2 }'|sed 's/\"//g'|sed 's/,//g')
+fi
+
+  sudo su - oracle -c "
+
+  if [ -z "$3" ] || [ "$3" != "RAC" ]
+  then
+    export ORACLE_SID=$1
+    export ORAENV_ASK=NO
+
+    . oraenv
+
+  else
+
+    export ORACLE_SID=${TEMP_SID}
+
+    export ORAENV_ASK=NO
+
+    . oraenv
+    export ORACLE_SID=${REAL_SID}
+
+  fi
+
+  sqlplus / as sysdba <<EOF
+
+  alter session set container = pdbName;
+
+  CREATE USER FASSM IDENTIFIED BY "${ORAPWD}"
+  DEFAULT TABLESPACE "USERS"
+  TEMPORARY TABLESPACE "TEMP";
+
+  CREATE PROFILE "SAASM" LIMIT  PASSWORD_LIFE_TIME UNLIMITED;
+
+  alter user FASSM profile "SAASM";
+
+  ALTER USER FASSM ACCOUNT UNLOCK;
+
+  GRANT SELECT_CATALOG_ROLE TO FASSM;
+  GRANT CONNECT TO FASSM;
+  GRANT RESOURCE TO FASSM;
+
+  ALTER USER FASSM QUOTA UNLIMITED ON USERS;
+  
+EOF
+"

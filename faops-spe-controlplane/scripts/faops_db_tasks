@@ -1,0 +1,1 @@
+10 16 * * 4 root /opt/faops/scripts/db_tasks.sh >> /opt/faops/logs/db_tasks_run_$(date +"\%Y\%m\%d_\%H\%M\%S").log
