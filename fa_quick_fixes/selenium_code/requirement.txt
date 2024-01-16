@@ -1,0 +1,4 @@
+#Install this module
+pip install selenium
+
+#update sso creds in script
