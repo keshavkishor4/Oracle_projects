@@ -1,0 +1,45 @@
+def customImageArm
+pipeline {
+    environment {
+        image_arm = 'phx.ocir.io/axxyy35wuycx/oel7_python_arm'
+        repo_url = 'https://orahub.oci.oraclecorp.com/fsre_mw/jenkins_podcapacity_baseimage.git'
+        branch_name = 'image_upgrade'
+   }
+    agent {
+        label "Arm_Docker_agent"
+    }
+
+    stages {
+        stage('SCM') {
+            steps{
+                git branch: "${env.branch_name}",
+                credentialsId: 'keshakis',
+                url: "${env.repo_url}"
+
+                sh "ls -ltr"
+            }
+        }
+        stage('Docker Build') {
+            steps {
+                echo 'Starting to build docker image'
+                script {
+                    withDockerRegistry(credentialsId: 'OCIR_PODCAPACITY_CREDS', url: 'https://phx.ocir.io'){
+                    customImageArm = docker.build("${env.image_arm}:test")
+                    }
+                }
+            }
+        }
+        stage('image push'){
+            steps{
+                script{
+                    echo 'Starting image push to artifactory'
+                    withDockerRegistry(credentialsId: 'OCIR_PODCAPACITY_CREDS', url: 'https://phx.ocir.io') {
+                        customImageArm.push()
+                        // customImageArm.push("latest")
+                    }
+                }
+            }
+
+        }
+    }
+}   

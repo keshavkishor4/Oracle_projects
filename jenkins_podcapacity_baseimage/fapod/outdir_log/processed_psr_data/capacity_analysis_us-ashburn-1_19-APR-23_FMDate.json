@@ -1,0 +1,115 @@
+{
+      "current_uses": {
+            "VM.Standard.E4.Flex": [
+                  {
+                        "ocpus": 2,
+                        "memoryInGBs": 20,
+                        "count": 4
+                  },
+                  {
+                        "ocpus": 1,
+                        "memoryInGBs": 10,
+                        "count": 3
+                  },
+                  {
+                        "ocpus": 7,
+                        "memoryInGBs": 120,
+                        "count": 2
+                  },
+                  {
+                        "ocpus": 6,
+                        "memoryInGBs": 120,
+                        "count": 1
+                  },
+                  {
+                        "ocpus": 3,
+                        "memoryInGBs": 30,
+                        "count": 1
+                  },
+                  {
+                        "ocpus": 8,
+                        "memoryInGBs": 40,
+                        "count": 2
+                  },
+                  {
+                        "ocpus": 4,
+                        "memoryInGBs": 20,
+                        "count": 2
+                  },
+                  {
+                        "ocpus": 13,
+                        "memoryInGBs": 180,
+                        "count": 1
+                  },
+                  {
+                        "ocpus": 6,
+                        "memoryInGBs": 150,
+                        "count": 1
+                  },
+                  {
+                        "ocpus": 10,
+                        "memoryInGBs": 50,
+                        "count": 1
+                  },
+                  {
+                        "ocpus": 4,
+                        "memoryInGBs": 30,
+                        "count": 1
+                  },
+                  {
+                        "ocpus": 12,
+                        "memoryInGBs": 150,
+                        "count": 1
+                  },
+                  {
+                        "ocpus": 7,
+                        "memoryInGBs": 40,
+                        "count": 4
+                  }
+            ]
+      },
+      "capacity_require": {
+            "VM.Standard.E4.Flex": [
+                  {
+                        "ocpus": 7,
+                        "memoryInGBs": 40,
+                        "count": 10
+                  },
+                  {
+                        "ocpus": 8,
+                        "memoryInGBs": 40,
+                        "count": 2
+                  },
+                  {
+                        "ocpus": 4,
+                        "memoryInGBs": 20,
+                        "count": 2
+                  },
+                  {
+                        "ocpus": 13,
+                        "memoryInGBs": 180,
+                        "count": 1
+                  },
+                  {
+                        "ocpus": 6,
+                        "memoryInGBs": 150,
+                        "count": 1
+                  },
+                  {
+                        "ocpus": 10,
+                        "memoryInGBs": 50,
+                        "count": 1
+                  },
+                  {
+                        "ocpus": 4,
+                        "memoryInGBs": 30,
+                        "count": 1
+                  },
+                  {
+                        "ocpus": 12,
+                        "memoryInGBs": 150,
+                        "count": 1
+                  }
+            ]
+      }
+}

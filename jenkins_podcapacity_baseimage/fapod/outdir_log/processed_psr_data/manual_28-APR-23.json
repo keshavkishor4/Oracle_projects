@@ -1,0 +1,25 @@
+{
+      "28-APR-23": [
+            {
+                  "EWKK": {
+                        "Old Shape": {
+                              "pod_current_size": "XS0",
+                              "release": "13.23.01",
+                              "auxvm_count": "0",
+                              "vmshape": "",
+                              "vmtype": {}
+                        },
+                        "New Shape": {
+                              "pod_target_size": "S1",
+                              "release": "13.23.01",
+                              "auxvm_count": "1",
+                              "vmshape": "",
+                              "vmtype": {}
+                        },
+                        "region": "ap-mumbai-1",
+                        "resize_type": "Manual",
+                        "timestamp": "20230417"
+                  }
+            }
+      ]
+}

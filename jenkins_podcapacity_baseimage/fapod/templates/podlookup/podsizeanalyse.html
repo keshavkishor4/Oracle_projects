@@ -1,0 +1,286 @@
+{% include "podlookup/header.html" %}
+{% load static %}
+<body>
+    <style>
+        #loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url("{% static 'images/Spinner-3.gif' %}") 50% 50% no-repeat rgb(249,249,249);
+}
+</style>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Create two equal columns that floats next to each other */
+    .column1 {
+      float: left;
+      width: 50%;
+      padding: 10px;
+    }
+    .column3 {
+      float: left;
+      width: 50%;
+      padding: 10px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style>
+<div id="loader"></div>
+<div class="container">
+
+    <center>
+        <div class="card" style="width: 25rem;">
+            <div class="card-header" style="background:linear-gradient(45deg,red,black)">
+                <h2 style="color:white">Pod Size Analyser</h2>
+            </div>
+            <div class="card-body">
+                <form action="" method="GET">
+                    <div class="input-group mb-3">
+                        <label for="podname" class="form-label" style="width: 50.1%;"><strong>Pod Name:</strong></label>
+                        <input type="text" name="podname" id="podname" class="form-control" placeholder="Example: EEHO">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="size" class="form-label" style="width: 50.1%;"><strong>Size:</strong></label>
+                        <input type="text" name="size" id="size" class="form-control" placeholder="Example: L,M,S">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="source_arc" class="form-label" style="width: 50.1%;"><strong>Source Architecture:</strong></label>
+                        <select name="source_arc" id="source_arc" class="form-select">
+                            <option value="X6">X6</option>
+                            <option value="AMD">AMD</option>
+                            <option value="AMDE4FULL">AMDE4FULL</option>
+                            <option value="ARMA1">ARMA1</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="target_arc" class="form-label" style="width: 50.1%;"><strong>Target Architecture:</strong></label>
+                        <select name="target_arc" id="target_arc" class="form-select">
+                            <option value="X6">X6</option>
+                            <option value="AMD">AMD</option>
+                            <option value="AMDE4FULL">AMDE4FULL</option>
+                            <option value="ARMA1">ARMA1</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </center>
+    <hr>
+<center>
+{% if result %}
+<h2 style="text-align:center;"> {{ pod }} </h2>
+<hr>
+
+
+<div class="row">
+  <div class="column" style="flex:40%;padding:2px;">
+    <div class="card" style="width: 23rem;">
+        <div class="card-header" style="background:linear-gradient(45deg,rgb(6, 154, 11),black);" >
+            <h2 style="color: white;text-align:center;">Current Usage</h2>
+        </div>
+        <div class="card-body">
+        {% for key,data_it in result.items %}
+        {% if key == 'current_uses' %}
+        {% for obj,value in data_it.items %}
+        <table class="table table-striped" summary="values">
+            <thead>
+                <th colspan="2" style="text-align: center;">{{ obj }}</th>
+            </thead>
+            <tbody>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>OCPUS</th>
+                    <th>MEMORY</th>
+                    <th>COUNT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for li in value %}
+                  <tr>
+                    {% for i,j in li.items %}
+                    <td> {{ j }}</td>
+                    {% endfor %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </tbody>
+        </table>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+
+  </div>
+  <div class="column" style="flex:20%;">
+    <span style='font-size:100px;'>&#8680;</span>
+  </div>
+  <div class="column" style="flex:40%;padding:2px;">
+    <div class="card" style="width: 23rem;">
+        <div class="card-header" style="background:linear-gradient(45deg,blue,black);">
+            <h2 style="color: white;text-align:center;">Capacity required </h2>
+        </div>
+        <div class="card-body">
+        {% for key,data_it in result.items %}
+        {% if key == 'capacity_require' %}
+        {% for obj,value in data_it.items %}
+        <table class="table table-striped" summary="values">
+            <thead>
+                <th colspan="2" style="text-align: center;">{{ obj }}</th>
+            </thead>
+            <tbody>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>OCPUS</th>
+                    <th>MEMORY</th>
+                    <th>COUNT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for li in value %}
+                  <tr>
+                    {% for i,j in li.items %}
+                    <td> {{ j }}</td>
+                    {% endfor %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </tbody>
+        </table>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+<hr>
+<table summary="output data">
+    <tbody>
+        <tr>
+            <td>
+                <div class="card" style="width: 23rem;">
+                    <div class="card-header" style="background:linear-gradient(45deg,rgb(6, 154, 11),black);" >
+                        <h2 style="color: white;text-align:center;">Current Size</h2>
+                    </div>
+                    <div class="card-body">
+                    {% for key,data in result.items %}
+                    {% if key == 'pod_current_size' %}
+                    {% for obj,value in data.items %}
+                    {% if obj == 'vmtype' %}
+                    {% for obj1,value1 in value.items %}
+                    <table class="table table-striped" summary="values">
+                        <thead>
+                            <th colspan="2" style="text-align: center;">{{ obj1 }}</th>
+                        </thead>
+                        <tbody>
+                            {% for i,j in value1.items %}
+                            <tr>
+                                <td>{{ i }} </td>
+                                <td>{{ j }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endfor %}
+                    {% else %}
+                    <p> <strong> {{ obj }} : </strong> {{ value }} </p>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span style='font-size:100px;'>&#8680;</span>
+            </td>
+            <td>
+                <div class="card" style="width: 23rem;">
+                    <div class="card-header" style="background:linear-gradient(45deg,blue,black);">
+                        <h2 style="color: white;text-align:center;">Target Size</h2>
+                    </div>
+                    <div class="card-body">
+                    {% for key,data in result.items %}
+                    {% if key == 'pod_target_size' %}
+                    {% for obj,value in data.items %}
+                    {% if obj == 'vmtype' %}
+                    {% for obj1,value1 in value.items %}
+                    <table class="table table-striped" summary="values">
+                        <thead>
+                            <th colspan="2" style="text-align: center;">{{ obj1 }}</th>
+                        </thead>
+                        <tbody>
+                            {% for i,j in value1.items %}
+                            <tr>
+                                <td>{{ i }} </td>
+                                <td>{{ j }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endfor %}
+                    {% else %}
+                    <p> <strong> {{ obj }} : </strong> {{ value }} </p>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+
+
+</center>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        console.log('inside')
+       $("#loader").fadeOut(1000);
+    });
+
+    function validateForm() {
+  let x = document.forms["myForm"]["podname"].value;
+  let y =document.forms["myForm"]["size"].value;
+  let z =document.forms["myForm"]["arc"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  if (y == "") {
+    alert("Size must be filled out");
+    return false;
+  }
+  if (z == "") {
+    alert("ARC must be filled out");
+    return false;
+  }
+}
+ </script>
+
+</body>

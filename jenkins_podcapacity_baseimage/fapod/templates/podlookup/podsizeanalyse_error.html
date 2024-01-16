@@ -1,0 +1,117 @@
+{% include "podlookup/header.html" %}
+{% load static %}
+<body>
+    <style>
+        #loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url("{% static 'images/Spinner-3.gif' %}") 50% 50% no-repeat rgb(249,249,249);
+}
+</style>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Create two equal columns that floats next to each other */
+    .column1 {
+      float: left;
+      width: 50%;
+      padding: 10px;
+    }
+    .column3 {
+      float: left;
+      width: 50%;
+      padding: 10px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style>
+<div id="loader"></div>
+<div class="container">
+
+    <center>
+        <div class="card" style="width: 25rem;">
+            <div class="card-header" style="background:linear-gradient(45deg,red,black)"><h2 style="color:white">Pod Size Analyser</h2></div>
+            <div class="card-body">
+                <form action="" method="GET">
+                    <table summary="error page">
+                        <tbody>
+                            <tr>
+                                <td style="text-align: right;"><strong><right>Pod Name : </right></strong></td>
+                                <td><input type="text" name="podname" id="podname" placeholder="Example: EEHO"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;"><strong><right>Size : </right></strong></td>
+                                <td><input type="text" name="size" id="size" placeholder="Example: L,M,S"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;"><strong><right>Source Architecture : </right></strong></td>
+                                <td>
+                                    <select name="source_arc">
+                                        <option value="X6">X6</option>
+                                        <option value="AMD">AMD</option>
+                                        <option value="AMDE4FULL">AMDE4FULL</option>
+                                        <option value="ARMA1">ARMA1</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right;"><strong><right>Target Architecture : </right></strong></td>
+                                <td>
+                                    <select name="target_arc">
+                                        <option value="X6">X6</option>
+                                        <option value="AMD">AMD</option>
+                                        <option value="AMDE4FULL">AMDE4FULL</option>
+                                        <option value="ARMA1">ARMA1</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right;"><center><button type="submit" class="btn btn-dark">submit</button></center></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  </form>
+
+            </div>
+        </div>
+    </center>
+    <hr>
+        <h3 style="text-align:center">Could you please review above input</h3>
+</div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            console.log('inside')
+           $("#loader").fadeOut(1000);
+        });
+
+        function validateForm() {
+      let x = document.forms["myForm"]["podname"].value;
+      let y =document.forms["myForm"]["size"].value;
+      let z =document.forms["myForm"]["arc"].value;
+      if (x == "") {
+        alert("Name must be filled out");
+        return false;
+      }
+      if (y == "") {
+        alert("Size must be filled out");
+        return false;
+      }
+      if (z == "") {
+        alert("ARC must be filled out");
+        return false;
+      }
+    }
+     </script>
+
+</body>

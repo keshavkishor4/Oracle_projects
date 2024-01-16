@@ -1,0 +1,15 @@
+{% if pod_data_from_metadata %}
+        <div class="row">
+            <div class="card border-0">
+                <div class="card-header">
+                    {% for obj in pod_data_from_metadata %}
+                      <h2 style="text-align:center;">{{ obj.Pod_Name }}  -- {{ obj.customer_name }}</h2>
+                    {% endfor %}
+                </div>
+            </div>
+            {% include "podlookup/pod_basic_metadata.html" %}
+            {% include "podlookup/accordian.html" %}
+        </div>
+{% else %}
+    <h4 style="text-align:center;">Please choose correct pod data</h4>
+{% endif %}

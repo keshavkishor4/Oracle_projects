@@ -1,0 +1,15 @@
+{% if inst_info %}
+<table class="table table-striped" class="EditTable" summary="Capacity details in main page">
+<tbody>
+    <tr>
+        <td> Capacity Reservation ID</td>
+        <td> {{ inst_info }} </td>
+    </tr>
+</tbody>
+</table>
+
+<h5 style="text-align:center;"> No Capacity Reservation </h5>
+
+{% else %}
+    <p>Unable to fetch data</p>
+{% endif %}

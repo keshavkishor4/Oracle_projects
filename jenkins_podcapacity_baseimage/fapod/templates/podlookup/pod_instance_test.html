@@ -1,0 +1,79 @@
+{% if pod_instance_values %}
+<table id="Table-data" class="table table-striped table-bordered text-center" summary="Pod instance test">
+    <thead class="table-dark">
+      <tr>
+       <!-- <th>Pod Name</th>
+        <th>Region Name</th> -->
+        <th id="pd_in_st">SystemType</th>
+        <th id="pd_in_ph">Pod Host</th>
+        <!-- <th>Compartmentid</th> -->
+        <th id="pd_in_Id">Instance Id</th>
+        <th id="pd_in_vw">View</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for obj in pod_instance_values %}
+        <tr>
+            <!-- <td>{{ obj.Pod_Name }} </td>
+            <td>{{ obj.region_name }}</td> id="txt" -->
+            <td>{{ obj.systemtype }}</td>
+            <td>{{ obj.pod_host }}</td>
+            <!-- <td class="ins_id">{{ obj.instance_id }}</p></td> -->
+            <td><button onclick="pod_inst('{{ obj.instance_id }}')" ocid="{{ obj.instance_id }}" id="instance_data_id" style="border: 0;background-color: transparent; " > {{ obj.instance_id }} </button></td>
+            <!-- <td><a href="#" style="text-decoration: none !important;" >{{ obj.compartment_id }}</a></td> -->
+           <!-- <td><button onclick="pod_inst()" style="border: 0;background-color: transparent; ">{{ obj.instance_id }}</button></td> -->
+            <td><button type="button" class="iselect btn btn-primary" data-toggle="modal" data-target="#myModal">Data</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+  <p style="text-align:center;"> Unable to fetch Pod instance details </p>
+{% endif %}
+
+<script>
+
+$(function () {
+      $(".iselect").click(function () {
+          //FINDING ELEMENTS OF ROWS AND STORING THEM IN VARIABLES
+          var a =$(this).parents("tr").find(".ins_id").text();
+          console.log(a)
+          console.log('inside function')
+          var p="Hellow";
+          $("#txt_mod").empty();
+          //WRITING THE DATA ON MODEL
+          $("#txt_mod").append(p);
+      })
+  })
+
+</script>
+
+
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div id="txt_mod">
+
+          </div>
+          Modal body..
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>

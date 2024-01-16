@@ -1,0 +1,834 @@
+{
+      "05-NOV-22": [
+            {
+                  "EVBZ": {
+                        "Old Shape": {
+                              "pod_current_size": "S2",
+                              "release": "11.13.23.01.0",
+                              "auxvm_count": "2",
+                              "vmshape": "VM.Standard.E3.Flex",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 2,
+                                          "memoryInGBs": 20
+                                    },
+                                    "OHS": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 1,
+                                          "memoryInGBs": 10
+                                    },
+                                    "FA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 7,
+                                          "memoryInGBs": 120
+                                    },
+                                    "OPT1": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 1,
+                                          "memoryInGBs": 10
+                                    },
+                                    "OPT2": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 6,
+                                          "memoryInGBs": 120
+                                    },
+                                    "OPT3": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 3,
+                                          "memoryInGBs": 30
+                                    },
+                                    "OPT4": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 2,
+                                          "memoryInGBs": 20
+                                    },
+                                    "FAHA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 7,
+                                          "memoryInGBs": 120
+                                    },
+                                    "OHSHA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 1,
+                                          "memoryInGBs": 10
+                                    },
+                                    "IDMHA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 2,
+                                          "memoryInGBs": 20
+                                    },
+                                    "AUXVM": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 7,
+                                          "memoryInGBs": 20
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 0,
+                                          "max": 5,
+                                          "inFactory": 5
+                                    }
+                              }
+                        },
+                        "New Shape": {
+                              "pod_target_size": "S1",
+                              "release": "11.13.23.01.0",
+                              "auxvm_count": "1",
+                              "vmshape": "VM.Standard.E3.Flex",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 2,
+                                          "memoryInGBs": 20
+                                    },
+                                    "OHS": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 1,
+                                          "memoryInGBs": 10
+                                    },
+                                    "FA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 7,
+                                          "memoryInGBs": 120
+                                    },
+                                    "OPT1": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 1,
+                                          "memoryInGBs": 10
+                                    },
+                                    "OPT2": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 6,
+                                          "memoryInGBs": 120
+                                    },
+                                    "OPT3": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 3,
+                                          "memoryInGBs": 30
+                                    },
+                                    "OPT4": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 2,
+                                          "memoryInGBs": 20
+                                    },
+                                    "FAHA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 7,
+                                          "memoryInGBs": 120
+                                    },
+                                    "OHSHA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 1,
+                                          "memoryInGBs": 10
+                                    },
+                                    "IDMHA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 2,
+                                          "memoryInGBs": 20
+                                    },
+                                    "AUXVM": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 7,
+                                          "memoryInGBs": 20
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 0,
+                                          "max": 5,
+                                          "inFactory": 5
+                                    }
+                              }
+                        },
+                        "region": "us-ashburn-1",
+                        "resize_type": "Stamp",
+                        "timestamp": "20230409",
+                        "Resize Type": "T-Shirt",
+                        "Resize Reason": "Proactive Recommendation",
+                        "Bugs": "34769197",
+                        "POD Architectur": "OCI"
+                  }
+            },
+            {
+                  "EPJR": {
+                        "Old Shape": {
+                              "pod_current_size": "M4",
+                              "release": "11.13.23.01.0",
+                              "auxvm_count": "4",
+                              "vmshape": "VM.Standard2.8",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OHS": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "FA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT1": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT2": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT3": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT4": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "FAHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OHSHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "IDMHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 3,
+                                          "max": 20,
+                                          "inFactory": 20
+                                    }
+                              }
+                        },
+                        "New Shape": {
+                              "pod_target_size": "M5",
+                              "release": "11.13.23.01.0",
+                              "auxvm_count": "5",
+                              "vmshape": "VM.Standard2.8",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OHS": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "FA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT1": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT2": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT3": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT4": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "FAHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OHSHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "IDMHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 3,
+                                          "max": 20,
+                                          "inFactory": 20
+                                    }
+                              }
+                        },
+                        "region": "us-ashburn-1",
+                        "resize_type": "Stamp",
+                        "timestamp": "20230409",
+                        "Resize Type": "Scaleout",
+                        "Resize Reason": "Proactive Recommendation",
+                        "Bugs": "34769197",
+                        "POD Architectur": "OCI"
+                  }
+            },
+            {
+                  "EQTL": {
+                        "Old Shape": {
+                              "pod_current_size": "S2",
+                              "release": "11.13.23.01.0",
+                              "auxvm_count": "2",
+                              "vmshape": "VM.Standard2.4",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "OHS": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.1"
+                                    },
+                                    "FA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT1": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "OPT2": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT3": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "OPT4": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.2"
+                                    },
+                                    "FAHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OHSHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.1"
+                                    },
+                                    "IDMHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "AUXVM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 0,
+                                          "max": 5,
+                                          "inFactory": 5
+                                    }
+                              }
+                        },
+                        "New Shape": {
+                              "pod_target_size": "M4",
+                              "release": "11.13.23.01.0",
+                              "auxvm_count": "4",
+                              "vmshape": "VM.Standard2.8",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OHS": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "FA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT1": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT2": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT3": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT4": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "FAHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OHSHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "IDMHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 3,
+                                          "max": 20,
+                                          "inFactory": 20
+                                    }
+                              }
+                        },
+                        "region": "us-ashburn-1",
+                        "resize_type": "Stamp",
+                        "timestamp": "20230409",
+                        "Resize Type": "T-Shirt",
+                        "Resize Reason": "Proactive Recommendation",
+                        "Bugs": "34769197",
+                        "POD Architectur": "OCI"
+                  }
+            },
+            {
+                  "EPWP": {
+                        "Old Shape": {
+                              "pod_current_size": "M6",
+                              "release": "11.13.23.01.0",
+                              "auxvm_count": "6",
+                              "vmshape": "VM.Standard2.8",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OHS": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "FA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT1": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT2": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT3": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT4": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "FAHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OHSHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "IDMHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 3,
+                                          "max": 20,
+                                          "inFactory": 20
+                                    }
+                              }
+                        },
+                        "New Shape": {
+                              "pod_target_size": "M8",
+                              "release": "11.13.23.01.0",
+                              "auxvm_count": "8",
+                              "vmshape": "VM.Standard2.8",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OHS": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "FA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT1": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT2": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT3": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT4": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "FAHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OHSHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "IDMHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 3,
+                                          "max": 20,
+                                          "inFactory": 20
+                                    }
+                              }
+                        },
+                        "region": "us-ashburn-1",
+                        "resize_type": "Stamp",
+                        "timestamp": "20230409",
+                        "Resize Type": "Scaleout",
+                        "Resize Reason": "Proactive Recommendation",
+                        "Bugs": "34769197",
+                        "POD Architectur": "OCI"
+                  }
+            },
+            {
+                  "HDNC": {
+                        "Old Shape": {
+                              "pod_current_size": "S0",
+                              "release": "11.13.23.01.0",
+                              "auxvm_count": "0",
+                              "vmshape": "VM.Standard2.4",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "OHS": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.1"
+                                    },
+                                    "FA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT1": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "OPT2": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT3": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "OPT4": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.2"
+                                    },
+                                    "FAHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OHSHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.1"
+                                    },
+                                    "IDMHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "AUXVM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 0,
+                                          "max": 5,
+                                          "inFactory": 5
+                                    }
+                              }
+                        },
+                        "New Shape": {
+                              "pod_target_size": "S1",
+                              "release": "11.13.23.01.0",
+                              "auxvm_count": "1",
+                              "vmshape": "VM.Standard2.4",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "OHS": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.1"
+                                    },
+                                    "FA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT1": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "OPT2": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT3": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "OPT4": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.2"
+                                    },
+                                    "FAHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OHSHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.1"
+                                    },
+                                    "IDMHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "AUXVM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 0,
+                                          "max": 5,
+                                          "inFactory": 5
+                                    }
+                              }
+                        },
+                        "region": "us-ashburn-1",
+                        "resize_type": "Stamp",
+                        "timestamp": "20230409",
+                        "Resize Type": "Scaleout",
+                        "Resize Reason": "Proactive Recommendation",
+                        "Bugs": "34769197",
+                        "POD Architectur": "OCI"
+                  }
+            },
+            {
+                  "EOWA": {
+                        "Old Shape": {
+                              "pod_current_size": "M6",
+                              "release": "11.13.23.01.0",
+                              "auxvm_count": "6",
+                              "vmshape": "VM.Standard2.8",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OHS": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "FA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT1": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT2": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT3": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT4": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "FAHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OHSHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "IDMHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 3,
+                                          "max": 20,
+                                          "inFactory": 20
+                                    }
+                              }
+                        },
+                        "New Shape": {
+                              "pod_target_size": "M7",
+                              "release": "11.13.23.01.0",
+                              "auxvm_count": "7",
+                              "vmshape": "VM.Standard2.8",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OHS": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "FA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT1": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "OPT2": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT3": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OPT4": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.4"
+                                    },
+                                    "FAHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.16"
+                                    },
+                                    "OHSHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "IDMHA": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM": {
+                                          "arc": "X7",
+                                          "shape": "VM.Standard2.8"
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 3,
+                                          "max": 20,
+                                          "inFactory": 20
+                                    }
+                              }
+                        },
+                        "region": "us-ashburn-1",
+                        "resize_type": "Stamp",
+                        "timestamp": "20230409",
+                        "Resize Type": "Scaleout",
+                        "Resize Reason": "Proactive Recommendation",
+                        "Bugs": "34769197",
+                        "POD Architectur": "OCI"
+                  }
+            }
+      ],
+      "current_uses": {
+            "S": {
+                  "VM.Standard.E3.Flex": {
+                        "pod_count": 1,
+                        "auxvm_count": 2
+                  },
+                  "VM.Standard2.4": {
+                        "pod_count": 2,
+                        "auxvm_count": 2
+                  }
+            },
+            "M": {
+                  "VM.Standard2.8": {
+                        "pod_count": 3,
+                        "auxvm_count": 16
+                  }
+            }
+      },
+      "capacity_require": {
+            "S": {
+                  "VM.Standard.E3.Flex": {
+                        "pod_count": 0,
+                        "auxvm_count": 0
+                  },
+                  "VM.Standard2.4": {
+                        "pod_count": 0,
+                        "auxvm_count": 0
+                  }
+            },
+            "M": {
+                  "VM.Standard2.8": {
+                        "pod_count": 1,
+                        "auxvm_count": 8
+                  }
+            }
+      }
+}

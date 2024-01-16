@@ -1,0 +1,50 @@
+{% if lbaas_data %}
+<table class="table table-striped table-bordered text-center" summary="lbaas data">
+    {% for obj in lbaas_data %}
+    <tbody>
+        <tr>
+            <td>Region Name :</td>
+            <td> {{ obj.region_name }} </td>
+        </tr>
+        <tr>
+            <td>Display Name :</td>
+            <td> {{ obj.display_name }} </td>
+        </tr>
+        <tr>
+            <td>LBaaS ID :</td>
+            <td> {{ obj.lbaas_id }} </td>
+        </tr>
+        <tr>
+            <td>Compartment ID :</td>
+            <td> {{ obj.compartment_id }} </td>
+        </tr>
+        <tr>
+            <td>Min Bandwidth in MBPS :</td>
+            <td> {{ obj.minimum_bandwidth_in_mbps }} </td>
+        </tr>
+        <tr>
+            <td>Max Bandwidth in MBPS :</td>
+            <td> {{ obj.maximum_bandwidth_in_mbps }} </td>
+        </tr>
+        <tr>
+            <td>Subnet Ids :</td>
+            <td> {{ obj.subnet_ids }} </td>
+        </tr>
+        <tr>
+            <td>Shape Name :</td>
+            <td> {{ obj.shape_name }} </td>
+        </tr>
+        <tr>
+            <td>IP Address :</td>
+            <td> {{ obj.ip_address }} </td>
+        </tr>
+        <tr>
+            <td>Life Cycle State :</td>
+            <td> {{ obj.lifecycle_state }} </td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+{% else %}
+    <h2> Unable to fetch LBaas Details</h2>
+{% endif %}

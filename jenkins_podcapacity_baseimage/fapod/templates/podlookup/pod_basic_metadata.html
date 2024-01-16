@@ -1,0 +1,114 @@
+{% if pod_data_from_metadata %}
+{% for obj in pod_data_from_metadata %}
+<div class="row">
+    <div class="column">
+        <table class="table table-striped table-bordered text-center" summary="pod basic metadata">
+            <tbody>
+                <tr>
+                    <td><strong>DR Role</strong></td>
+                    <td>{{ obj.dr_role }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Physical Pod Name</strong></td>
+                    <td>{{ obj.physical_pod_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Service</strong></td>
+                    <td>{{ obj.service }}</td>
+                </tr>
+                <tr>
+                    <td><strong>LastUpdated</strong></td>
+                    <td>{{ obj.last_updated }}</td>
+                </tr>
+                <tr>
+                    <td><strong>DataCenter Code</strong></td>
+                    <td>{{ obj.datacenter_code }}</td>
+                </tr>
+                <tr>
+                    <td><strong>DC Short Name</strong></td>
+                    <td>{{ obj.dc_short_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Associated DR Peer</strong></td>
+                    <td>{{ obj.associated_dr_peer }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Peer Physical PodName</strong></td>
+                    <td>{{ obj.peer_physical_pod_name }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="column">
+        <table class="table table-striped table-bordered text-center" summary="pod basic metadata">
+            <tbody>
+                <tr>
+                    <td><strong>ID Name</strong></td>
+                    <td>{{ obj.id_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Fusion Service Name</strong></td>
+                    <td>{{ obj.fusion_service_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Status</strong></td>
+                    <td>{{ obj.status }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Pod Type</strong></td>
+                    <td>{{ obj.pod_type }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Release</strong></td>
+                    <td>{{ obj.release }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Golden Gate Enabled</strong></td>
+                    <td>{{ obj.golden_gate_enabled }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Datacenter</strong></td>
+                    <td>{{ obj.fm_datacenter }}</td>
+                </tr>
+                <tr>
+                    <td><strong>LoadBalancer Name</strong></td>
+                    <td><button type="button" style="border: 0;background-color: transparent;color: rgb(23, 3, 237); "  onclick="lbaas_view('{{ obj.physical_pod_name|lower }}-loadbalancer-1','{{ obj.fm_datacenter }}' )" data-bs-toggle="modal" data-bs-target=".lbaas-modal-lg" >{{ obj.physical_pod_name|lower }}-loadbalancer-1</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endfor %}
+{% else %}
+  <p style="text-align:center"> Unable to fetch Pod data</p>
+{% endif %}
+
+<!-- The Modal -->
+<div class="modal fade lbaas-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title" style="text-align:center">
+                LBaaS Details
+            </h4>
+          <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border loader-spin-off" id="loader-sp-5">
+            </div>
+          </div>
+          <div id="lbaas_data_button"></div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+</div>
