@@ -1,0 +1,26 @@
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+stages:
+  - build
+  - test
+
+build-python-rel-job:
+  stage: build
+  variables:
+    PYTHON_REL: "python310_el7"
+    DOCKER_NAME_EL6: "build_el6"
+    DOCKER_NAME_EL7: "spe_python_ol7"
+  script:
+    - echo "Building Python artifacts for rel ${DOCKER_NAME_EL6} ${DOCKER_NAME_EL6} , check python3_latest_el6.zip at https://artifactory-master.cdaas.oraclecloud.com/artifactory/generic-fa/"
+    - ./reimage_python.sh build_el6
+    - echo "Building Python artifacts for rel ${DOCKER_NAME_EL7} ${DOCKER_NAME_EL7} , check python3_latest_el7.zip at https://artifactory-master.cdaas.oraclecloud.com/artifactory/generic-fa/"
+    - ./reimage_python.sh build_el7
+
+
+test-python-rel-job:
+  stage: test
+  script:
+    - echo "testing python zip files for el6 ..."
+    - ./tests/run_tests.sh test_el6
+    - echo "testing python zip files for el7 ..."
+    - ./tests/run_tests.sh test_el7

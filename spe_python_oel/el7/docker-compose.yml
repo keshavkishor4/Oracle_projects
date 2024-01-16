@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  spe_el7:
+    image: spe_python_ol7:v2
+    build: .
+    container_name: spe_python_ol7
+    restart: always
+    networks:
+      - backend
+    ports:
+      - "0.0.0.0:3010:3010"
+    volumes:
+      - ./:/u01
+
+networks:
+  backend:
+    driver: bridge

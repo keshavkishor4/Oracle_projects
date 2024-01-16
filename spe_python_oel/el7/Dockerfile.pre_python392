@@ -1,0 +1,46 @@
+FROM container-registry.oracle.com/os/oraclelinux:7-slim
+# ENV http_proxy www-proxy.us.oracle.com:80
+# ENV https_proxy www-proxy.us.oracle.com:80
+RUN yum install -y make net-tools openssh openssh-server openssh-clients findutils which gzip zip unzip gcc openssl-devel bzip2-devel sqlite-devel wget tar vi gawk git locate
+RUN sed 's/session\s*required\s*pam_loginuid.so/session optional pam_loginuid.so/g' -i /etc/pam.d/sshd
+RUN curl -L -o /usr/src/Python-3.6.9.tgz https://www.python.org/ftp/python/3.6.9/Python-3.6.9.tgz
+RUN curl -L -o /usr/src/go1.15.7.linux-amd64.tar.gz https://golang.org/dl/go1.15.7.linux-amd64.tar.gz
+RUN mkdir -p /usr/local/python3/el7
+RUN mkdir -p ~/.ssh
+RUN mkdir -p /opt/faops/spe/ocifabackup/utils/python3/el7
+RUN mkdir -p /opt/faops/spe/ocifabackup/utils/go/el7
+RUN cd /usr/src
+RUN tar -C /opt/faops/spe/ocifabackup/utils/ -xzf /usr/src/go1.15.7.linux-amd64.tar.gz
+RUN tar xzf /usr/src/Python-3.6.9.tgz -C /usr/src
+RUN cd /usr/src/Python-3.6.9 && ./configure --prefix=/opt/faops/spe/ocifabackup/utils/python3/el7  --with-openssl=/usr/bin/openssl 
+RUN cd /usr/src/Python-3.6.9 && make && make altinstall
+RUN cd /opt/faops/spe/ocifabackup/utils/python3/el7/bin && ln -s python3.6 python3
+RUN cd /opt/faops/spe/ocifabackup/utils/python3/el7/bin && ln -s python3 python
+RUN cd /opt/faops/spe/ocifabackup/utils/python3/el7/bin && ln -s pip3.6 pip3
+RUN cd /opt/faops/spe/ocifabackup/utils/python3/el7/bin && ln -s pip3 pip
+RUN echo 'export PYTHONPATH="/opt/faops/spe/ocifabackup/utils/python3/el7"' >> ~/.bashrc
+RUN echo 'export PATH="$PYTHONPATH/bin:/opt/faops/spe/ocifabackup/utils/go/bin:$PATH"' >> ~/.bashrc
+RUN echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDfwIAf7/5mLQtd9pkMGZC4CHbz2RZmb8CfPz+otrgkEtODKBj2OjNE0CHOXz3Ry9dqZG62kq66sm3UgN5bET2W5epjJsINVhjblIDFhXEOCibEwEK0yk9W3Q0dajjr1cDV55rSSrnVGfy9W9uHn+0gxbJUtFWPXdZ7yXSVljumFTbpqkAHthyCRg3t0WxLudVmwjEwUm9XAZYYli1HTZokGg3wZ9P/+j1LXpW2ZorN/NJxYGe4dfb3YuG5/r4hfOaIHUrmOjTDbCX0kjBG17YIZuwcdXdSttoO5SBo6GHYPr4Q5xVlU02Joqex/sjhPE4bI7xTfrbVDdFXmjViokEV Key for saasfareadiness1' >> ~/.ssh/authorized_keys
+RUN echo 'export GOPATH=/opt/faops/spe/ocifabackup/utils/develop' >> ~/.bashrc
+RUN source ~/.bashrc
+#RUN service sshd start
+RUN echo 'installing go packages'
+ENV GOROOT /opt/faops/spe/ocifabackup/utils/go
+ENV GOBIN /opt/faops/spe/ocifabackup/utils/go/bin
+RUN /opt/faops/spe/ocifabackup/utils/go/bin/go version
+RUN mkdir -p /opt/faops/spe/ocifabackup/utils/develop
+ENV GOPATH /opt/faops/spe/ocifabackup/utils/develop
+RUN /opt/faops/spe/ocifabackup/utils/go/bin/go get -u github.com/godror/godror
+RUN ls  /opt/faops/spe/ocifabackup/utils/develop
+RUN /opt/faops/spe/ocifabackup/utils/go/bin/go get -u github.com/oracle/oci-go-sdk
+RUN /opt/faops/spe/ocifabackup/utils/go/bin/go get github.com/pterm/pterm
+RUN /opt/faops/spe/ocifabackup/utils/go/bin/go get -u github.com/mattn/go-sqlite3
+RUN /opt/faops/spe/ocifabackup/utils/go/bin/go get -u go.uber.org/zap
+RUN echo 'updating packages'
+COPY update_install_python_packages.sh /usr/local/bin 
+RUN chmod 755 /usr/local/bin/update_install_python_packages.sh
+RUN yum clean all
+RUN rm -f /usr/src/Python-3.6.9.tgz
+RUN rm -rf /usr/src/Python-3.6.9
+RUN python --version
+CMD tail -f /dev/null
