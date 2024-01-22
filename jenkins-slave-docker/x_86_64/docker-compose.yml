@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  faocibkp_el7:
+    image: faocibkp-jenkins-oel:v2
+    build:
+        context: .
+        dockerfile: Dockerfile
+        args:
+            ROOT_PASS: ${ROOT_PASS}
+    container_name: faocibkp-jenkins-oel
+    restart: always
+    networks:
+      - backend
+    ports:
+      - "0.0.0.0:38787:22"
+    volumes:
+      - ./data/:/data
+      - ./repo:/repo
+      - /var/run/docker.sock:/var/run/docker.sock
+networks:
+   backend:
+      driver: bridge

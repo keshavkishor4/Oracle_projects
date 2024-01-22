@@ -1,0 +1,38 @@
+{% extends "base_db_dash.html" %}
+
+    {% block pod_name %}
+        {% autoescape off %}
+            {{ pod_name }}
+        {% endautoescape %}
+    {% endblock pod_name %}
+
+    {% block db_name %}
+        {% autoescape off %}
+            {{ db_name }}
+        {% endautoescape %}
+    {% endblock db_name %}
+
+    {% block pod_size %}
+        {% autoescape off %}
+            {{ pod_size }}
+        {% endautoescape %}
+    {% endblock pod_size%}
+    
+    {% block exa_node %}
+        {% autoescape off %}
+            {{ exa_name }}
+        {% endautoescape %}
+    {% endblock exa_node%}
+    
+{% block chart %}
+    {% autoescape off %}
+        <div class="chart_container">
+        <div class="chart_box">
+            <div class="chart">
+                <H2>Dart Data Not Available </H2>
+            </div>
+        </div>
+    </div>
+    {% endautoescape %}
+{% endblock chart %}
+

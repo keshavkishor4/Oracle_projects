@@ -1,0 +1,54 @@
+{% if inst_info %}
+
+{% for obj in inst_info %}
+
+<table class="table table-striped" summary="Instance info">
+    <tbody>
+        <tr>
+            <td>Display Name : </td>
+            <td>{{ obj.display_name }}</td>
+        </tr>
+        <tr>
+            <td><strong> Capacity Reservation Id : </strong></td>
+            <td>{{ obj.capacity_reservation_id }}</td>
+        </tr>
+        <tr>
+            <td>Instance Id : </td>
+            <td>{{ obj.instance_id }}</td>
+        </tr>
+        <tr>
+            <td>Pod Name : </td>
+            <td>{{ obj.Pod_Name }}</td>
+        </tr>
+        <tr>
+            <td>Region Name : </td>
+            <td>{{ obj.region_name }}</td>
+        </tr>
+        <tr>
+            <td>Availability Domain : </td>
+            <td>{{ obj.availability_domain }}</td>
+        </tr>
+        <tr>
+            <td>Dedicated VM Host : </td>
+            <td>{{ obj.dedicated_vm_host_id }}</td>
+        </tr>
+        <tr>
+            <td>Fault Domain : </td>
+            <td>{{ obj.fault_domain }}</td>
+        </tr>
+        <tr>
+            <td>Shape : </td>
+            <td>{{ obj.shape }}</td>
+        </tr>
+        <tr>
+            <td>Life Cycle State : </td>
+            <td>{{ obj.lifecycle_state }}</td>
+        </tr>
+    </tbody>
+</table>
+
+{% endfor %}
+
+{% else %}
+   <p style="text-align:center;"> Unable to fetch Instance info. </p>
+{% endif %}

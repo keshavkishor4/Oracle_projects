@@ -1,0 +1,89 @@
+{% include "podlookup/header.html" %}
+{% load static %}
+<body>
+    <style>
+        #loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url("{% static 'images/Spinner-3.gif' %}") 50% 50% no-repeat rgb(249,249,249);
+        }
+    </style>
+    <div id="loader"></div>
+    <!-- New -->
+    <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4" alt="" width="70" height="70" src="{% static 'images/oracle_o_logo.png' %}">
+        <h1 class="display-5 fw-bold">FA Pod Lookup</h1>
+        <div class="col-lg-6 mx-auto">
+            <div class="lead mb-4">
+                <p>Built on JobControl API & OCI to check FA pod resources</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <form method="GET" class="row g-2 needs-validation" role="search" >
+                        <div class="col-auto">
+                            <input id="pod_name" name="pod_name" type="text" class="form-control " placeholder="example: EEHO" required >
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-dark mb-3">submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!-- Old -->
+    <!-- <div class="container">
+        <div class="card border-0" style="width: 20rem;height: 18rem;">
+                <img class="card-img-top" style="width:50%;margin-left: auto;margin-right: auto;" width="100" height="160" src="{% static 'images/fsre_title.png' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h3 style="text-align:center;">FA PodLookup</h3>
+                <form method="GET">
+                    <input name="pod_name" id="pod_name" type="text" placeholder="Example: EEHO" >
+                    <button type="submit" class="btn btn-dark">submit</button>
+                </form>
+                </div>
+    </div> -->
+{% include "podlookup/main_page_pod_title.html" %}
+ <!-- {% include "podlookup/acc_test.html" %} -->
+</div>
+
+    <style>
+        .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        }
+        .row {
+        margin-left:-5px;
+        margin-right:-5px;
+        }
+        .column {
+        float: left;
+        width: 50%;
+        padding: 5px;
+        }
+        /* Clearfix (clear floats) */
+        .row::after {
+        content: "";
+        clear: both;
+        display: table;
+        }
+        @media screen and (max-width: 600px) {
+        .column {
+        width: 100%;
+        }
+        }
+    </style>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        console.log('inside')
+       $("#loader").fadeOut(1000);
+    });
+
+ </script>
+
+</body>
+</html>

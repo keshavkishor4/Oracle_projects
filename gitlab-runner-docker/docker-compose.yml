@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  fpm_el7:
+    image: gitlab-runner-oel:v2
+    build: .
+    container_name: gitlab-runner-oel
+    restart: always
+    networks:
+      - backend
+    ports:
+      - "0.0.0.0:3010:3010"
+    volumes:
+      - ./repo:/repo
+      - ./config/gitlab-runner:/etc/gitlab-runner
+      - ./data/gitlab:/var/opt/gitlab
+      - ./logs:/var/log/gitlab
+      - /var/run/docker.sock:/var/run/docker.sock
+networks:
+   backend:
+      driver: bridge

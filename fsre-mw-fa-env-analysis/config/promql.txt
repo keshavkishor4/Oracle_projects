@@ -1,0 +1,16 @@
+exadata_cpu##fusion:host_cpu_utilization{instance="exadata_instance", prd_app="exadata"}
+pod_exadata_cpu##fusion:host_cpu_utilization{prd_app="exadata"} * on (instance) group_left (pod) last_over_time(fusion:exadata_pod_metadata{prd_pod="pod_name"}[1h])
+pod_exadata_load##fusion:node_load1{prd_app="exadata"} * on (instance) group_left (pod) max_over_time(fusion:exadata_pod_metadata{prd_pod="pod_name"}[1h])
+pod_exadata_memory##fusion:host_memory_utilization{prd_app="exadata"} * on (instance) group_left (pod) max_over_time(fusion:exadata_pod_metadata{prd_pod="pod_name"}[1h])
+pod_exadata_swap##last_over_time(fusion:exadata_swap_utilization[10m]) * on(instance) group_left last_over_time(fusion:exadata_pod_metadata{prd_pod="pod_name"}[1h])
+exadata_node_load##fusion:node_load1{prd_app="exadata",instance="exadata_instance"}
+exadata_swap##fusion:exadata_swap_utilization{prd_app="exadata",instance="exadata_instance"}
+#test1##sum(count_over_time(fusion:host_cpu_utilization{instance="exadata_instance", prd_app="exadata"}[5m]))
+sgadata##fusion:oracledb_sga_used_gb:pod_name{prd_app="exadata",instance="exadata_instance"}/fusion:oracledb_sga_total_gb:pod_name{prd_app="exadata",instance="exadata_instance"}
+wls_restart##count by(wls,inf_ip)({__name__="fusion:fmw_wls_restart:pod_name",isBackup!="true"}!=0)
+cpu_utilization##fusion:oracledb_sysmetrics:pod_name{prd_app="exadata",instance="exadata_instance",name="CPU Usage Per Sec",group_id="2"}
+cpu_used_pct##fusion:oracledb_active_session_cpu_used_pct:pod_name{prd_app="exadata",instance="exadata_instance"}
+mt_heap_usage##fusion:fmw_heap_usage_percentage{prd_pod="pod_name"}
+wls_restart##count by(wls,inf_ip)({__name__="fusion:fmw_wls_restart:pod_name",isBackup!="true"}!=0)
+mt_stuck_thread##fusion:fmw_wls_thread_stat:pod_name{metric_name="stuck_thread_count"} != 0
+DS_active_connection_count##max by (inf_ip,wls,datasource)(fusion:fmw_wls_datasource_stat:pod_name{metric_name=~ "active_connection_current_count"})

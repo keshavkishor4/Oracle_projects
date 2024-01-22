@@ -1,0 +1,24 @@
+[
+      {
+            "FM Date": "28-APR-23",
+            "POD Name": "EWKK",
+            "Customer Name": "Magma Hdi General Insurance Company Ltd",
+            "Bugs": "35262506",
+            "Resize Type": "T-Shirt",
+            "Execution Type": "Manual",
+            "Resize Reason": "",
+            "Environment Type": "Production",
+            "POD Architecture": "OCI",
+            "Next Rel Date": "19-MAY-23",
+            "Next Rel Version": "R13 (update 23B)",
+            "Current Release": "13.23.01",
+            "Maintenance Level": "11.13.23.01.0_02.0.00",
+            "Data Center": "ap-mumbai-1",
+            "Environment Region Name": "APAC2",
+            "Old Shape": "XS0",
+            "New Shape": "S1",
+            "POD Size": "XS0",
+            "HW Map": "AMD_E3_FullFlex",
+            "Report Generation Date": "20230419"
+      }
+]

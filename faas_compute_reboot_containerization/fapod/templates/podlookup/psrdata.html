@@ -1,0 +1,99 @@
+{% if data %}
+    <h2> {{ report }} Report - {{ r_type }} :{{ dat }} </h2>
+    {% for key,values in data.items %}
+        {% for list in values %}
+            {% for pods,data in list.items %}
+              <hr>
+              <h3 style="text-align:center;"> {{ pods }} </h3>
+              {% for shape,shape_data in data.items %}
+
+                <center>
+                  {% if shape == "region" %}
+                  Region: <strong> {{ shape_data }} </strong>
+                  {% endif %}
+                  {% if shape == "timestamp" %}
+                   Timestamp: <strong> {{ shape_data }}  </strong>
+                  {% endif %}
+                </center>
+              {% endfor %}
+              <hr>
+              <table summary="data">
+                <tr>
+                  {% for shape,shape_data in data.items %}
+                  <td>
+                    {% if shape == "Old Shape" %}
+                    <div class="card" style="width: 23rem;">
+                        <div class="card-header" style="background:linear-gradient(45deg,rgb(6, 154, 11),black);" >
+                            <h2 style="color: white;text-align:center;">Old Shape</h2>
+                        </div>
+                        <div class="card-body">
+                        {% for obj,value in shape_data.items %}
+                        {% if obj == 'vmtype' %}
+                        {% for obj1,value1 in value.items %}
+                        <table class="table table-striped" summary="data">
+                            <thead>
+                                <th colspan="2" id="th" style="text-align: center;">{{ obj1 }}</th>
+                            </thead>
+                            <tbody>
+                                {% for i,j in value1.items %}
+                                <tr>
+                                    <td>{{ i }} </td>
+                                    <td>{{ j }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% endfor %}
+                        {% else %}
+                        <p> <strong> {{ obj }} : </strong> {{ value }} </p>
+                        {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+
+                  </td>
+                  <td>
+                  <span style='font-size:100px;'>&#8680;</span>
+                  {% endif %}
+                  </td>
+              <td>
+                {% if shape == "New Shape" %}
+                <div class="card" style="width: 23rem;">
+                    <div class="card-header" style="background:linear-gradient(45deg,rgb(6, 154, 11),black);" >
+                        <h2 style="color: white;text-align:center;">New Shape</h2>
+                    </div>
+                    <div class="card-body">
+                    {% for obj,value in shape_data.items %}
+                    {% if obj == 'vmtype' %}
+                    {% for obj1,value1 in value.items %}
+                    <table class="table table-striped" summary="data">
+                        <thead>
+                            <th colspan="2" id="th" style="text-align: center;">{{ obj1 }}</th>
+                        </thead>
+                        <tbody>
+                            {% for i,j in value1.items %}
+                            <tr>
+                                <td>{{ i }} </td>
+                                <td>{{ j }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endfor %}
+                    {% else %}
+                    <p> <strong> {{ obj }} : </strong> {{ value }} </p>
+                    {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+              </td>
+              {% endfor %}
+              </tr>
+              </table>
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+{% else %}
+<h2> Error while fetching data </h2>
+{% endif %}

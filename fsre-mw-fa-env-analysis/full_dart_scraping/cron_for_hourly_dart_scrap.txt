@@ -1,0 +1,2 @@
+# Executing hourly dart data scrap 
+10 * * * *  ${HOME}/fa_env_analysis/fsre-mw-fa-env-analysis/full_dart_scraping/hourly_wrapper.sh >/dev/null 2>&1 

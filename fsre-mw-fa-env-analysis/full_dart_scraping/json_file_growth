@@ -1,0 +1,15 @@
+tsp=$(echo $1 | sed 's/-//g')
+
+while [ "$(ps -eaf | grep dart_mining_wrapper | grep $1 |wc -l)" > 0 ]; do
+
+ ts=$(date)
+
+ outdir="/scratch/faopscb/fa_env_analysis/fsre-mw-fa-env-analysis/out_data/dart_data/${tsp}"
+ file="${outdir}/dart_dump_${tsp}_cron.log"
+ FILES=$(ls -lrt ${outdir} | grep json | tail -15)
+ FILE_COUNT=$(ls -lrt ${outdir} | grep json | wc -l)
+ echo "FILE > $file"
+ echo -e "\n#TIME STAMP :${ts}\n[Json file Growth]\n--- FILE_COUNT = ${FILE_COUNT} ---\n${FILES}\n\n\n" >> $file; 
+ sleep 30
+
+done

@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+
+{% block exa_table %}
+{% load static %}
+<div>
+        <table class="table table-striped" >
+            <thead class="light">
+                <tr>
+                    <th>exadata</th><th>start_time</th><th>end_time</th><th>avg_cpu</th><th>max_cpu</th><th>pods</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for exa in exa_data %}
+                <tr>
+                    <td>{{ exa.exa }}</td> 
+                    <td>{{ exa.start_time }}</td> 
+                    <td>{{ exa.end_time }}</td> 
+                    <td>{{ exa.avg_cpu }}</td> 
+                    <td>{{ exa.max_cpu }}</td> 
+                    <td >{% for pod in exa.pod_name %}
+                            {% if pod == exa.noisy_pod and  exa.dart_url %} 
+                                <button type='button' id='noisy_pod' class='btn btn-danger' onclick="db_art_method('{{ exa.dart_url }}','{{ exa.exa }}','{{ exa.db_name }}','{{ exa.pod_size }}','{{ pod }}')">
+                                    {{ pod }}
+                                </button>
+                            {% else %}
+                                <button type='button'  class='btn btn-success pod_name' disabled>
+                                    {{ pod }} 
+                                </button>
+                            {% endif %}
+                        {% endfor %}
+                        </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+      
+      
+    </div>
+    <script>
+        var csrftoken = '{{ csrf_token }}'; var db_dash = '{% url 'db_dash' %}'
+    </script>
+    <script src="{% static 'exa_table_podbutton.js' %}"> </script>
+{% endblock exa_table %}

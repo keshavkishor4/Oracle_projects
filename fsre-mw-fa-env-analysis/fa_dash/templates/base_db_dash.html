@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <!-- <link rel="stylesheet" href="hamburger.css"> -->
+    
+    <link rel="stylesheet" href="{% static 'base_db_dash.css' %}">
+    <link rel="stylesheet" href="{% static 'flex.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'svg.css' %}"> {% endcomment %}
+    <title>db analysis</title>
+</head>
+<body>
+    <div class="header_container">
+        <div class="title">
+            <div class="head_line">
+                <h3>FSRE-MW Database Analysis</h3>
+            </div>
+        </div>
+    </div>
+    <div class="card_container">
+        <div class="card_title">
+            <div class="card">
+                <span><h3>POD NAME</h3></span>
+                <span><h3>
+                    {% block pod_name %}
+                    {% endblock pod_name %}
+                </h3></span>
+            </div>
+            <div class="card">
+                <span>
+                    <h3>DATABASE NAME</h3>
+                </span>
+                <span>
+                    <h3>
+                    {% block db_name %}
+                    {% endblock db_name %}
+                    </h3></span>
+            </div>
+            <div class="card">
+                <span><h3>POD SIZE</h3></span>
+                <span><h3>
+                    {% block pod_size %}
+                    {% endblock pod_size %}
+                </h3></span>
+            </div>
+            <div class="card">
+                <span><h3>Exa Node</h3></span>
+                <span><h3>
+                    {% block exa_node %}
+                    {% endblock exa_node%}
+                </h3></span>
+            </div>
+            
+        </div>
+    </div>
+    {% block chart %}
+    {% endblock chart %}
+    
+</body>
+</html>

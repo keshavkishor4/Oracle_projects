@@ -1,0 +1,173 @@
+{
+      "02-MAR-23": [
+            {
+                  "EODA-DEV2": {
+                        "Old Shape": {
+                              "pod_current_size": "XS0",
+                              "release": "11.13.22.10.0",
+                              "auxvm_count": "0",
+                              "vmshape": "VM.Standard.E3.Flex",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 2,
+                                          "memoryInGBs": 20
+                                    },
+                                    "OHS": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 1,
+                                          "memoryInGBs": 10
+                                    },
+                                    "FA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 5,
+                                          "memoryInGBs": 88
+                                    },
+                                    "OPT1": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 1,
+                                          "memoryInGBs": 10
+                                    },
+                                    "OPT2": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 6,
+                                          "memoryInGBs": 120
+                                    },
+                                    "OPT3": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 3,
+                                          "memoryInGBs": 30
+                                    },
+                                    "OPT4": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 2,
+                                          "memoryInGBs": 20
+                                    },
+                                    "FAHA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 5,
+                                          "memoryInGBs": 80
+                                    },
+                                    "OHSHA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 1,
+                                          "memoryInGBs": 10
+                                    },
+                                    "IDMHA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 2,
+                                          "memoryInGBs": 20
+                                    },
+                                    "AUXVM": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 7,
+                                          "memoryInGBs": 20
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 0,
+                                          "max": 5,
+                                          "inFactory": 5
+                                    }
+                              }
+                        },
+                        "New Shape": {
+                              "pod_target_size": "S0",
+                              "release": "11.13.22.10.0",
+                              "auxvm_count": "0",
+                              "vmshape": "VM.Standard.E3.Flex",
+                              "vmtype": {
+                                    "IDM": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 2,
+                                          "memoryInGBs": 20
+                                    },
+                                    "OHS": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 1,
+                                          "memoryInGBs": 10
+                                    },
+                                    "FA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 7,
+                                          "memoryInGBs": 120
+                                    },
+                                    "OPT1": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 1,
+                                          "memoryInGBs": 10
+                                    },
+                                    "OPT2": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 6,
+                                          "memoryInGBs": 120
+                                    },
+                                    "OPT3": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 3,
+                                          "memoryInGBs": 30
+                                    },
+                                    "OPT4": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 2,
+                                          "memoryInGBs": 20
+                                    },
+                                    "FAHA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 7,
+                                          "memoryInGBs": 120
+                                    },
+                                    "OHSHA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 1,
+                                          "memoryInGBs": 10
+                                    },
+                                    "IDMHA": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 2,
+                                          "memoryInGBs": 20
+                                    },
+                                    "AUXVM": {
+                                          "arc": "AMD",
+                                          "shape": "VM.Standard.E3.Flex",
+                                          "ocpus": 7,
+                                          "memoryInGBs": 20
+                                    },
+                                    "AUXVM_LIMIT": {
+                                          "min": 0,
+                                          "max": 5,
+                                          "inFactory": 5
+                                    }
+                              }
+                        },
+                        "region": "ap-tokyo-1",
+                        "resize_type": "Stamp",
+                        "timestamp": "20230411",
+                        "Resize Type": "T-Shirt",
+                        "Resize Reason": "Data Volume Changes",
+                        "Bugs": "35143762",
+                        "POD Architectur": "OCI"
+                  }
+            }
+      ]
+}

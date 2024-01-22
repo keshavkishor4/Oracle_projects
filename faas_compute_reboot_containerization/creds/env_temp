@@ -1,0 +1,53 @@
+#please create .env file in base directory ( fapod )
+below is the content for the env file 
+
+# Commercial JC
+JC_COMM_URL="https://cloudmeta.itpa.cyf.oraclecloud.com"
+JC_COMM_USER_NAME="<<UserName>>"
+JC_COMM_USER_PASS=" <<Password >>"
+# UKGov JC
+JC_UKG_URL="https://cloudmeta-ukg.itpa.cyf.oraclecloud.com"
+JC_UKG_USER_NAME="user@oracle.com"
+JC_UKG_USER_PASS=""
+# BOAT OCI Setup
+# oc1 - saasfaprod1
+# Place the keys and .env under $HOME/fapodinv/creds
+oci_user="<<oci_uid>>"
+oci_fingerprint="<<oci fingerprint data >>"
+oci_tenancy="ocid1.tenancy.oc1..aaaaaaaagkbzgg6lpzrf47xzy4rjoxg4de6ncfiq2rncmjiujvy2hjgxvziq"
+oci_region="us-phoenix-1"
+oci_key_file="<< key file location >>"
+oci_oc1_comm_boat_user="<oci boat user ocid>"
+oci_oc1_comm_boat_fingerprint="<oci_boat_user_fingerprint>"
+oci_oc1_comm_boat_tenancy_ocid="ocid1.tenancy.oc1..aaaaaaaagkbzgg6lpzrf47xzy4rjoxg4de6ncfiq2rncmjiujvy2hjgxvziq"
+oci_oc1_comm_boat_key_file=="<oci_boat_user_pem_key_file ukgov place just put the file name and ensure file is at $HOME/fapodinv/creds > "
+oci_oc1_comm_region="us-phoenix-1"
+oci_oc1_comm_tenancy_name="saasfaprod1"
+oci_oc1_comm_tenancy_ocid="ocid1.tenancy.oc1..aaaaaaaajgaoycccrtt3l3vnnlave6wkc2zbf6kkksq66begstczxrmxjlia"
+# oc4 - saasfaukgovprod1 - UKG
+# Place the keys and .env under $HOME/fapodinv/creds
+oci_oc4_ukg_boat_user="<oci ukgov boat user ocid>"
+oci_oc4_ukg_boat_fingerprint="<oci_ukgov_boat_user_fingerprint>"
+oci_oc4_ukg_boat_tenancy_ocid="ocid1.tenancy.oc4..aaaaaaaak37nmbaszvdjdrmkvcvlypax53ila3yajff5tgdffk5njsm2czsa"
+oci_oc4_ukg_boat_key_file="<oci_boat_user_pem_key_file ukgov place just put the file name and ensure file is at $HOME/fapodinv/creds > "
+oci_oc4_ukg_region="uk-gov-london-1"
+oci_oc4_ukg_tenancy_name="saasfaukgovprod1"
+oci_oc4_ukg_tenancy_ocid="ocid1.tenancy.oc4..aaaaaaaaynkiunr3l4m66xb3w3rzkgiboivvfru6fxfidvx75ftfmn4pvkwa"
+# oc1 - saasfaeuraprod1 - EURA
+# Place the keys and .env under $HOME/fapodinv/creds
+oci_oc1_eura_boat_user=""
+oci_oc1_eura_boat_fingerprint=""
+oci_oc1_eura_boat_tenancy_ocid="ocid1.tenancy.oc1..aaaaaaaagkbzgg6lpzrf47xzy4rjoxg4de6ncfiq2rncmjiujvy2hjgxvziq"
+oci_oc1_eura_boat_key_file="./.oci/<pem_file>"
+oci_oc1_eura_region="us-phoenix-1"
+oci_oc1_eura_tenancy_name="saasfaeuraprod1"
+oci_oc1_eura_tenancy_ocid="ocid1.tenancy.oc1..aaaaaaaajgaoycccrtt3l3vnnlave6wkc2zbf6kkksq66begstczxrmxjlia"
+# oc1 - p1-saasfapreprod1 - PPD
+# Place the keys and .env under $HOME/fapodinv/creds
+oci_oc1_ppd_boat_user=""
+oci_oc1_ppd_boat_fingerprint=""
+oci_oc1_ppd_boat_tenancy_ocid="ocid1.tenancy.oc1..aaaaaaaagkbzgg6lpzrf47xzy4rjoxg4de6ncfiq2rncmjiujvy2hjgxvziq"
+oci_oc1_ppd_boat_key_file="./.oci/<pem_file>"
+oci_oc1_ppd_region="us-phoenix-1"
+oci_oc1_ppd_tenancy_name="p1-saasfapreprod1"
+oci_oc1_ppd_tenancy_ocid="ocid1.tenancy.oc1..aaaaaaaan3pnajtsevwlkiah5bop22sbd4fpynffoqxlkeehcsv2qxicqupq"

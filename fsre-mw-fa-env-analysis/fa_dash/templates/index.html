@@ -1,0 +1,24 @@
+{% include "base.html" %}
+{% load static %}
+
+<div class="row">
+    <div class="col-2 m-auto"  id="form">
+        <form method="POST" action="{% url 'submit_form' %}">
+            {% csrf_token %}
+                {{ form }}
+                <div >
+                    <input id="submit_button" type="submit" value="Submit Now" >
+                </div>
+        </form>
+        
+    </div>
+    
+</div>
+<div class="row">
+    <div class="col-10 m-auto"  id="exa_table">
+        {% block exa_table %}
+            
+        {% endblock exa_table %}
+    </div>
+</div>
+<script src="{% static 'ajax.js' %}"> </script>

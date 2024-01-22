@@ -1,0 +1,30 @@
+{
+      "current_uses": {
+            "VM.Standard.E4.Flex": [
+                  {
+                        "ocpus": 5,
+                        "memoryInGBs": 88,
+                        "count": 1
+                  },
+                  {
+                        "ocpus": 5,
+                        "memoryInGBs": 80,
+                        "count": 1
+                  }
+            ]
+      },
+      "capacity_require": {
+            "VM.Standard.E4.Flex": [
+                  {
+                        "ocpus": 7,
+                        "memoryInGBs": 20,
+                        "count": 2
+                  },
+                  {
+                        "ocpus": 7,
+                        "memoryInGBs": 120,
+                        "count": 2
+                  }
+            ]
+      }
+}

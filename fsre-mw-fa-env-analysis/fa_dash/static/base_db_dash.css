@@ -1,0 +1,118 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+body{
+    background-color: lightgray;
+}
+
+.header_container{
+    padding: 10px;
+}
+.title{
+    display: flex;
+    background-color: #ffff;
+    border-radius: 10px;
+    justify-content: center;
+    /* align-items: center; */
+    
+
+}
+
+.head_line{
+    display: flex;
+    height: 80px;
+    /* background-color: #ffff; */
+    /* border-radius: 10px; */
+    align-items: center;
+    
+}
+
+.head_line h3{
+    color: grey;
+    font-size: larger;
+}
+
+/* ##########Card css ########## */
+
+.card_container{
+    padding: 10px;
+    padding-top: 0px;
+}
+.card_title{
+    display: flex;
+    /* background-color: #ffff; */
+    /* border-radius: 10px; */
+    /* justify-content: space-between; */
+    /* width: 200px; */
+    /* flex-grow: 1; */
+    gap: 10px;
+    
+}
+
+.card{
+    display: flex;
+    width: 330px;
+    height: 150px;
+    background-color: #ffff;
+    border-radius: 10px;
+    /* padding-right: 10px; */
+    /* margin-right: 10px; */
+    justify-content: center;
+    /* justify-content: space-; */
+    align-items: center;
+    /* gap: 12; */
+    background-color: rgb(235,245,251);
+    flex-grow: 1;
+    /* gap: 5; */
+    
+}
+.card span{
+    font-size: large;
+    color: gray;
+    /* margin-left: px; */
+    
+}
+
+.card span {
+    font-size: large;
+    color: gray;
+    margin-left:30px;
+
+}
+
+
+
+/* ###########################################Chart CSS ###########################################*/
+
+.chart_container{
+    padding-left: 10px;
+    /* background-color: #fff; */
+}
+.chart_box{
+    display: flex;
+    height: 100%;
+    background-color: #ffff;
+    height: 1000px;
+    justify-content: center;
+    border-radius: 10px;
+    /* flex-grow: ; */
+    /* background-color:; */
+    
+}
+
+.chart {
+    display: flex;
+    /* width: 330px; */
+    /* height: 350px; */
+    /* background-color: #ffff; */
+    /* border-radius: 10px; */
+    /* padding-right: 10px; */
+    justify-content: center;
+    /* justify-content: space-; */
+    align-items: center;
+    /* gap: 12; */
+    /* background-color: #fff */
+}
