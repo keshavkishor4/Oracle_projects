@@ -1,0 +1,9 @@
+oci
+colorama
+jsonpickle
+backoff
+python-dotenv
+requests
+prettytable
+progress
+validators

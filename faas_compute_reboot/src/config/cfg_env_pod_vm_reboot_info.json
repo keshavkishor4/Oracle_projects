@@ -1,0 +1,19 @@
+{
+"incident_jira" : "",
+"data_center" : "",
+"pod_name": "",
+"pod_ocid" : "",
+"host_name" :"",
+"vm_type" : "",
+"host_id" : "",
+"host_state" : "",
+"cm_jira" : "",
+"maint_file_name" : "",
+"maint_cmd" : "",
+"submit_time" : "",
+"submitter" : "",
+"request_id" : "",
+"request_start_time" : "",
+"request_status" : "",
+"request_end_time" : ""
+}

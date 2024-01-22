@@ -1,0 +1,5 @@
+﻿Host_Name,OCID,POD,Datacenter,Availability_Domain,VM_Service_Type,Request_submission_Date
+pod-IAHFJB.replicaGroup-IDM.node-IDM1,,IAHFJB,us-ashburn-1,,,
+pod-IAHFJB.replicaGroup-FA.node-FA2,,IAHFJB,us-ashburn-1,,,
+pod-IBOGJB-TEST.replicaGroup-OPT3.node-OPT3,,IBOGJB-TEST,us-ashburn-1,,,
+pod-IBOGJB-TEST.replicaGroup-OPT4.node-OPT4,,IBOGJB-TEST,us-ashburn-1,,,

@@ -1,0 +1,5 @@
+#please create .env file in base directory ( faaas-resize )
+#below is the content for the env file
+# User Details needed as we will not be able to get the User info from DOCKER (it will just show as root)
+user_id=ssirsi
+user_email=sachin.sirsi@oracle.com

@@ -1,0 +1,10 @@
+src/log/*.*
+src/output/*
+creds/apitoken.txt
+src/.DS_Store
+#
+temp/
+**/*.pyc
+src/__pycache__/*.*
+src/lib/common/__pycache__/*.*
+__pycache__/**

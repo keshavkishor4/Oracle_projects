@@ -1,0 +1,17 @@
+{
+    "displayName": "compute_reboot_of_pod_VM",
+    "type": "MAINTENANCE",
+    "fusionEnvironmentId": "ocid1.fusionenvironment.oc1.iad.aaaaaaaaf26ydzqnms4bua343mlppk2cknyzdafw3o4vjahnd5c3ihdwmdta",
+    "actions": [
+    {
+            "targetHostNames":
+            [
+            ],
+		"actionType": "COMPUTE_REBOOT",
+        "mode": "COLD",
+        "description": "Reboot action on the POD VM"
+    }
+    ],
+    "timeScheduledStart": "2023-12-08T17:50:25.000Z",
+    "cmLink": "https://jira-sd.mc1.oracleiaas.com/browse/CHANGE-0"
+}
