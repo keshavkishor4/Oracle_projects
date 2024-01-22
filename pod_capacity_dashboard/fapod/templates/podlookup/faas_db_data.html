@@ -1,0 +1,186 @@
+{% include "podlookup/header.html" %}
+{% load static %}
+<body>
+  <style>
+      #loader {
+          position: fixed;
+          left: 0px;
+          top: 0px;
+          width: 100%;
+          height: 100%;
+          z-index: 9999;
+          background: url("{% static 'images/Spinner-3.gif' %}") 50% 50% no-repeat rgb(249,249,249);
+      }
+  </style>
+  <div id="loader"></div>
+  <div class="container">
+
+    <!-- //NOSONAR --><center>
+        <div class="card" style="width: 25rem;">
+            <div class="card-header">
+              <h2>Region</h2>
+            </div>
+            <div class="card-body">
+              <form action="" method="GET">
+                  <div class="input-group mb-3">
+                      <label class="input-group-text" style="width: 50.1%;" for="items">Region</label>
+                      <select class="form-select" id="regions" name="regions">
+                          <option value="item0">Select Option</option>
+                        {% for i in region %}
+                          <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                      </select>
+                  </div>
+                  <div class="col-12">
+                      <button type="submit" class="btn btn-secondary btn-lg" onclick="Reset_fn()" >Submit</button>
+                  </div>
+              </form>
+            </div>
+        </div>
+    </center>
+  </div>
+{% if result %}
+<div class="container">
+  {% if value %}
+  <h2 style="text-align:center;">Region: {{ value }}</h2>
+  {% endif %}
+  <hr>
+  <table id="FaaS_DB_data" class="table table-striped table-bordered text-center" summary="FAAS DataBase Dashboard ">
+    <thead class="table-dark">
+      <tr>
+        <th rowspan="2">Logical Cluster ID</th>
+        <th rowspan="2">Availability Domain</th>
+        <th rowspan="2">Pod DB placement tag</th>
+        <th rowspan="2">Total Capacity (in DB Units)</th>
+        <th rowspan="2">Usable Capacity (in DB Units)</th>
+        <th rowspan="2">Available Capacity (in DB Units)</th>
+        <th colspan="4">Used Capacity (in numbers)</th>
+        <th colspan="4">Projected Capacity (in numbers)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>XS</td>
+        <td>S</td>
+        <td>M</td>
+        <td>L</td>
+        <td>XS</td>
+        <td>S</td>
+        <td>M</td>
+        <td>L</td>
+      </tr>
+      {% for i in result %}
+      <tr>
+        <td><button onclick="faas_db('{{ i.id }}','{{ value }}')" style="border: 0;background-color: transparent;color: rgb(20, 136, 8); " data-bs-toggle="modal" data-bs-target=".fdb_data-lg" >{{ i.id }}</button></td>
+        <td>{{ i.availabilityDomain }}</td>
+        <td>{{ i.freeformTags.POD_DB_PLACEMENT_TAG }}</td>
+        <td>{{ i.maximumDbUnits }}</td>
+        <td>{{ i.safeDbUnits }}</td>
+        <td>{{ i.availableDbUnits }}</td>
+        <td>{{ i.numberOfPodDbsProvisioned.ExtraSmall }}</td>
+        <td>{{ i.numberOfPodDbsProvisioned.Small }}</td>
+        <td>{{ i.numberOfPodDbsProvisioned.Medium }}</td>
+        <td>{{ i.numberOfPodDbsProvisioned.Large }}</td>
+        <td>{{ i.numberOfPodDbsCanBeProvisioned.ExtraSmall }}</td>
+        <td>{{ i.numberOfPodDbsCanBeProvisioned.Small }}</td>
+        <td>{{ i.numberOfPodDbsCanBeProvisioned.Medium }}</td>
+        <td>{{ i.numberOfPodDbsCanBeProvisioned.Large }}</td>
+        <!-- <td>XS: <b>{{ i.numberOfPodDbsProvisioned.ExtraSmall }}</b>  S:<b>{{ i.numberOfPodDbsProvisioned.Small }}</b>  M:<b>{{ i.numberOfPodDbsProvisioned.Medium }}</b>  L:<b>{{ i.numberOfPodDbsProvisioned.Large }}</b> </td>
+        <td>XS: <b>{{ i.numberOfPodDbsCanBeProvisioned.ExtraSmall }}</b>  S:<b>{{ i.numberOfPodDbsCanBeProvisioned.Small }}</b>  M:<b>{{ i.numberOfPodDbsCanBeProvisioned.Medium }}</b>  L:<b>{{ i.numberOfPodDbsCanBeProvisioned.Large }}</b></td> -->
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endif %}
+
+<!-- The Modal -->
+<div class="modal fade fdb_data-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title" style="text-align:center;">
+                ExaData Details</h4>
+          <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border loader-spin-off" id="loader-sp-6">
+            </div>
+          </div>
+          <div id="exa_data_button"></div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+    var csrftoken = '{{ csrf_token }}'
+    function faas_db(exadata,region) {
+        console.log(exadata,region)
+        //console.log(region_name)
+        try{
+        let ajax = new XMLHttpRequest();
+        var spin=document.getElementById("loader-sp-6");
+        spin.classList.remove("loader-spin-off")
+        spin.classList.add("loader-spin-on")
+        ajax.onreadystatechange = function(){
+        if (this.readyState === 4){
+            if (this.status === 200){
+              spin.classList.remove("loader-spin-on")
+              spin.classList.add("loader-spin-off")
+                document.getElementById("exa_data_button").innerHTML = this.responseText;
+                //console.log(this.responseText)
+            }
+        }
+    }
+    ajax.open("POST", "{% url 'Faasexadata' %}", true);
+    ajax.setRequestHeader("X-CSRFToken",csrftoken)
+    const data = new FormData()
+    data.append('exa_id',exadata)
+    data.append('region',region)
+    ajax.send(data);
+    }
+    catch (e){
+      console.log(e);
+    }
+    }
+
+
+    $(document).ready(function () {
+      $('#FaaS_data').DataTable( {
+        dom: 'Bfrtip',
+          buttons: [
+              'copy', 'csv'
+          ]
+
+      } );
+  });
+
+  </script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+          console.log('inside')
+         $("#loader").fadeOut(1000);
+      });
+
+   </script>
+</body>
+
+{% include "podlookup/footer.html" %}

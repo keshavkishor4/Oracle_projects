@@ -1,0 +1,459 @@
+{% include "podlookup/header.html" %}
+{% load static %}
+<body>
+    <style>
+        #loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url("{% static 'images/Spinner-3.gif' %}") 50% 50% no-repeat rgb(249,249,249);
+        }
+    </style>
+    <div id="loader"></div>
+    <!-- New -->
+    <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4" alt="" width="70" height="70" src="{% static 'images/oracle_o_logo.png' %}">
+        <h1 class="display-5 fw-bold">FA Pod Lookup</h1>
+        <div class="col-lg-6 mx-auto">
+            <div class="lead mb-4">
+                <p>Built on JobControl API & OCI to check FA pod resources</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <form method="GET" class="row g-2 needs-validation" role="search" >
+                        <div class="col-auto">
+                            <input id="pod_name" name="pod_name" type="text" class="form-control " placeholder="example: EEHO" required >
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-dark mb-3">submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% include "podlookup/main_page_pod_title.html" %}
+</div>
+
+    <style>
+        .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        }
+        .row {
+        margin-left:-5px;
+        margin-right:-5px;
+        }
+        .column {
+        float: left;
+        width: 50%;
+        padding: 5px;
+        }
+        /* Clearfix (clear floats) */
+        .row::after {
+        content: "";
+        clear: both;
+        display: table;
+        }
+        @media screen and (max-width: 600px) {
+        .column {
+        width: 100%;
+        }
+        }
+    </style>
+<script type="text/javascript">
+    $(document).ready(function() {
+        console.log('inside')
+       $("#loader").fadeOut(1000);
+    });
+
+ </script>
+
+ {% load static %}
+ <script >
+   var csrftoken = '{{ csrf_token }}'
+
+   function resource_data_collapse() {
+       let ajax = new XMLHttpRequest();
+       var spin=document.getElementById("loader-sp-1");
+       spin.classList.remove("loader-spin-off")
+       spin.classList.add("loader-spin-on")
+       ajax.onreadystatechange = function(){
+       if (this.readyState === 4){
+           if (this.status === 200){
+             //console.out(this.responseText)
+             spin.classList.remove("loader-spin-on")
+             spin.classList.add("loader-spin-off")
+             document.getElementById("resource_data_result_div").innerHTML = this.responseText;
+             //document.querySelector('#resource_data_result_div').insertHTML.replace(this.responseText);
+               //document.querySelector('#resource_data_result_div').insertAdjacentHTML('beforeend', this.responseText);
+           }
+       }
+   }
+   ajax.open("GET", "{% url 'stamp_page' %}", true);
+   ajax.send();
+   }
+
+   function pod_basic_data_collapse() {
+       let ajax = new XMLHttpRequest();
+       var spin=document.getElementById("loader-sp-2");
+       spin.classList.remove("loader-spin-off")
+       spin.classList.add("loader-spin-on")
+       ajax.onreadystatechange = function(){
+       if (this.readyState === 4){
+           if (this.status === 200){
+               spin.classList.remove("loader-spin-on")
+               spin.classList.add("loader-spin-off")
+               document.getElementById("pod_basic_data_div").innerHTML = this.responseText;
+               //document.querySelector('#pod_basic_data_div').insertAdjacentHTML(this.responseText);
+               //document.querySelector('#pod_basic_data_div').insertAdjacentHTML('beforeend', this.responseText);
+           }
+       }
+   }
+   ajax.open("GET", "{% url 'PodBasicDataPage' %}", true);
+   ajax.send();
+   }
+
+   function capacity_reservation_collapse() {
+     console.log('Inside capacity')
+       let ajax = new XMLHttpRequest();
+       ajax.onreadystatechange = function(){
+       if (this.readyState === 4){
+           if (this.status === 200){
+               document.getElementById("capacity_reservation_data_div").innerHTML = this.responseText;
+               //document.querySelector('#pod_basic_data_div').insertAdjacentHTML(this.responseText);
+               //document.querySelector('#pod_basic_data_div').insertAdjacentHTML('beforeend', this.responseText);
+           }
+       }
+   }
+   ajax.open("GET", "{% url 'CapacityReservationPage' %}", true);
+   ajax.send();
+   }
+   function pod_family_js(){
+     let ajax = new XMLHttpRequest();
+     var spin=document.getElementById("loader-sp-12");
+     spin.classList.remove("loader-spin-off")
+     spin.classList.add("loader-spin-on")
+     ajax.onreadystatechange = function(){
+     if (this.readyState === 4){
+         if (this.status === 200){
+           spin.classList.remove("loader-spin-on")
+           spin.classList.add("loader-spin-off")
+             document.getElementById("pod_family_data_div").innerHTML = this.responseText;
+             //document.querySelector('#pod_basic_data_div').insertAdjacentHTML(this.responseText);
+             //document.querySelector('#pod_basic_data_div').insertAdjacentHTML('beforeend', this.responseText);
+         }
+     }
+ }
+ ajax.open("GET", "{% url 'PodFamilyView' %}", true);
+ ajax.send();
+
+   }
+
+   function bespoke_details_collapse() {
+    let ajax = new XMLHttpRequest();
+    var spin=document.getElementById("loader-sp-13");
+    spin.classList.remove("loader-spin-off")
+    spin.classList.add("loader-spin-on")
+    ajax.onreadystatechange = function(){
+    if (this.readyState === 4){
+        if (this.status === 200){
+            spin.classList.remove("loader-spin-on")
+            spin.classList.add("loader-spin-off")
+            document.getElementById("bespoke_details_div").innerHTML = this.responseText;
+            //document.querySelector('#pod_basic_data_div').insertAdjacentHTML(this.responseText);
+            //document.querySelector('#pod_basic_data_div').insertAdjacentHTML('beforeend', this.responseText);
+        }
+    }
+}
+ajax.open("GET", "{% url 'BespokeDetails' %}", true);
+ajax.send();
+}
+
+   function exa_data_collapse() {
+       let ajax = new XMLHttpRequest();
+       var spin=document.getElementById("loader-sp-3");
+       spin.classList.remove("loader-spin-off")
+       spin.classList.add("loader-spin-on")
+       ajax.onreadystatechange = function(){
+       if (this.readyState === 4){
+           if (this.status === 200){
+             spin.classList.remove("loader-spin-on")
+             spin.classList.add("loader-spin-off")
+               document.getElementById("exa_data_div").innerHTML = this.responseText;
+               //document.querySelector('#pod_basic_data_div').insertAdjacentHTML(this.responseText);
+               //document.querySelector('#pod_basic_data_div').insertAdjacentHTML('beforeend', this.responseText);
+           }
+       }
+   }
+   ajax.open("GET", "{% url 'ExaDataFetchMethodPage' %}", true);
+   ajax.send();
+   }
+
+   function pod_instance_collapse() {
+       //console.log("hello")
+       let ajax = new XMLHttpRequest();
+       var spin=document.getElementById("loader-sp-4");
+       spin.classList.remove("loader-spin-off")
+       spin.classList.add("loader-spin-on")
+       ajax.onreadystatechange = function(){
+       if (this.readyState === 4){
+           if (this.status === 200){
+             spin.classList.remove("loader-spin-on")
+             spin.classList.add("loader-spin-off")
+               document.getElementById("pod_instance_data_div").innerHTML = this.responseText;
+               //document.querySelector('#pod_basic_data_div').insertAdjacentHTML(this.responseText);
+               //document.querySelector('#pod_basic_data_div').insertAdjacentHTML('beforeend', this.responseText);
+           }
+       }
+   }
+   ajax.open("GET", "{% url 'PodInstanceDataPage' %}", true);
+   ajax.send();
+   }
+
+   function db_init_conf_collapse() {
+    //console.log("hello")
+    let ajax = new XMLHttpRequest();
+    var spin=document.getElementById("loader-sp-10");
+    spin.classList.remove("loader-spin-off")
+    spin.classList.add("loader-spin-on")
+    ajax.onreadystatechange = function(){
+    if (this.readyState === 4){
+        if (this.status === 200){
+          spin.classList.remove("loader-spin-on")
+          spin.classList.add("loader-spin-off")
+            document.getElementById("db_init_conf_data_div").innerHTML = this.responseText;
+            //document.querySelector('#pod_basic_data_div').insertAdjacentHTML(this.responseText);
+            //document.querySelector('#pod_basic_data_div').insertAdjacentHTML('beforeend', this.responseText);
+        }
+    }
+}
+ajax.open("GET", "{% url 'DBInitConfiguration' %}", true);
+ajax.send();
+}
+
+function bespoke_db_details_collapse() {
+    let ajax = new XMLHttpRequest();
+    var spin=document.getElementById("loader-sp-14");
+    spin.classList.remove("loader-spin-off")
+    spin.classList.add("loader-spin-on")
+    ajax.onreadystatechange = function(){
+    if (this.readyState === 4){
+        if (this.status === 200){
+            spin.classList.remove("loader-spin-on")
+            spin.classList.add("loader-spin-off")
+            document.getElementById("bespoke_db_details_div").innerHTML = this.responseText;
+            //document.querySelector('#pod_basic_data_div').insertAdjacentHTML(this.responseText);
+            //document.querySelector('#pod_basic_data_div').insertAdjacentHTML('beforeend', this.responseText);
+        }
+    }
+}
+ajax.open("GET", "{% url 'BespokeDBDetails' %}", true);
+ajax.send();
+}
+function heap_size_data_collapse(pod_host) {
+    console.log('Pod Host:', pod_host);
+    try{
+    let ajax = new XMLHttpRequest();
+    var spin=document.getElementById("loader-sp-11");
+    spin.classList.remove("loader-spin-off")
+    spin.classList.add("loader-spin-on")
+    ajax.onreadystatechange = function(){
+    if (this.readyState === 4){
+        if (this.status === 200){
+          spin.classList.remove("loader-spin-on")
+          spin.classList.add("loader-spin-off")
+            document.getElementById("heap_size_data_button").innerHTML = this.responseText;
+            //console.log(this.responseText)
+        }
+    }
+}
+ajax.open("POST", "{% url 'ComputeDataMethod' %}", true);
+ajax.setRequestHeader("X-CSRFToken",csrftoken)
+const data = new FormData()
+data.append('exa_id',pod_host)
+ajax.send(data);
+}
+catch (e){
+  console.log(e);
+}
+
+}
+   function pod_inst(instance_id_data,region_name) {
+       //console.log(instance_id_data)
+       //console.log(region_name)
+       try{
+       let ajax = new XMLHttpRequest();
+       var spin=document.getElementById("loader-sp-8");
+       spin.classList.remove("loader-spin-off")
+       spin.classList.add("loader-spin-on")
+       ajax.onreadystatechange = function(){
+       if (this.readyState === 4){
+           if (this.status === 200){
+             spin.classList.remove("loader-spin-on")
+             spin.classList.add("loader-spin-off")
+               document.getElementById("instance_data_model").innerHTML = this.responseText;
+               //console.log(this.responseText)
+           }
+       }
+   }
+   ajax.open("POST", "{% url 'InstData' %}", true);
+   ajax.setRequestHeader("X-CSRFToken",csrftoken)
+   const data = new FormData()
+   data.append('instance_id',instance_id_data)
+   data.append('region',region_name)
+   ajax.send(data);
+   }
+   catch (e){
+     console.log(e);
+   }
+
+   }
+
+   function cap_view(instance_id_data,region_name) {
+     //  console.log(instance_id_data)
+     //  console.log(region_name)
+       try{
+       let ajax = new XMLHttpRequest();
+       var spin=document.getElementById("loader-sp-9");
+       spin.classList.remove("loader-spin-off")
+       spin.classList.add("loader-spin-on")
+       ajax.onreadystatechange = function(){
+       if (this.readyState === 4){
+           if (this.status === 200){
+             spin.classList.remove("loader-spin-on")
+             spin.classList.add("loader-spin-off")
+               document.getElementById("cap_view_data_button").innerHTML = this.responseText;
+               //console.log(this.responseText)
+           }
+       }
+   }
+   ajax.open("POST", "{% url 'CapView' %}", true);
+   ajax.setRequestHeader("X-CSRFToken",csrftoken)
+   const data = new FormData()
+   data.append('instance_id',instance_id_data)
+   data.append('region',region_name)
+   ajax.send(data);
+   }
+   catch (e){
+     console.log(e);
+   }
+
+   }
+
+   function lbaas_view(lbaas_id,region_name) {
+       console.log(lbaas_id)
+       console.log(region_name)
+       try{
+       let ajax = new XMLHttpRequest();
+       var spin=document.getElementById("loader-sp-5");
+       spin.classList.remove("loader-spin-off")
+       spin.classList.add("loader-spin-on")
+       ajax.onreadystatechange = function(){
+       if (this.readyState === 4){
+           if (this.status === 200){
+             spin.classList.remove("loader-spin-on")
+             spin.classList.add("loader-spin-off")
+               document.getElementById("lbaas_data_button").innerHTML = this.responseText;
+               //console.log(this.responseText)
+           }
+       }
+   }
+   ajax.open("POST", "{% url 'LBaasIdView' %}", true);
+   ajax.setRequestHeader("X-CSRFToken",csrftoken)
+   const data = new FormData()
+   data.append('lbaas_id',lbaas_id)
+   data.append('region',region_name)
+   ajax.send(data);
+   }
+   catch (e){
+     console.log(e);
+   }
+   }
+
+   function exadata_method(exadata) {
+       //console.log(exadata)
+       //console.log(region_name)
+       try{
+       let ajax = new XMLHttpRequest();
+       var spin=document.getElementById("loader-sp-6");
+       spin.classList.remove("loader-spin-off")
+       spin.classList.add("loader-spin-on")
+       ajax.onreadystatechange = function(){
+       if (this.readyState === 4){
+           if (this.status === 200){
+             spin.classList.remove("loader-spin-on")
+             spin.classList.add("loader-spin-off")
+               document.getElementById("exa_data_button").innerHTML = this.responseText;
+               //console.log(this.responseText)
+           }
+       }
+   }
+   ajax.open("POST", "{% url 'ExaDataNodeView' %}", true);
+   ajax.setRequestHeader("X-CSRFToken",csrftoken)
+   const data = new FormData()
+   data.append('exa_id',exadata)
+   ajax.send(data);
+   }
+   catch (e){
+     console.log(e);
+   }
+   }
+
+   function homepodinstdata(pod_host) {
+       console.log(pod_host)
+       try{
+       let ajax = new XMLHttpRequest();
+       var spin=document.getElementById("loader-sp-7");
+       spin.classList.remove("loader-spin-off")
+       spin.classList.add("loader-spin-on")
+       ajax.onreadystatechange = function(){
+       if (this.readyState === 4){
+           if (this.status === 200){
+             spin.classList.remove("loader-spin-on")
+             spin.classList.add("loader-spin-off")
+               document.getElementById("pod-host-tag").innerHTML = this.responseText;
+               //console.log(this.responseText)
+           }
+       }
+   }
+   console.log("Hello")
+   ajax.open("POST", "{% url 'InstanceDataView' %}", true);
+   ajax.setRequestHeader("X-CSRFToken",csrftoken)
+   const data = new FormData()
+   data.append('exa_id',pod_host)
+   ajax.send(data);
+   }
+   catch (e){
+     console.log(e);
+   }
+   }
+
+   function pod_capacity_data() {
+       console.log('inside pod capacity ajax script')
+       //console.log(region_name)
+       try{
+       let ajax = new XMLHttpRequest();
+       ajax.onreadystatechange = function(){
+       if (this.readyState === 4){
+           if (this.status === 200){
+               document.getElementById("pod_capacity_button").innerHTML = this.responseText;
+               //console.log(this.responseText)
+           }
+       }
+   }
+   ajax.open("GET", "{% url 'test_page_for_podcapacity' %}", true);
+   ajax.send();
+   }
+   catch (e){
+     console.log(e);
+   }
+   }
+
+ </script>
+
+</body>
+{% include "podlookup/footer.html" %}
+</html>

@@ -1,0 +1,86 @@
+{% if data %}
+<h3><b>{% for obj in data %}{{ obj.hostname }}{% endfor %}</b></h3>
+<table class="table table-striped table-bordered text-center" summary="Exa node info">
+    <thead class="table-dark">
+
+    </thead>
+    <tbody>
+        {% for obj in data %}
+        <tr>
+            <td>HostName</td>
+            <td>{{ obj.hostname }}</td>
+        </tr>
+        <tr>
+            <td>Role</td>
+            <td>{{ obj.role }}</td>
+        </tr>
+        <tr>
+            <td>Pod Name</td>
+            <td>{{ pod_name }}
+        </tr>
+        <tr>
+            <td>Availability Domain</td>
+            <td>{{ oci_availability_domain }}</td>
+        </tr>
+        <tr>
+            <td>Fault Domain</td>
+            <td>{{ oci_fault_domain }}</td>
+        </tr> 
+        <tr>
+            <td>Compute Shape</td>
+            <td>{{ compute_shape }}</td>
+        </tr>
+        <tr>
+            <td>Memory (MB)</td>
+            <td>{{ memory }}
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td>{{ obj.type_of_hw }}</td>
+        </tr>
+        <tr>
+            <td>DataCenterCode</td>
+            <td>{{ obj.datacenter_code }}</td>
+        </tr>
+        <tr>
+            <td>UUID</td>
+            <td>{{ obj.uuid }}</td>
+        </tr>
+        <tr>
+            <td>Instance_OCID</td>
+            <td>{{ obj.instance_ocid }}</td>
+        </tr>
+        <tr>
+            <td>SerialNumber</td>
+            <td>{{ obj.serial_number }}</td>
+        </tr>
+        <tr>
+            <td>KernalVersion</td>
+            <td>{{ obj.kernel_version }}</td>
+        </tr>
+        <tr>
+            <td>CPU_MODEL</td>
+            <td>{{ obj.cpu_model }}</td>
+        </tr>
+        <tr>
+            <td>OS Version</td>
+            <td>{{ obj.os_version }}</td>
+        </tr>
+        <tr>
+            <td>IP Address</td>
+            <td>{{ obj.ip_address }}</td>
+        </tr>
+        <tr>
+            <td>Product Name</td>
+            <td>{{ obj.product_name }}</td>
+        </tr>
+        <tr>
+            <td>Environment</td>
+            <td>{{ obj.environment }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <h2>Unable to fetch ExaData values</h2>
+{% endif %}

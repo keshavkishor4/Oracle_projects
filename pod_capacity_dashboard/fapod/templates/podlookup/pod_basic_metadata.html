@@ -1,0 +1,262 @@
+{% if k %}
+<div class="row">
+    <div  style="overflow-x: auto;" class="column">
+        <table class="table table-striped table-bordered text-center" summary="pod basic metadata">
+            <tbody>
+                <tr>
+                  <td><strong>Physical Pod Name</strong></td>
+                  <td>{{ k.physical_pod_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Pod/DB Role</strong></td>
+                    <td>{{ k.dr_role }}</td>
+                </tr>
+                <tr>
+                  <td><strong>PodSize</strong></td>
+                  <td>{{ size  }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Stamp Value</strong></td>
+                  <td>{{ stamp  }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Release</strong></td>
+                    <td>{{ k.release }}</td>
+                </tr>
+                <tr>
+                  <td><strong>isFAAS</strong> </td>
+                  <td> <button type="button" class="btn btn-info">{{ is_faas }}</button> </td>
+                </tr>
+                {% comment %} <tr>
+                    <td><strong>DataCenter Code</strong></td>
+                    <td>{{ k.datacenter_code }}</td>
+                </tr>
+                <tr>
+                    <td><strong>DC Short Name</strong></td>
+                    <td>{{ k.dc_short_name }}</td>
+                </tr> {% endcomment %}
+                <tr>
+                    <td><strong>Datacenter</strong></td>
+                    <td>{{ k.fm_datacenter }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Golden Gate Enabled</strong></td>
+                    <td>{{ k.golden_gate_enabled }}</td>
+                </tr>
+                <tr>
+                  <td><strong>isADP</strong></td>
+                  <td>{{ is_adpdata  }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Fusion DB Name</strong></td>
+                  <td>{{ fusion_dbname }}</td>
+                </tr>
+                {% if is_faas != "true" %}
+                  <tr>
+                    <td><strong>FAaaS Conversion</strong></td>
+                    <td>
+                      <a href="https://fleetmanager.oraclecloud.com/analytics/saw.dll?PortalGo&Action=prompt&path=%2Fshared%2FReport%20Requests%2FSaaS%20Ops%2FShailendra%20Mani%2FFAaaS-ADP-CR-Report" target="_blank">
+                        FM_Link
+                      </a>
+                      &nbsp;&nbsp;&nbsp;
+                      <a href="https://confluence.oci.oraclecorp.com/pages/viewpage.action?spaceKey=FACP&title=FAaaS+Conversion+Pod+List+and+Schedule" target="_blank">
+                        Confluence_Link
+                      </a>
+                    </td>
+                  </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <div style="overflow-x: auto;" class="column">
+        <table class="table table-striped table-bordered text-center" summary="pod basic metadata">
+            <tbody>
+                <tr>
+                  <td><strong>Service</strong></td>
+                  <td>{{ k.service }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Status</strong></td>
+                    <td>{{ k.status }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Pod Type</strong></td>
+                    <td>{{ k.pod_type }}</td>
+                </tr>
+                <tr>
+                  <td><strong>Next Stamp Value</strong></td>
+                  <td>{{ next_stamp_size }}</td>
+                </tr>
+                {% comment %} <tr>
+                    <td><strong>ID Name</strong></td>
+                    <td>{{ k.id_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Fusion Service Name</strong></td>
+                    <td>{{ k.fusion_service_name }}</td>
+                </tr> {% endcomment %}
+
+                <tr>
+                    <td><strong>Associated DR Peer</strong></td>
+                    <td>{{ k.associated_dr_peer }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Peer Physical PodName</strong></td>
+                    <td>{{ k.peer_physical_pod_name }}</td>
+                </tr>
+
+                <tr>
+                  <td><strong>LastUpdated</strong></td>
+                  <td>{{ k.last_updated }}</td>
+                </tr>
+                <tr>
+                    <td><strong>LoadBalancer Name</strong></td>
+                    {% if is_faas == "true" %}
+                      <td><button type="button" style="border: 0;background-color: transparent;color: rgb(23, 3, 237); "  onclick="lbaas_view('pod-{{ pod|upper }}.loadbalancer-pod_loadbalancer_1.loadBalancerLoadBalancer-loadbalancer','{{ k.fm_datacenter }}' )" data-bs-toggle="modal" data-bs-target=".lbaas-modal-lg" >pod-{{ pod|upper }}.loadbalancer-pod_loadbalancer_1.loadBalancerLoadBalancer-loadbalancer</button></td>
+                    {% else %}
+                      <td><button type="button" style="border: 0;background-color: transparent;color: rgb(23, 3, 237); "  onclick="lbaas_view('{{ k.physical_pod_name|lower }}-loadbalancer-1','{{ k.fm_datacenter }}' )" data-bs-toggle="modal" data-bs-target=".lbaas-modal-lg" >{{ k.physical_pod_name|lower }}-loadbalancer-1</button></td>
+                    {% endif %}
+                </tr>
+                <tr>
+                  <td><strong>Fleet Manager URL</strong></td>
+                  <td>
+                      <a href="https://fleetmanager.oraclecloud.com/customerPod/faces/environmentPod?podName={{ k.Pod_Name }}" target="_blank">
+                          {{ k.Pod_Name }}_FM
+                      </a>
+                      &nbsp;&nbsp;&nbsp;
+                      <a href="https://fleetmanager.oraclecloud.com/analytics/saw.dll?PortalGo&Action=prompt&path=%2Fshared%2FReport%20Requests%2FSaaS%20Ops%2FShailendra%20Mani%2FConsolidate-Resize-Data-Report-v1" target="_blank">
+                        FM_Report
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Dart URL</strong></td>
+                  <td>
+                      <a href="https://dashboards.odin.oraclecloud.com/DART/" target="_blank">
+                        DART_URL
+                      </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Fusion Unique DB Name</strong></td>
+                  <td>{{ fusion_unique_dbname }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+  <p style="text-align:center"> Unable to fetch Pod data</p>
+{% endif %}
+<div style="text-align: right; font-size: 12px;">
+  Source: <a href="{{ source_url }}" target="_blank">CloudMeta</a>
+</div>
+{% if tt_is_req %}
+<h3 style="text-align:center;">FAaaS DOPE Summary</h3>
+  <div class="row">
+    <div class="column">
+      <table class="table table-striped table-bordered text-center" summary="pod basic metadata">
+        <tbody>
+          {% comment %} <tr>
+            <td><strong>isSoakEnabled</strong></td>
+            <td>{{ tt_is_req.0.maintenancePolicy.isSoakEnabled }}</td>
+          </tr>
+          <tr>
+            <td><strong>monthlyPatchingOverride</strong></td>
+            <td>{{ tt_is_req.0.maintenancePolicy.monthlyPatchingOverride }}</td>
+          </tr>
+          <tr>
+            <td><strong>environmentMaintenanceOverride</strong></td>
+            <td>{{ tt_is_req.0.maintenancePolicy.environmentMaintenanceOverride }}</td>
+          </tr>
+          <tr>
+            <td><strong>patchingRegionOverride</strong></td>
+            <td>{{ tt_is_req.0.maintenancePolicy.patchingRegionOverride }}</td>
+          </tr>
+          <tr>
+            <td><strong>vertexAccessFlag</strong></td>
+            <td>{{ tt_is_req.0.maintenancePolicy.vertexAccessFlag }}</td>
+          </tr>
+          <tr>
+            <td><strong>isPodInA6Family</strong></td>
+            <td>{{ tt_is_req.0.maintenancePolicy.isPodInA6Family }}</td>
+          </tr> {% endcomment %}
+          <tr>
+            <td><strong>Resize Needed</strong></td>
+            <td>  <button type="button" class="btn btn-info">{{ tt_is_req.0.pendingActions.isResizeNeeded }}</button></td>
+          </tr>
+          <tr>
+            <td><strong>vm Shape Type</strong></td>
+            <td>{{ tt_is_req.0.vmShapeType }}</td>
+          </tr>
+          <tr>
+            <td><strong>Size</strong></td>
+            <td>{{ tt_is_req.0.size.fusionEnvironmentSize }}</td>
+          </tr>
+          <tr>
+            <td><strong>Extra AuxVM Count</strong></td>
+            <td>{{ tt_is_req.0.size.extraAuxiliaryVirtualMachineCount }}</td>
+          </tr>
+        </tbody> 
+      </table>
+    </div>
+    <div class="column">
+      <table class="table table-striped table-bordered text-center" summary="pod basic metadata">
+        <tbody>
+          {% comment %} <tr>
+            <td><strong>quarterlyUpgradeBeginTimes-overrideType</strong></td>
+            <td>{{ tt_is_req.0.maintenancePolicy.quarterlyUpgradeBeginTimes.overrideType }}</td>
+          </tr>
+          <tr>
+            <td><strong>quarterlyUpgradeBeginTimes-beginTimesValue</strong></td>
+            <td>{{ tt_is_req.0.maintenancePolicy.quarterlyUpgradeBeginTimes.beginTimesValue }}</td>
+          </tr> {% endcomment %}
+          <tr>
+            <td><strong>Supported Platform</strong></td>
+            <td>{{ tt_is_req.0.supportedPlatform }}</td>
+          </tr>
+          <tr>
+            <td><strong>Pod Db Name</strong></td>
+            <td>{{ tt_is_req.0.podDbName }}</td>
+          </tr>
+          <tr>
+            <td><strong>AuxVM Count</strong></td>
+            <td>{{ tt_is_req.0.size.auxiliaryVirtualMachineCount }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div style="text-align: right; font-size: 12px;">
+      Source: <a href={{ source_url_dop }} target="_blank">Devops Portal</a>
+  </div>
+{% endif %}
+
+<!-- The Modal -->
+<div class="modal fade lbaas-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title" style="text-align:center">
+                LBaaS Details
+            </h4>
+          <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border loader-spin-off" id="loader-sp-5">
+            </div>
+          </div>
+          <div id="lbaas_data_button"></div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+</div>

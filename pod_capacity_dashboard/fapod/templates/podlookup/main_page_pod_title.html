@@ -1,0 +1,13 @@
+{% if k %}
+        <div class="row">
+            <div class="card border-0">
+                <div class="card-header">
+                      <h2 style="text-align:center;">{{ k.Pod_Name }}  -- {{ k.customer_name }}</h2>
+                </div>
+            </div>
+          {% include "podlookup/pod_basic_metadata.html" %}
+          {% include "podlookup/accordian.html" %}
+        </div>
+{% else %}
+      <h4 style="text-align:center;">Please choose correct pod data</h4>
+{% endif %}

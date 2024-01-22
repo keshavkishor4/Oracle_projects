@@ -1,0 +1,33 @@
+{% include "podlookup/header.html" %}
+{% load static %}
+
+<!-- <h2 style="text-align:center;"> Cred Value Not selected. Please select Account value on header page </h2> -->
+<div class="container">
+    <div class="modal fade" id="onload" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true"> <!-- Add this line to your code -->
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="card">
+                        <img class="card-img-top" alt="" src="{% static 'images/fsre_title.png' %}">
+                        <div class="card-body">
+                            <select onchange="location = this.value;" class="form-select" aria-label="Default select example">
+                                <option selected>Choose Realm</option>
+                                <option value="{% url 'credstore_page' %}?data=commercial">Commercial</option>
+                                <option value="{% url 'credstore_page' %}?data=ukg">UKGov</option>
+                                <option value="{% url 'credstore_page' %}?data=eura">Eura</option>
+                                <option value="{% url 'credstore_page' %}?data=ppd">PPD</option>
+                              </select>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(()=> {
+        $('#onload').modal("show")
+    })
+</script>

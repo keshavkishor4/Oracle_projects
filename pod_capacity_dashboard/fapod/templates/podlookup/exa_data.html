@@ -1,0 +1,125 @@
+{% include "podlookup/header.html" %}
+{% load static %}
+{% if exa_data %}
+<table class="table" summary="exadata details">
+    <thead>
+        <tr>
+            <th id="ex_name">EXADATA</th>
+            <th id="ex_pods">PODS</th>
+        </tr>
+    </thead>
+    {% for exa,pods in exa_data.items %}
+    <tbody>
+        <tr>
+            <td><button onclick="exadata_method('{{ exa }}')" style="border: 0;background-color: transparent;color: rgb(20, 136, 8); " data-bs-toggle="modal" data-bs-target=".exa_data-lg" >{{ exa }}</button></td>
+            <td>
+            {% for pod in pods %}
+                {% for i,j in pod.items %}
+                <button type="button" class="btn btn-outline-primary">{{ i }} - <b>{{ j }}</b></button>
+                {% endfor %}
+            {% endfor %}
+            </td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+  
+<style>
+  .table {
+      display: table;
+      width: 100%;
+  }
+
+  .table tr {
+      display: table-row;
+  }
+
+  .table td {
+      display: table-cell;
+      padding: 5px; /* Optional: Add padding for spacing */
+  }
+</style>
+
+<table class="table" summary="DB INIT Details">
+  <tr>
+      <td style="width: 50%;">DB INIT CONFIGURATION DETAILS</td>
+      <td>
+        <button type="button" class="btn btn-outline-primary" onclick="db_init_conf_collapse()"
+            style="border: 1px solid rgb(20, 136, 8); background-color: transparent; color: rgb(20, 136, 8);"
+            data-bs-toggle="modal" data-bs-target=".db_data-lg">DB Init Conf Details</button>
+      </td>
+  </tr>
+</table>
+{% else %}
+<p style="text-align:center"> Unable to fetch ExaData details. Please check JC configurations</p>
+{% endif %}
+<div style="text-align: right; font-size: 12px;">
+  Source: <a href="{{ source_url }}" target="_blank">CloudMeta</a>
+</div>
+<!-- The Modal -->
+<div class="modal fade exa_data-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title" style="text-align:center;">
+                ExaData Details</h4>
+          <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border loader-spin-off" id="loader-sp-6">
+            </div>
+          </div>
+          <div id="exa_data_button"></div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+</div>
+
+<div class="modal fade db_data-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+          <h4 class="modal-title" style="text-align:center;">
+            DB Init Conf Details</h4>
+        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border loader-spin-off" id="loader-sp-10">
+          </div>
+        </div>
+        <div id="db_init_conf_data_div"></div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#Table_data_inst_1').DataTable( {
+      dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv'
+        ]
+
+    } );
+});
+
+</script>

@@ -1,0 +1,61 @@
+{% include "podlookup/header.html" %}
+{% load static %}
+{% if region_level_pod_capacity %}
+<style>
+    div.cap_id {
+      white-space: nowrap;
+      width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    div.cap_id:hover {
+      overflow: visible;
+    }
+</style>
+  <h2 style="text-align:center;">Pod Capacity Dashboard</h2>
+<hr>
+<table id="Table_data_inst" class="table table-striped table-bordered text-center" summary="regionwise pod count">
+    <thead>
+      <tr>
+        <th id="rgw_reg">Region</th>
+        <th id="rgw_capid">Capacity_Reservation_Id</th>
+        <th id="rgw_dn">Display Name</th>
+        <th id="rgw_insts">Instance Shape</th>
+        <th id="rgw_rc">Reserved Count</th>
+        <th id="rgw_uc">Used Count</th>
+        <th id="rgw_per">Percentage</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for user in region_level_pod_capacity %}
+      {% if user.percentage >= 85 %}
+      <tr class="table-danger">
+      {% elif user.percentage >= 75 and user.percentage < 85 %}
+      <tr class="table-warning">
+      {% else %}
+      <tr>
+      {% endif %}
+        <td>{{ user.region_name }}</td>
+        <td><div class="cap_id" data-toggle="tooltip" data-placement="bottom" > {{ user.cap_id }} </div></td>
+        <td>{{ user.display_name }}</td>
+        <td>{{ user.instance_shape }}</td>
+        <td>{{ user.reserved_count }}</td>
+        <td>{{ user.used_count }}</td>
+        <td>{{ user.percentage }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+    <p style="text-align:center;"> Unable to fetch data</p>
+{% endif %}
+<script>
+  $(document).ready(function () {
+    console.log('Inside function')
+    let table = new DataTable('#Table_data_inst');
+    //$('#Table_data_inst').DataTable();
+});
+</script>
+{% include "podlookup/footer.html" %}

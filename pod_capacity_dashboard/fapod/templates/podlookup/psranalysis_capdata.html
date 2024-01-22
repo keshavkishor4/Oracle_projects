@@ -1,0 +1,69 @@
+{% if cmd_output %}
+<style>
+    div.w {
+      white-space: nowrap;
+      width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    div.w:hover {
+      overflow: visible;
+    }
+</style>
+
+{% for cap_id,cap_values in cmd_output.items %}
+{% for obj,obj_data in cap_values.items %}
+{% if obj == "cap" %}
+
+<table class="table table-striped table-bordered text-center" summary="cap reservation table">
+    <thead class="table-dark">
+        <tr>
+            <th id="capdn">AVAILABILITY DOMAIN</th>
+            <th id="cap_cid">CAPACITY ID</th>
+            <th id="cap_dn">DISPLAY NAME</th>
+            <th id="cap_resct">RESERVED INSTANCE COUNT</th>
+            <th id="cap_used_count">USED INSTANCE COUNT</th>
+            <th id="cap_free_count">FREE INSTANCE COUNT</th>
+            <th id="cap_percent">PERCENTAGE</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for data,valu in obj_data.items %}
+        <td> {{ valu }}</td>
+        {% endfor %}
+      </tr>
+    </tbody>
+</table>
+{% endif %}
+{% if obj == "pod_cap" %}
+<table class="table table-striped table-bordered text-center" summary="Cap Data">
+    <thead class="table-dark">
+      <tr>
+        <th>Display Name</th>
+        <th>Instance Shape</th>
+        <th>MEMORY</th>
+        <th>OCPUS</th>
+        <th>Reserved Count</th>
+        <th>Used Count</th>
+        <th>Free Count</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    {% for list in obj_data %}
+    <tbody>
+        <tr>
+        {% for data,valu in list.items %}
+        <td> {{ valu }}</td>
+        {% endfor %}
+        </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+{% else %}
+  <p>No Capacity data</p>
+{% endif %}

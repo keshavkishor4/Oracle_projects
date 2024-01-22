@@ -1,0 +1,51 @@
+{% if region_wise_result %}
+
+<style>
+  div.cap_id {
+    white-space: nowrap;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  div.cap_id:hover {
+    overflow: visible;
+  }
+</style>
+
+<table class="table table-striped table-bordered text-center" summary="regionwise cap data">
+    <thead class="table-dark">
+      <tr>
+        <th id="rg_reg">REGION</th>
+      <!--  <th>AVAILABILITY DOMAIN</th> -->
+        <th id="rg_dp">DISPLAY NAME</th>
+        <th id="rg_cpid">CAPACITY ID</th>
+        <th id="rg_rc">RESERVED INSTANCE COUNT</th>
+        <th id="rg_usdcount">USED INSTANCE COUNT</th>
+        <th id="rg_per">PERCENTAGE</th>
+      </tr>
+    </thead>
+    {% for obj in region_wise_result %}
+    <tbody>
+      {% if obj.percentage >= 85 %}
+      <tr class="table-danger">
+      {% elif obj.percentage >= 75 and obj.percentage < 85 %}
+      <tr class="table-warning">
+      {% else %}
+      <tr>
+      {% endif %}
+        <td>{{ obj.region_name }}</td>
+   <!-- <td>{{ obj.availability_domain }}</td> -->
+        <td>{{ obj.display_name }}</td>
+        <td><div class="cap_id" data-toggle="tooltip" data-placement="bottom" >{{ obj.cap_id }}</div></td>
+        <td>{{ obj.reserved_instance_count }}</td>
+        <td>{{ obj.used_instance_count }}</td>
+        <td>{{ obj.percentage }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+{% else %}
+  <center>
+    <p> Unable to fetch Capacity Reservation details</p>
+  </center>
+{% endif %}

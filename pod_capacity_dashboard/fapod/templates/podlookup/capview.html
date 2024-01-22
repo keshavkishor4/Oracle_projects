@@ -1,0 +1,95 @@
+{% if cap_data %}
+<style>
+    div.w {
+      white-space: nowrap;
+      width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    div.w:hover {
+      overflow: visible;
+    }
+</style>
+
+<table class="table table-striped table-bordered text-center" summary="cap reservation table">
+    <thead class="table-dark">
+        <tr>
+            <th id="cap_dn">DISPLAY NAME</th>
+            <th id="avb_dn">AVAILABILITY DOMAIN</th>
+            <th id="cap_cid">CAPACITY ID</th>
+            <th id="cap_resct">RESERVED INSTANCE COUNT</th>
+            <th id="cap_used_count">USED INSTANCE COUNT</th>
+            <th id="free_count">FREE INSTANCE COUNT</th>
+            <th id="cap_percent">PERCENTAGE</th>
+        </tr>
+    </thead>
+    {% for obj in cap_data %}
+    <tbody>
+      {% if obj.percentage >= 85 %}
+      <tr class="table-danger">
+      {% elif obj.percentage >= 75 and obj.percentage < 85 %}
+      <tr class="table-warning">
+      {% else %}
+      <tr>
+      {% endif %}
+        <td>{{ obj.display_name }}</td>
+        <td>{{ obj.availability_domain }}</td>
+        <td><div class="w" data-toggle="tooltip" data-placement="bottom" >{{ obj.cap_id }}</div>
+        </td>
+        <td>{{ obj.reserved_instance_count }}</td>
+        <td>{{ obj.used_instance_count }}</td>
+        <td>{{ obj.free_count }}</td>
+        <td>{{ obj.percentage }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+</table>
+{% else %}
+    <p>Unable to fetch data</p>
+{% endif %}
+{% if pod_cap_data %}
+
+<table class="table table-striped table-bordered text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>Display Name</th>
+        <th>Availability Domain</th>
+        <th>Instance Shape</th>
+        <th>MEMORY</th>
+        <th>OCPUS</th>
+        <th>Reserved Count</th>
+        <th>Used Count</th>
+        <th>Free Count</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    {% for user in pod_cap_data %}
+    <tbody>
+      {% if user.percentage >= 85 %}
+        <tr class="table-danger">
+      {% elif user.percentage >= 75 and user.percentage < 85 %}
+        <tr class="table-warning">
+      {% else %}
+        <tr>
+      {% endif %}
+        <td>{{ user.display_name }}</td>
+        <td>{{ user.availability_domain }}</td>
+        <td>{{ user.instance_shape }}</td>
+        <td>{{ user.memory }}</td>
+        <td>{{ user.ocpus }}</td>
+        <td>{{ user.reserved_count }}</td>
+        <td>{{ user.used_count }}</td>
+        <td>{{ user.free_count }}</td>
+        <td>{{ user.percentage }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+
+{% else %}
+    <p>Unable to fetch data</p>
+{% endif %}
+
+<div style="text-align: right; font-size: 12px;">
+  Source: <a href={{ source_url_dop }} target="_blank">Devops Portal</a>
+</div>

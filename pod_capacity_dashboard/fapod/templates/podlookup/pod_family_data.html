@@ -1,0 +1,31 @@
+{% if ATE %}
+  <div class="alert alert-danger" role="alert">
+    Seems One or More ATE Pods are larger than PROD, please cross check and raise with COEs for Production Resize. 
+  </div>
+{% endif %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">PodName</th>
+      <th scope="col">FM_Type</th>
+      <th scope="col">Size</th>
+      <th scope="col">Stamp</th>
+      <th scope="col">Bespoke Custom</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for i in result %}
+      <tr>
+        <td> <a href="{% url 'index_page' %}?pod_name={{ i.name }}" style="text-decoration: none;">{{ i.name }}</a> <!-- <button type="button" style="border: 0;background-color: transparent;color: rgb(23, 3, 237); "  onclick="pod_f('{{ i.name }}')" data-bs-toggle="modal" data-bs-target=".podf-modal-lg" >{{ i.name }}</button> --></td>
+        <td>{{ i.fmtype }}</td>
+        <td>{{ i.size }}</td>
+        <td>{{ i.stamp }}</td>
+        <td>{{ i.bespoke_custom }}</td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+<div style="text-align: right; font-size: 12px;">
+  Source: <a href="{{ source_url }}" target="_blank">CloudMeta</a>
+</div>

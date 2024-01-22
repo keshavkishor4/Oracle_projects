@@ -1,0 +1,168 @@
+{% include "podlookup/header.html" %}
+<body>
+  {% load static %}
+  <body>
+      <style>
+          #loader {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background: url("{% static 'images/Spinner-3.gif' %}") 50% 50% no-repeat rgb(249,249,249);
+  }
+  </style>
+  <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Create two equal columns that floats next to each other */
+      .column1 {
+        float: left;
+        width: 50%;
+        padding: 10px;
+      }
+      .column3 {
+        float: left;
+        width: 50%;
+        padding: 10px;
+      }
+
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      .collapse:not(.show) {
+    display: none;
+}
+      </style>
+  <div id="loader"></div>
+  <div class="container">
+      <!-- //NOSONAR --><center>
+                <div class="card" style="width: 25rem;">
+                    <div class="card-header">
+                      <h2>PSR Analysis</h2>
+                    </div>
+                    <div class="card-body">
+                      <form action="" method="GET">
+                          <div class="input-group mb-3">
+                              <label class="input-group-text" style="width: 50.1%;" for="items">PSR Report Type</label>
+                              <select class="form-select" id="items" name="items">
+                                  <option value="item0">Select Option</option>
+                                  <option value="Manual">Manual</option>
+                                  <option value="Stamp">Stamp</option>
+                              </select>
+                          </div>
+                          <div class="input-group mb-3">
+                              <label class="input-group-text" style="width: 50.1%;">Choose Request</label>
+                              <select class="form-select" id="size" name="size"></select>
+                          </div>
+                          <div class="input-group mb-3">
+                              <label class="input-group-text" style="width: 50.1%;">Choose Date</label>
+                              <select class="form-select" id="ChooseDate" name="ChooseDate"></select>
+                          </div>
+                          <div class="input-group mb-3">
+                              <label class="input-group-text" style="width: 50.1%;">Region</label>
+                              <select class="form-select" id="region" name="region"></select>
+                          </div>
+                          <div class="col-12">
+                              <button type="submit" class="btn btn-secondary btn-lg" onclick="Reset_fn()" >Submit</button>
+                          </div>
+                      </form>
+                    </div>
+                </div>
+            </center>
+
+<hr>
+<h2 style="text-align:center;"> Something went wrong on above page</h2>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+    $("#items").change(function () {
+        var val = $(this).val();
+        if (val == "Manual") {
+            $("#size").html("<option value='FMDate'>FM Date</option>");
+            var result="{{ m_fmdata | safe }}";
+            var j = JSON.parse('{{ manual_reg_fmdata | safe }}');
+            console.log(j)
+            $("#ChooseDate").html(result);
+          //  $("#region").html(reg);
+        } else if (val == "Stamp") {
+                $("#size").html("<option value='item0'>Select Option</option><option value='FMDate'>FM Date</option><option value='ReqDate'>Request Date</option>");
+        }
+    });
+});
+
+function Reset_fn() {
+  document.getElementById("myForm").reset();
+}
+
+$(document).ready(function () {
+    $("#size").change(function () {
+        var val = $(this).val();
+        var report= document.getElementById('items').value
+        if (report == "Stamp"){
+          if (val == "ReqDate"){
+            var result = "{{ Req_stamp | safe }}";
+            var reg="{{ reg_stamp | safe }}";
+            $("#ChooseDate").html(result);
+          }
+          else if (val == "FMDate"){
+            var result = "{{ s_fmdata | safe }}";
+            var reg="{{ reg_stamp | safe }}";
+            var j = JSON.parse('{{ stamp_reg_fmdata | safe }}');
+            $("#ChooseDate").html(result);
+            $("#region").html(reg);
+          }
+        }
+    });
+});
+
+$(document).ready(function () {
+    $("#ChooseDate").change(function () {
+        var val = $(this).val();
+        var report = document.getElementById('items').value
+        var request = document.getElementById('size').value
+        let text = "";
+        if (report == "Manual") {
+          var data = JSON.parse('{{ manual_reg_fmdata | safe }}');
+          for (let i = 0; i < data[val].length; i++) {
+            text=text+"<option value=\'"+data[val][i]+"\'>"+data[val][i]+"</option>"
+            console.log(i)
+            console.log(data[val][i])
+          }
+        }else if (report == "Stamp") {
+          if (request == "ReqDate"){
+            var data = JSON.parse('{{ stamp_reg_reqdata | safe }}');
+            console.log(data)
+            for (let i = 0; i < data[val].length; i++) {
+              text=text+"<option value=\'"+data[val][i]+"\'>"+data[val][i]+"</option>"
+              console.log(i)
+              console.log(data[val][i])
+            }
+
+          }else if (request == "FMDate"){
+            var data = JSON.parse('{{ stamp_reg_fmdata | safe }}');
+            console.log(data)
+            for (let i = 0; i < data[val].length; i++) {
+              text=text+"<option value=\'"+data[val][i]+"\'>"+data[val][i]+"</option>"
+              console.log(i)
+              console.log(data[val][i])
+            }
+          }
+        }
+        $("#region").html(text);
+    });
+});
+
+
+</script>
+
+</body>
+{% include "podlookup/footer.html" %}

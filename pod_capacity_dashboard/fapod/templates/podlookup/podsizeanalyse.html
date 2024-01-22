@@ -1,0 +1,457 @@
+{% include "podlookup/header.html" %}
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+{% load static %}
+<body>
+    <style>
+        #loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url("{% static 'images/Spinner-3.gif' %}") 50% 50% no-repeat rgb(249,249,249);
+}
+.collapse:not(.show) {
+  display: none;
+}
+
+.modal-dialog{
+  position: relative;
+  display: table; /* This is important */
+  overflow-y: auto;
+  overflow-x: auto;
+  width: auto;
+  min-width: 300px;
+}
+</style>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Create two equal columns that floats next to each other */
+    .column1 {
+      float: left;
+      width: 50%;
+      padding: 10px;
+    }
+    .column3 {
+      float: left;
+      width: 50%;
+      padding: 10px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style>
+<div id="loader"></div>
+<div class="container">
+
+    <center>
+        <div class="card" style="width: 25rem;">
+            <div class="card-header" style="background:linear-gradient(45deg,red,black)">
+                <h2 style="color:white">Pod Size Analyser</h2>
+            </div>
+            <div class="card-body">
+                <form action="" method="GET">
+                    <div class="input-group mb-3">
+                        <label for="podname" class="form-label" style="width: 50.1%;"><strong>Pod Name:</strong></label>
+                        <input type="text" name="podname" id="podname" class="form-control" placeholder="Example: EEHO" required>
+                    </div>
+                    <div class="input-group mb-3">
+                      <label for="size" class="form-label" style="width: 50.1%;"><strong>Target Size:</strong></label>
+                      <select name="size" id="size" class="form-select" style="width: 50.1%;">
+                          <option value="">Select Size</option>
+                      </select>
+                  </div>          
+                    <div class="input-group mb-3">
+                        <label for="source_arc" class="form-label" style="width: 50.1%;"><strong>Source Architecture:</strong></label>
+                        <select name="source_arc" id="source_arc" class="form-select">
+                            <option value="X6">X6/VM.Standard.B1.*</option>
+                            <option value="X7">X7/VM.Standard2.*</option>
+                            <option value="AMD">AMD/VM.Standard.E3.Flex</option>
+                            <option value="AMDE4FULL">AMDE4FULL/VM.Standard.E4.Flex</option>
+                            <option value="ARMA1">ARMA1/VM.Standard.A1.Flex</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="target_arc" class="form-label" style="width: 50.1%;"><strong>Target Architecture:</strong></label>
+                        <select name="target_arc" id="target_arc" class="form-select">
+                          <option value="X6">X6/VM.Standard.B1.*</option>
+                          <option value="X7">X7/VM.Standard2.*</option>
+                          <option value="AMD">AMD/VM.Standard.E3.Flex</option>
+                          <option value="AMDE4FULL">AMDE4FULL/VM.Standard.E4.Flex</option>
+                          <option value="ARMA1">ARMA1/VM.Standard.A1.Flex</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </center>
+    <hr>
+<center>
+{% if input %}
+<p style="text-align:center;color:blue;"> Input Data </p>
+<table class="table table-bordered border-primary">
+  <thead>
+    <tr>
+      <th scope="col">Pod Name</th>
+      <th scope="col">Source Size</th>
+      <th scope="col">Target Size</th>
+      <th scope="col">Resize Type</th>
+      <th scope="col">Source Architecture</th>
+      <th scope="col">Target Architecture</th>
+      <th scope="col">isFAAS </th>
+      <th scope="col">Region</th>
+      <th scope="col">Capacity Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ input.pod }}</td>
+      <td>{{ source_size }}</td>
+      <td>{{ input.size }}</td>
+      <td>{{ resize_type }}</td>
+      <td>{{ input.s_arc }}</td>
+      <td>{{ input.t_arc }}</td>
+      <td>{{ fass_var }}</td>
+      <td>{{ pod_region_name }}</td>
+      <td><button type="button" onclick="capdetails('{{ input.pod }}','{{ pod_region_name }}')" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ input.pod }} Capacity </button></td>
+    </tr>
+  </tbody>
+</table>
+
+{% endif %}
+
+{% if result %}
+<h2 style="text-align:center;"> {{ pod }} </h2>
+<hr>
+{% endif %}
+
+{% if bespoke_mt %}
+  <h5 style="text-align:center; color: red;">This is a MT Bespoked POD, Perform MT sizing checks Manually</h5>
+  <h5 style="text-align:center; color: red;">{{ bespoke_mt }}</h5>
+  <hr>
+{% else %}
+
+<div class="row">
+  <div class="column" style="flex:40%;padding:1px;">
+    <div class="card" style="width: 32rem;">
+        <div class="card-header" style="background:linear-gradient(45deg,rgb(6, 154, 11),black);" >
+            <h2 style="color: white;text-align:center;">Current Usage</h2>
+        </div>
+        <div class="card-body">
+        {% for key,data_it in result.items %}
+        {% if key == 'current_uses' %}
+        {% for obj,value in data_it.items %}
+
+        <table class="table table-striped" summary="values">
+            <tbody>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>SHAPE</th>
+                    <th>OCPUS</th>
+                    <th>MEMORY</th>
+                    <th>COUNT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for li in value %}
+                  <tr>
+                    <td>{{ obj }}</td>
+                    {% for i,j in li.items %}
+                    <td> {{ j }}</td>
+                    {% endfor %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </tbody>
+        </table>
+
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+
+  </div>
+  <div class="column" style="flex:20%;">
+    <span style='font-size:100px;'>&#8680;</span>
+  </div>
+  <div class="column" style="flex:40%;padding:2px;">
+    <div class="card" style="width: 32rem;">
+        <div class="card-header" style="background:linear-gradient(45deg,blue,black);">
+            <h2 style="color: white;text-align:center;">Capacity required </h2>
+        </div>
+        <div class="card-body">
+        {% for key,data_it in result.items %}
+        {% if key == 'capacity_require' %}
+        {% for obj,value in data_it.items %}
+
+        <table class="table table-striped" summary="values">
+           <thead>
+                <th colspan="2" style="text-align: center;">{{ obj }}</th>
+            </thead>
+            <tbody>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>SHAPE</th>
+                    <th>OCPUS</th>
+                    <th>MEMORY</th>
+                    <th>COUNT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for li in value %}
+                  <tr>
+                    <td>{{ obj }}</td>
+                    {% for i,j in li.items %}
+                    <td> {{ j }}</td>
+                    {% endfor %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </tbody>
+        </table>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+<hr>
+<table summary="output data">
+    <tbody>
+        <tr>
+            <td>
+                <div class="card" style="width: 23rem;">
+                    <div class="card-header" style="background:linear-gradient(45deg,rgb(6, 154, 11),black);" >
+                        <h2 style="color: white;text-align:center;">Current Size</h2>
+                    </div>
+                    <div class="card-body">
+                    {% for key,data in result.items %}
+                    {% if key == 'pod_current_size' %}
+                    {% for obj,value in data.items %}
+                    {% if obj == 'vmtype' %}
+                    {% for obj1,value1 in value.items %}
+                    <table class="table table-striped" summary="values">
+                        <thead>
+                            <th colspan="2" style="text-align: center;">{{ obj1 }}</th>
+                        </thead>
+                        <tbody>
+                            {% for i,j in value1.items %}
+                            <tr>
+                                <td>{{ i }} </td>
+                                <td>{{ j }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endfor %}
+                    {% else %}
+                    <p> <strong> {{ obj }} : </strong> {{ value }} </p>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span style='font-size:100px;'>&#8680;</span>
+            </td>
+            <td>
+                <div class="card" style="width: 23rem;">
+                    <div class="card-header" style="background:linear-gradient(45deg,blue,black);">
+                        <h2 style="color: white;text-align:center;">Target Size</h2>
+                    </div>
+                    <div class="card-body">
+                    {% for key,data in result.items %}
+                    {% if key == 'pod_target_size' %}
+                    {% for obj,value in data.items %}
+                    {% if obj == 'vmtype' %}
+                    {% for obj1,value1 in value.items %}
+                    <table class="table table-striped" summary="values">
+                        <thead>
+                            <th colspan="2" style="text-align: center;">{{ obj1 }}</th>
+                        </thead>
+                        <tbody>
+                            {% for i,j in value1.items %}
+                            <tr>
+                                <td>{{ i }} </td>
+                                <td>{{ j }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endfor %}
+                    {% else %}
+                    <p> <strong> {{ obj }} : </strong> {{ value }} </p>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+
+{% if resize_type == 'T-Shirt' %}
+  {% if bespoke_db == 'Yes' %}
+    <h5 style="text-align:center; color: red;">This is a DB Bespoked POD, Perform DB sizing checks Manually</h5>
+    <hr>
+  {% else %}
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button onclick="exa_data_collapse()" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        EXADATA Details
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border loader-spin-off" id="loader-sp-3">
+          </div>
+        </div>
+          <div id="exa_data_div">
+
+          </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endif %}
+
+</center>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pod Capacity Details</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border loader-spin-off" id="loader-cap">
+          </div>
+        </div>
+        <div id="capacity_data">
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+<script>
+  // Function to populate the "Target Size" dropdown
+  function populateTargetSizeDropdown() {
+      const sizeSelect = $('#size'); // Use jQuery to select the element
+
+      const sizes = ["XS0", "S0", "S1", "S2", "M0", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12",
+          "L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8", "L9", "L10", "L11", "L12", "L13", "L14", "L15", "L16", "L17", "L18", "L19", "L20",
+          "L21", "L22", "L23", "L24", "L25", "L26", "L27", "L28", "L29", "L30", "L31", "L32", "L33", "L34", "L35", "L36", "L37", "L38", "L39", "L40",
+          "L41", "L42", "L43", "L44", "L45", "L46", "L47", "L48", "L49", "L50", "L51", "L52", "L53", "L54", "L55", "L56", "L57", "L58", "L59", "L60"];
+
+      // Initialize the Select2 dropdown
+      sizeSelect.select2({
+          data: sizes.map(size => ({ id: size, text: size })),
+          placeholder: "Select Size",
+          width: '50.1%'
+      });
+  }
+
+  // Call the function to populate the dropdown when the page is loaded
+  $(document).ready(function() {
+      populateTargetSizeDropdown();
+  });
+</script>
+
+<script type="text/javascript">
+  var csrftoken = '{{ csrf_token }}'
+    $(document).ready(function() {
+        console.log('inside')
+       $("#loader").fadeOut(1000);
+    });
+
+    function validateForm() {
+  let x = document.forms["myForm"]["podname"].value;
+  let y =document.forms["myForm"]["size"].value;
+  let z =document.forms["myForm"]["arc"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  if (y == "") {
+    alert("Size must be filled out");
+    return false;
+  }
+  if (z == "") {
+    alert("ARC must be filled out");
+    return false;
+  }
+}
+
+function capdetails(pod,region) {
+    //console.log(region_name)
+    try{
+    let ajax = new XMLHttpRequest();
+    var spin=document.getElementById("loader-cap");
+    spin.classList.remove("loader-spin-off")
+    spin.classList.add("loader-spin-on")
+    ajax.onreadystatechange = function(){
+    if (this.readyState === 4){
+        if (this.status === 200){
+          spin.classList.remove("loader-spin-on")
+          spin.classList.add("loader-spin-off")
+          console.log(this.responseText)
+          document.getElementById("capacity_data").innerHTML = this.responseText;
+          console.log(this.responseText)
+        }
+    }
+}
+ajax.open("POST", "{% url 'psrpagecapview' %}", true);
+ajax.setRequestHeader("X-CSRFToken",csrftoken)
+const data = new FormData()
+data.append('podname',pod)
+data.append('region',region)
+ajax.send(data);
+}
+catch (e){
+  console.log(e);
+}
+}
+ </script>
+{% include "podlookup/footer.html" %}
+
+<div style="text-align: right; font-size: 12px;">
+  Source: <a href="{{ source_url }}" target="_blank">CloudMeta</a>
+</div>

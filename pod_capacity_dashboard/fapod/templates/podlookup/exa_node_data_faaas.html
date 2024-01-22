@@ -1,0 +1,193 @@
+{% if data %}
+<h3>FAAAS HostName : <b>{% for obj in data %}{{ obj.hostname }}{% endfor %}</b></h3>
+<table class="table table-striped table-bordered text-center" summary="Exa node info">
+    <thead class="table-dark">
+    </thead>
+    <tbody>
+        {% for obj in data %}
+        <tr>
+            <td>HostName</td>
+            <td>{{ obj.hostname }}</td>
+        </tr>
+        <tr>
+            <td>Role</td>
+            <td>{{ obj.role }}</td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td>{{ obj.type_of_hw }}</td>
+        </tr>
+        <tr>
+            <td>DataCenterCode</td>
+            <td>{{ obj.datacenter_code }}</td>
+        </tr>
+        <tr>
+            <td>UUID</td>
+            <td>{{ obj.uuid }}</td>
+        </tr>
+        <tr>
+            <td>Instance_OCID</td>
+            <td>{{ obj.instance_ocid }}</td>
+        </tr>
+        <tr>
+            <td>SerialNumber</td>
+            <td>{{ obj.serial_number }}</td>
+        </tr>
+        <tr>
+            <td>KernalVersion</td>
+            <td>{{ obj.kernel_version }}</td>
+        </tr>
+        <tr>
+            <td>CPU_MODEL</td>
+            <td>{{ obj.cpu_model }}</td>
+        </tr>
+        <tr>
+            <td>OS Version</td>
+            <td>{{ obj.os_version }}</td>
+        </tr>
+        <tr>
+            <td>IP Address</td>
+            <td>{{ obj.ip_address }}</td>
+        </tr>
+        <tr>
+            <td>Product Name</td>
+            <td>{{ obj.product_name }}</td>
+        </tr>
+        <tr>
+            <td>Environment</td>
+            <td>{{ obj.environment }}</td>
+        </tr>
+        <tr>
+          <td>ADP Node Id</td>
+          <td>{{ node_id }}</td>
+        </tr>
+        <tr>
+          <td>VM Cluster Id</td>
+          <td>{{ vm_cluster_id }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <h2>Unable to fetch ExaData values</h2>
+{% endif %}
+<h2>Health Status</h2>
+{% if health_check %}
+  {% for ht,he in health_check.items %}
+    <div style="overflow-x: auto;">
+      <table class="table table-striped table-bordered text-center" summary="Exanode info">
+        <thead>
+          <tr>
+            <th>HEALTH STATUS</th>
+            <th>State</th>
+            <th>Lifecycle Details</th>
+            <th>asmDATAFreeGB</th>
+            <th>asmDATATotalGB</th>
+            <th>asmRECOFreeGB</th>
+            <th>asmRECOTotalGB</th>
+            <th>availableHugePages</th>
+            <th>imageVersionCell</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ he.status }}</td>
+            <td>{{ he.lifecycleState }}</td>
+            <td>{{ he.lifecycleDetails }}</td>
+            <td>{{ he.infos.asmDATAFreeGB }}</td>
+            <td>{{ he.infos.asmDATATotalGB }}</td>
+            <td>{{ he.infos.asmRECOFreeGB }}</td>
+            <td>{{ he.infos.asmRECOTotalGB }}</td>
+            <td>{{ he.infos.availableHugePages }}</td>
+            <td>{{ he.infos.imageVersionCell }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>HugePages Info</h2>
+    <table class="table table-striped table-bordered text-center" summary="Exanode info">
+      <thead>
+        <tr>
+          <th>availableHugePages</th>
+          <th>HugePages(in GB)</th>
+          <th>Reserved HugePages</th>
+          <th>TotalHugePages for Resize</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ he.infos.availableHugePages }}</td>
+          <td>{{ he.infos.hugepage_gb}} GB</td>
+          <td>22 GB</td>
+          <td>{{ he.infos.Total_hugepage }} GB</td>
+        </tr>
+      </tbody>
+    </table>
+  {% endfor %}
+{% else %}
+  <h2>Getting error during health check calls </h2>
+{% endif %}
+<h2>DB Units</h2>
+{% if db_units %}
+<table class="table table-bordered border-primary">
+  <tr>
+    <td><b>LogicalClusterId:</b></td>
+    <td>{{ db_units.id }}</td>
+  </tr>
+</table>
+<table id="FaaS_DB_data" class="table table-striped table-bordered text-center" summary="FAAS DataBase Dashboard ">
+  <thead class="table-dark">
+    <tr>
+      <th rowspan="2">Availability Domain</th>
+      <th rowspan="2">Pod DB placement tag</th>
+      <th rowspan="2">Total Capacity (in DB Units)</th>
+      <th rowspan="2">Usable Capacity (in DB Units)</th>
+      <th rowspan="2">Available Capacity (in DB Units)</th>
+      <th rowspan="2">Available Capacity For Resize(in DB Units)</th>
+      <th colspan="4">Used Capacity (in numbers)</th>
+      <th colspan="4">Projected Capacity (in numbers)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>XS</td>
+      <td>S</td>
+      <td>M</td>
+      <td>L</td>
+      <td>XS</td>
+      <td>S</td>
+      <td>M</td>
+      <td>L</td>
+    </tr>
+    <tr>
+      <td>{{ db_units.availabilityDomain }}</td>
+      <td>{{ db_units.freeformTags.POD_DB_PLACEMENT_TAG }}</td>
+      <td>{{ db_units.maximumDbUnits }}</td>
+      <td>{{ db_units.safeDbUnits }}</td>
+      <td>{{ db_units.availableDbUnits }}</td>
+      <td>{{ db_units.acforresize }}</td>
+      <td>{{ db_units.numberOfPodDbsProvisioned.ExtraSmall }}</td>
+      <td>{{ db_units.numberOfPodDbsProvisioned.Small }}</td>
+      <td>{{ db_units.numberOfPodDbsProvisioned.Medium }}</td>
+      <td>{{ db_units.numberOfPodDbsProvisioned.Large }}</td>
+      <td>{{ db_units.numberOfPodDbsCanBeProvisioned.ExtraSmall }}</td>
+      <td>{{ db_units.numberOfPodDbsCanBeProvisioned.Small }}</td>
+      <td>{{ db_units.numberOfPodDbsCanBeProvisioned.Medium }}</td>
+      <td>{{ db_units.numberOfPodDbsCanBeProvisioned.Large }}</td>
+    </tr>
+  </tbody>
+</table>
+
+{% else %}
+  <h2>Getting error during DB Units details </h2>
+{% endif %}
+
+<div style="text-align: right; font-size: 12px;">
+  Source: <a href={{ source_url_dop }} target="_blank">Devops Portal</a>
+</div>

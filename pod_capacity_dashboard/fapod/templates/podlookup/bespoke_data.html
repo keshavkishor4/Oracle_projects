@@ -1,0 +1,58 @@
+{% include "podlookup/header.html" %}
+
+<table class="table" summary="Bespke Details">
+    <tr>
+        <td><strong>Bespoke MT Layer</strong></td>
+        <td>{{ bespoke_mt  }}</td>
+        {% if bespoke_mt == 'Yes' %}
+            <td><strong>BugDB URL</strong></td>
+            <td>
+                <a href="https://bug.oraclecorp.com/pls/bug/webbug_edit.edit_info_top?rptno={{ extracted_value }}" target="_blank">
+                    {{ extracted_value }}
+                </a>
+            </td>
+        {% endif %}
+
+
+    </tr>
+    <tr>
+        <td style="width: 50%;">Bespoke DB Layer</td>
+        <td>
+            <button type="button" class="btn"
+                style="border: 1px solid; 
+                       {% if bespoke_db == 'Yes' %}color: red;{% elif bespoke_db == 'No' %}color: green;{% endif %};
+                       background-color: transparent;"
+                onclick="bespoke_db_details_collapse()"
+                data-bs-toggle="modal" data-bs-target=".db_data-lg">
+                {{ bespoke_db }}
+            </button>
+        </td>
+    </tr>
+</table>
+<!-- The Modal -->
+<div class="modal fade db_data-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title" style="text-align:center;">
+                Bespoke DB Layer</h4>
+          <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border loader-spin-off" id="loader-sp-14">
+            </div>
+          </div>
+          <div id="bespoke_db_details_div"></div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+{% if pod_data_from_metadata %}
+<table class="table table-hover" summary="pod metadata">
+    <thead>
+        <th id="pod_metadata_name">Name</th>
+        <th id="pod_metadata_value">Value</th>
+    </thead>
+{% for obj in pod_data_from_metadata %}
+    <tbody>
+        {% if obj.name == 'atk_url'%}
+        <tr>
+            <td> {{ obj.name }} </td>
+            <td> {{ obj.value }}</td>
+        </tr>
+        <tr>
+            <td> FA Url </td>
+            <td><a href="https://{{ obj.value }}/hcmUI/faces/FuseWelcome" class="link-info" style="text-decoration: none;">https://{{ obj.value }}/hcmUI/faces/FuseWelcome</a></td>
+        </tr>
+        <tr>
+            <td>BI Url </td>
+            <td><a href="https://{{ obj.value }}/analytics" class="link-info" style="text-decoration: none;">https://{{ obj.value }}/analytics</a></td>
+        </tr>
+        {% elif obj.name == 'isFAAAS' %}
+        <tr>
+            <td> {{ obj.name }} </td>
+            <td> <button type="button" class="btn btn-info">{{ obj.value }}</button> </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td> {{ obj.name }} </td>
+            <td> {{ obj.value }}</td>
+        </tr>
+        {% endif %}
+    </tbody>
+    {% endfor %}
+</table>
+{% else %}
+  <p style="text-align:center"> Unable to fetch Pod data. Please check JC configurations</p>
+{% endif %}
+
+<div style="text-align: right; font-size: 12px;">
+    Source: <a href="{{ source_url }}" target="_blank">CloudMeta</a>
+  </div>

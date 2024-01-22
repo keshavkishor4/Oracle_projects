@@ -1,0 +1,79 @@
+{% include "podlookup/header.html" %}
+{% load static %}
+<body>
+  <style>
+    #loader {
+position: fixed;
+left: 0px;
+top: 0px;
+width: 100%;
+height: 100%;
+z-index: 9999;
+background: url("{% static 'images/Spinner-3.gif' %}") 50% 50% no-repeat rgb(249,249,249);
+}
+</style>
+<div id="loader"></div>
+
+<div class="container">
+
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">RegionWise Capacity Details</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">No Capacity List</button>
+      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Unable To FetchInfo</button>
+      <button class="nav-link" id="nav-capacity-tab" data-bs-toggle="tab" data-bs-target="#nav-capacity" type="button" role="tab" aria-controls="nav-capacity" aria-selected="false">RegionWise Pod Capacity Details</button>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        {% include "podlookup/regionwise_capacity_details.html" %}
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        {% include "podlookup/nocapacity_list.html" %}
+    </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        {% include "podlookup/unableto_fetch_info.html" %}
+    </div>
+    <div class="tab-pane fade" id="nav-capacity" role="tabpanel" aria-labelledby="nav-capacity-tab">
+      {% include "podlookup/regionwise_podcapacity_details.html" %}
+  </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal fade pod-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+          <h4 class="modal-title" style="text-align:center;">
+              Pod Capacity Details
+          </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div id="pod_capacity_button"></div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      console.log('inside')
+     $("#loader").fadeOut(1000);
+  });
+
+</script>
+
+</body>
+{% include "podlookup/footer.html" %}

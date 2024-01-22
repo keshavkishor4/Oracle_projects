@@ -1,0 +1,61 @@
+pipeline {
+    agent any
+
+    environment {
+                SONAR_SCANNER_HOME = tool 'jenkins_sonarqube_scanner'
+                PROJECT_NAME = "FSRE-MW-Pod_Capacity_dashboard"
+                SONAR_REPORT_URL = "https://arques.us.oracle.com/sonar/dashboard?id=${PROJECT_NAME}"
+                BRANCH_NAME = "final"
+            }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+
+        stage('SonarQube Analysis') {
+            steps {
+                
+                withSonarQubeEnv('jenkins_sonarqube') {
+                    sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectName=${PROJECT_NAME} -Dsonar.branch.name=${BRANCH_NAME} -Dsonar.projectKey=${PROJECT_NAME} -Dsonar.projectVersion=1.0 -Dsonar.language=py -Dsonar.sources=. -Dsonar.sourceEncoding=UTF-8 -Dsonar.analysisCache.enabled=false -Dsonar.jet.audit.enabled=false"
+                    
+                }
+            }
+        }
+
+
+        stage('Build') {
+            steps {
+                sh "echo Building branch ${BRANCH_NAME}"
+            }
+        }
+
+    }
+
+    post {
+        success {
+            script {
+                def buildURL = env.BUILD_URL
+                def buildSubject = "Pipeline SUCCESS: ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
+                def buildBody = "View the Pipeline: ${buildURL}\n\nSonarQube Report: ${SONAR_REPORT_URL}"
+                mail to: 'zakahmed_org_ww@oracle.com,amuluri.hareesh@oracle.com',
+                    subject: buildSubject,
+                    body: buildBody
+            }
+        }
+        failure {
+            script {
+                def buildURL = env.BUILD_URL
+                def buildSubject = "Pipeline FAILURE: ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
+                def buildBody = "View the Pipeline: ${buildURL}"
+                mail to: 'zakahmed_org_ww@oracle.com,amuluri.hareesh@oracle.com',
+                    subject: buildSubject,
+                    body: buildBody,
+                    mimeType: 'text/html'
+            }
+        }
+    }
+}

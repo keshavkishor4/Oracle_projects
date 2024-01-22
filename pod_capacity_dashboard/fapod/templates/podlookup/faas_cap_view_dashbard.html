@@ -1,0 +1,109 @@
+{% include "podlookup/header.html" %}
+{% load static %}
+<body>
+  <style>
+      #loader {
+          position: fixed;
+          left: 0px;
+          top: 0px;
+          width: 100%;
+          height: 100%;
+          z-index: 9999;
+          background: url("{% static 'images/Spinner-3.gif' %}") 50% 50% no-repeat rgb(249,249,249);
+      }
+  </style>
+  <div id="loader"></div>
+  <div class="container">
+
+    <!-- //NOSONAR --><center>
+        <div class="card" style="width: 25rem;">
+            <div class="card-header">
+              <h2>Region</h2>
+            </div>
+            <div class="card-body">
+              <form action="" method="GET">
+                  <div class="input-group mb-3">
+                      <label class="input-group-text" style="width: 50.1%;" for="items">Region</label>
+                      <select class="form-select" id="regions" name="regions">
+                          <option value="item0">Select Option</option>
+                        {% for i in region %}
+                          <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                      </select>
+                  </div>
+                  <div class="col-12">
+                      <button type="submit" class="btn btn-secondary btn-lg" onclick="Reset_fn()" >Submit</button>
+                  </div>
+              </form>
+            </div>
+        </div>
+    </center>
+  </div>
+  {% if exce %}
+  <div class="container">
+    {% if value %}
+    <h2 style="text-align:center;">Region: {{ value }}</h2>
+    {% endif %}
+    <hr>
+    <h3 style="text-align:center;"> No data Available </h3>
+  </div>
+  {% endif %}
+
+  {% if result %}
+  <div class="container">
+    {% if value %}
+    <h2 style="text-align:center;">Region: {{ value }}</h2>
+    {% endif %}
+    <hr>
+    <table id="FaaS_Pod_data" class="table table-striped table-bordered text-center" summary="FAAS Pod capacity Dashboard ">
+      <thead class="table-dark">
+        <tr>
+          <th id="fs_th1">ServiceName</th>
+          <th id="fs_th2">LimitName</th>
+          <th id="fs_th3">ScopeType</th>
+          <th id="fs_th4">AvailabilityDomain</th>
+          <th id="fs_th5">Total( Limit )</th>
+          <th id="fs_th6">Usage</th>
+          <th id="fs_th7">Available</th>
+          <th id="fs_th8">Available %</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in result %}
+        <tr>
+          <td>{{ i.serviceName }}</td>
+          <td>{{ i.limitName }}</td>
+          <td>{{ i.scopeType }}</td>
+          <td>{{ i.availabilityDomain }}</td>
+          <td>{{ i.value }}</td>
+          <td>{{ i.used }}</td>
+          <td>{{ i.available }}</td>
+          <td>{{ i.percentage }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#FaaS_Pod_data').DataTable( {
+        dom: 'Bfrtip',
+          buttons: [
+              'copy', 'csv'
+          ]
+
+      } );
+  });
+
+  </script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+          console.log('inside')
+         $("#loader").fadeOut(1000);
+      });
+
+   </script>
+</body>
+
+{% include "podlookup/footer.html" %}

@@ -1,0 +1,221 @@
+{% if pod_stamp_result %}
+            <div class="row">
+                <center>
+                     {{ pod_stamp_result.Pod_Name }}  -- <strong>{{ pod_stamp_result.customer_name }} -- Stamp Report </strong>
+                </center>
+                <hr>
+                <div class="column">
+                    <table class="table table-striped" summary="resource data">
+                        <tbody>
+                          <!--
+                          <tr>
+                            <td><strong>Request Date :</strong></td>
+                            <td>{{ pod_stamp_result.request_data }}</td>
+                          </tr> -->
+                          <tr>
+                            <td><strong>FM Date :</strong></td>
+                            <td>{{ pod_stamp_result.fm_date }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Bugs :</strong></td>
+                            <td>{{ pod_stamp_result.bugs }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>isADP :</strong></td>
+                            <td><b> {{ isadp }} </b></td>
+                          </tr>
+                          <!--
+                          <tr>
+                            <td><strong>BUG Creation Date :</strong></td>
+                            <td>{{ pod_stamp_result.bug_creation_date }}</td>
+                          </tr> -->
+                          <tr>
+                            <td><strong>Resize Type :</strong></td>
+                            <td>{{ pod_stamp_result.resize_type }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Execution Type :</strong></td>
+                            <td>{{ pod_stamp_result.execution_type }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Resize Reason :</strong></td>
+                            <td>{{ pod_stamp_result.resize_reason }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Environment Type :</strong></td>
+                            <td>{{ pod_stamp_result.environment_type }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Next Rel Date :</strong></td>
+                            <td>{{ pod_stamp_result.next_rel_date }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Next Rel Version :</strong></td>
+                            <td>{{ pod_stamp_result.next_rel_version }}</td>
+                          </tr>
+                          <!--
+                          <tr>
+                            <td><strong>Fresh P Or U :</strong></td>
+                            <td>{{ pod_stamp_result.fresh_p_or_u }}</td>
+                          </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="column">
+                    <table class="table table-striped">
+                        <tbody>
+                          <tr>
+                            <td><strong>Request Date :</strong></td>
+                            <td>{{ pod_stamp_result.request_data }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Current Release :</strong></td>
+                            {% ifequal pod_stamp_result.current_release version %}
+                            <td>{{ pod_stamp_result.current_release }}</td>
+                            {% else %}
+                            <td><p style="color:red;">{{ pod_stamp_result.current_release }}</p></td>
+                            {% endifequal %}
+                          </tr>
+                          <tr>
+                            <td><strong>Data Center :</strong></td>
+                            <td>{{ pod_stamp_result.data_center }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Environment Region Name :</strong></td>
+                            <td>{{ pod_stamp_result.environment_region_name }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Old Shape :</strong></td>
+                            <td>{{ pod_stamp_result.old_shape }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>New Shape :</strong></td>
+                            <td>{{ pod_stamp_result.new_shape }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>POD Size :</strong></td>
+                            <td>{{ pod_stamp_result.pod_size }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>HW Map :</strong></td>
+                            <td>{{ pod_stamp_result.hw_map }}</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+{% else %}
+  <p style="text-align:center"> No Pod data Available in weekly report </p>
+{% endif %}
+
+{% if pod_manual_result %}
+            <div class="row">
+                <center>
+                     {{ pod_manual_result.Pod_Name }}  -- <strong>{{ pod_manual_result.customer_name }} -- Manual Report </strong>
+                </center>
+                <hr>
+                <div class="column">
+                    <table class="table table-striped">
+                        <tbody>
+                          <!--
+                          <tr>
+                            <td><strong>Request Date :</strong></td>
+                            <td>{{ pod_manual_result.request_data }}</td>
+                          </tr> -->
+                          <tr>
+                            <td><strong>FM Date :</strong></td>
+                            <td>{{ pod_manual_result.fm_date }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Bugs :</strong></td>
+                            <td>{{ pod_manual_result.bugs }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>isADP :</strong></td>
+                            <td><b> {{ isadp }} </b></td>
+                          </tr>
+                          <!--
+                          <tr>
+                            <td><strong>BUG Creation Date :</strong></td>
+                            <td>{{ pod_manual_result.bug_creation_date }}</td>
+                          </tr> -->
+                          <tr>
+                            <td><strong>Resize Type :</strong></td>
+                            <td>{{ pod_manual_result.resize_type }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Execution Type :</strong></td>
+                            <td>{{ pod_manual_result.execution_type }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Resize Reason :</strong></td>
+                            <td>{{ pod_manual_result.resize_reason }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Environment Type :</strong></td>
+                            <td>{{ pod_manual_result.environment_type }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Next Rel Date :</strong></td>
+                            <td>{{ pod_manual_result.next_rel_date }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Next Rel Version :</strong></td>
+                            <td>{{ pod_manual_result.next_rel_version }}</td>
+                          </tr>
+                          <!--
+                          <tr>
+                            <td><strong>Fresh P Or U :</strong></td>
+                            <td>{{ pod_manual_result.fresh_p_or_u }}</td>
+                          </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="column">
+                    <table class="table table-striped" summary="resouce data">
+                        <tbody>
+                          <tr>
+                            <td><strong>Current Release :</strong></td>
+                            {% ifequal pod_manual_result.current_release version %}
+                            <td>{{ pod_manual_result.current_release }}</td>
+                            {% else %}
+                            <td><p style="color:red;">{{ pod_manual_result.current_release }}</p></td>
+                            {% endifequal %}
+                          </tr>
+                          <tr>
+                            <td><strong>Data  :</strong></td>
+                            <td>{{ pod_manual_result.data_ }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Environment Region Name :</strong></td>
+                            <td>{{ pod_manual_result.environment_region_name }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Old Shape :</strong></td>
+                            <td>{{ pod_manual_result.old_shape }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>New Shape :</strong></td>
+                            <td>{{ pod_manual_result.new_shape }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>POD Size :</strong></td>
+                            <td>{{ pod_manual_result.pod_size }}</td>
+                          </tr>
+                          <tr>
+                            <td><strong>HW Map :</strong></td>
+                            <td>{{ pod_manual_result.hw_map }}</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+{% else %}
+  <p style="text-align:center"> No Pod data Available in weekly report </p>
+{% endif %}
+
+<div style="text-align: right; font-size: 12px;">
+  Source: <a href="{{ source_url }}" target="_blank">CloudMeta</a>
+</div>
